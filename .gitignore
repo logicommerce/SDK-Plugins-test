@@ -1,0 +1,9 @@
+.classpath
+**/.classpath
+.project
+**/.settings/*
+**/lib/*
+**/target/*
+**/bin/*
+**/codemr/*
+/target/

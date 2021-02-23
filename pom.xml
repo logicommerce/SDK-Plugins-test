@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.logicommerce</groupId>
+	<artifactId>sdktest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SDK Test</name>
+
+	<properties>
+		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.plugin-version>3.8.0</maven.compiler.plugin-version>
+
+		<com.logicommerce.sdk-dev-version>0.0.1-SNAPSHOT</com.logicommerce.sdk-dev-version>
+		<lib.dir>/local/beyond/lib</lib.dir>
+		<jackson.version>2.11.0</jackson.version>
+	</properties>
+		
+	<dependencies>
+ 		<dependency>
+			<groupId>com.logicommerce</groupId>
+			<artifactId>sdk</artifactId>
+			<version>${com.logicommerce.sdk-dev-version}</version>
+			<scope>system</scope>
+			<systemPath>${lib.dir}/sdk-${com.logicommerce.sdk-dev-version}.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.logicommerce</groupId>
+			<artifactId>utilities</artifactId>
+			<version>${com.logicommerce.sdk-dev-version}</version>
+			<scope>system</scope>
+			<systemPath>${lib.dir}/utilities-${com.logicommerce.sdk-dev-version}.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>sdktest</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin-version}</version>
+				<configuration>
+					<release>${java.version}</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>/local/beyond/lib</outputDirectory>
+							<resources>
+								<resource>
+									<directory>target/</directory>
+									<includes>
+										<include>**/${project.build.finalName}.jar</include>
+									</includes>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
