@@ -23,6 +23,8 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 
 	private String entryValueMode;
 
+	private boolean multipleValue;
+
 	@Override
 	public String getIdentifier() {
 		return identifier;
@@ -93,6 +95,15 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 
 	public void setEntryValueMode(String entryValueMode) {
 		this.entryValueMode = entryValueMode;
+	}
+
+	@Override
+	public boolean isMultipleValue() {
+		return multipleValue;
+	}
+
+	public void setMultipleValue(boolean multipleValue) {
+		this.multipleValue = multipleValue;
 	}
 	
 }

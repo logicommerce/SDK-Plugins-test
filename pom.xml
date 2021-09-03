@@ -14,24 +14,21 @@
 		<maven.compiler.plugin-version>3.8.0</maven.compiler.plugin-version>
 
 		<com.logicommerce.sdk-dev-version>0.0.1-SNAPSHOT</com.logicommerce.sdk-dev-version>
-		<lib.dir>/local/beyond/lib</lib.dir>
+		<sdk.version>0.0.1-SNAPSHOT</sdk.version>
+		<utilities.version>0.0.1-SNAPSHOT</utilities.version>
 		<jackson.version>2.11.0</jackson.version>
 	</properties>
 		
 	<dependencies>
- 		<dependency>
+		<dependency>
 			<groupId>com.logicommerce</groupId>
 			<artifactId>sdk</artifactId>
-			<version>${com.logicommerce.sdk-dev-version}</version>
-			<scope>system</scope>
-			<systemPath>${lib.dir}/sdk-${com.logicommerce.sdk-dev-version}.jar</systemPath>
+			<version>${sdk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.logicommerce</groupId>
 			<artifactId>utilities</artifactId>
-			<version>${com.logicommerce.sdk-dev-version}</version>
-			<scope>system</scope>
-			<systemPath>${lib.dir}/utilities-${com.logicommerce.sdk-dev-version}.jar</systemPath>
+			<version>${utilities.version}</version>
 		</dependency>
 
 		<dependency>
