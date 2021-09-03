@@ -4,8 +4,48 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>SDK Test</name>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>Logicommerce SDK Testing Tools</name>
+	<description>Logicommerce SDK Testing tools for Logicommerce plugins.</description>
+	<url>https://www.logicommerce.com</url>
+
+	<licenses>
+		<license>
+			<name>Mozilla Public License 2.0</name>
+			<url>https://www.mozilla.org/media/MPL/2.0/index.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Francesc d'Assís Requesens i Roca</name>
+			<email>francesc.requesens@logicommerce.com</email>
+			<organization>Logicommerce</organization>
+			<organizationUrl>https://www.logicommerce.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com:logicommerce/SDK-Plugins-test.git</connection>
+		<developerConnection>scm:git:ssh://github.com:logicommerce/SDK-Plugins-test.git</developerConnection>
+		<url>https://github.com/logicommerce/SDK-Plugins-test/tree/main</url>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<java.version>11</java.version>
@@ -14,8 +54,8 @@
 		<maven.compiler.plugin-version>3.8.0</maven.compiler.plugin-version>
 
 		<com.logicommerce.sdk-dev-version>0.0.1-SNAPSHOT</com.logicommerce.sdk-dev-version>
-		<sdk.version>0.0.1-SNAPSHOT</sdk.version>
-		<utilities.version>0.0.1-SNAPSHOT</utilities.version>
+		<logicommerce-sdk.version>1.0.0</logicommerce-sdk.version>
+		<logicommerce-utilities.version>1.0.0</logicommerce-utilities.version>
 		<jackson.version>2.11.0</jackson.version>
 	</properties>
 		
@@ -23,12 +63,12 @@
 		<dependency>
 			<groupId>com.logicommerce</groupId>
 			<artifactId>sdk</artifactId>
-			<version>${sdk.version}</version>
+			<version>${logicommerce-sdk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.logicommerce</groupId>
 			<artifactId>utilities</artifactId>
-			<version>${utilities.version}</version>
+			<version>${logicommerce-utilities.version}</version>
 		</dependency>
 
 		<dependency>
@@ -38,38 +78,90 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>sdktest</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>/local/beyond/lib</outputDirectory>
+									<resources>
+										<resource>
+											<directory>target/</directory>
+											<includes>
+												<include>**/${project.build.finalName}.jar</include>
+											</includes>
+											<filtering>false</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<build>
-		<finalName>sdktest</finalName>
 		<plugins>
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin-version}</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
 				<configuration>
-					<release>${java.version}</release>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
+						<id>attach-sources</id>
 						<goals>
-							<goal>copy-resources</goal>
+							<goal>jar-no-fork</goal>
 						</goals>
-						<configuration>
-							<outputDirectory>/local/beyond/lib</outputDirectory>
-							<resources>
-								<resource>
-									<directory>target/</directory>
-									<includes>
-										<include>**/${project.build.finalName}.jar</include>
-									</includes>
-									<filtering>false</filtering>
-								</resource>
-							</resources>
-						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
