@@ -40,6 +40,8 @@ public class OrderShippingFake implements OrderShipping {
 
 	private boolean cashOnDelivery;
 
+	private int shipperId;
+
 	@Override
 	public Integer getId() {
 		return id;
@@ -174,6 +176,15 @@ public class OrderShippingFake implements OrderShipping {
 
 	public void setCashOnDelivery(boolean cashOnDelivery) {
 		this.cashOnDelivery = cashOnDelivery;
+	}
+
+	@Override
+	public int getShipperId() {
+		return shipperId;
+	}
+
+	public void setShipperId(int shipperId) {
+		this.shipperId = shipperId;
 	}
 
 }

@@ -14,7 +14,7 @@ public class OrderShipmentFake implements OrderShipment {
 	private Integer id;
 	private String pId;
 	private String status;
-	private LocalDate incommingDate;
+	private LocalDate incomingDate;
 	private List<OrderShipmentItem> items;
 	private List<OrderShipmentStatus> statuses;
 	private OrderShipping shipping;
@@ -44,8 +44,8 @@ public class OrderShipmentFake implements OrderShipment {
 	}
 
 	@Override
-	public LocalDate getIncommingDate() {
-		return incommingDate;
+	public LocalDate getIncomingDate() {
+		return incomingDate;
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class OrderShipmentFake implements OrderShipment {
 		this.pId = pId;
 	}
 
-	public void setIncommingDate(LocalDate incommingDate) {
-		this.incommingDate = incommingDate;
+	public void setIncomingDate(LocalDate incomingDate) {
+		this.incomingDate = incomingDate;
 	}
 
 	public void setItems(List<OrderShipmentItem> items) {
@@ -113,6 +113,26 @@ public class OrderShipmentFake implements OrderShipment {
 	@Override
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getpId() {
+		return pId;
+	}
+
+	public void setpId(String pId) {
+		this.pId = pId;
+	}
+
+	public ExportStatusType getExportStatusType() {
+		return exportStatusType;
+	}
+
+	public void setOriginAddress(ShipmentAddress originAddress) {
+		this.originAddress = originAddress;
+	}
+
+	public void setDestinationAddress(ShipmentAddress destinationAddress) {
+		this.destinationAddress = destinationAddress;
 	}
 
 }

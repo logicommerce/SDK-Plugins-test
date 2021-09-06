@@ -20,10 +20,10 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	private List<PropertyDefinitionValue> values;
 
 	private boolean languageValue;
+	
+	private boolean multipleValue;
 
 	private String entryValueMode;
-
-	private boolean multipleValue;
 
 	@Override
 	public String getIdentifier() {
@@ -97,13 +97,13 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 		this.entryValueMode = entryValueMode;
 	}
 
+	public void setMultipleValue(boolean multipleValue) {
+		this.multipleValue = multipleValue;
+	}
+
 	@Override
 	public boolean isMultipleValue() {
 		return multipleValue;
-	}
-
-	public void setMultipleValue(boolean multipleValue) {
-		this.multipleValue = multipleValue;
 	}
 	
 }

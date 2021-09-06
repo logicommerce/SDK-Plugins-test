@@ -26,7 +26,7 @@ public abstract class ConfigDefinitionFakeBuilder<T extends ConfigDefinitionFake
 		properties.add(property);
 		return property;
 	}
-	
+
 	public T hasAdditionalProperties(boolean hasAdditionalProperties) {
 		this.hasAdditionalProperties = hasAdditionalProperties;
 		return returnThis();

@@ -71,4 +71,9 @@ public class ConnectionFake implements Connection {
 		return this;
 	}
 
+	@Override
+	public Connection timeout(Integer arg0) {
+		return this;
+	}
+
 }

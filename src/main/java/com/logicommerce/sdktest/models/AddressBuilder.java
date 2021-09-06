@@ -42,7 +42,7 @@ public class AddressBuilder<T, S> {
 
 	private boolean reverseChargeVat;
 	
-	private LocationBuilder<AddressBuilder<T, S>> location;
+	private LocationFakeBuilder<AddressBuilder<T, S>> location;
 	
 	private String name;
 	
@@ -62,7 +62,7 @@ public class AddressBuilder<T, S> {
 		phone = "phone DEFAULT";
 		mobile = "mobile DEFAULT";
 		fax = "fax DEFAULT";
-		location = new LocationBuilder<>(returnThis());
+		location = new LocationFakeBuilder<>(returnThis());
 		name = "name DEFAULT";
 		
 	}
@@ -162,7 +162,7 @@ public class AddressBuilder<T, S> {
 		return returnThis();
 	}
 	
-	public LocationBuilder<AddressBuilder<T, S>> location() {
+	public LocationFakeBuilder<AddressBuilder<T, S>> location() {
 		return location;
 	}
 	

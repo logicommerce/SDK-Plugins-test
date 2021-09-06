@@ -12,7 +12,7 @@ public class UserFakeBuilder {
 
 	private Integer affiliateId;
 
-	private List<UserAddressFakeBuilder<?>> billingAddresses;
+	private List<UserAddressFakeBuilder> billingAddresses;
 
 	private LocalDate birthday;
 
@@ -30,7 +30,7 @@ public class UserFakeBuilder {
 
 	private Integer salesAgentId;
 
-	private List<UserAddressFakeBuilder<?>> shippingAddresses;
+	private List<UserAddressFakeBuilder> shippingAddresses;
 
 	private Boolean salesAgent;
 
@@ -95,13 +95,13 @@ public class UserFakeBuilder {
 	}
 
 	public UserAddressFakeBuilder billingAddress() {
-		UserAddressFakeBuilder<?> builder = new UserAddressFakeBuilder<>(this);
+		UserAddressFakeBuilder builder = new UserAddressFakeBuilder(this);
 		billingAddresses.add(builder);
 		return builder;
 	}
 
 	public UserAddressFakeBuilder shippingAddress() {
-		UserAddressFakeBuilder<?> builder = new UserAddressFakeBuilder<>(this);
+		UserAddressFakeBuilder builder = new UserAddressFakeBuilder(this);
 		shippingAddresses.add(builder);
 		return builder;
 	}

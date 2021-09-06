@@ -47,6 +47,7 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 		return connectorDefinition;
 	}
 
+
 	public PluginDefinitionFake build() {
 		PluginDefinitionFake pluginDefinition = new PluginDefinitionFake();
 		pluginDefinition.setName(name);

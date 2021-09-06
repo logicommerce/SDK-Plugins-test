@@ -18,15 +18,15 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 
 	@Override
 	public List<PropertyDefinition> getProperties() {
-		if (properties == null) {
-			properties = new ArrayList<>();
-		}
 		return properties;
 	}
 
 	@Override
 	public void addProperty(PropertyDefinition property) {
-		getProperties().add(property);
+		if (properties == null) {
+			properties = new ArrayList<>();
+		}
+		properties.add(property);
 	}
 
 	@Override
@@ -36,29 +36,28 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 
 	@Override
 	public List<PropertyDefinition> getAdditionalProperties() {
-		if (additionalProperties == null) {
-			additionalProperties = new ArrayList<>();
-		}
 		return additionalProperties;
 	}
 
 	@Override
 	public void addAdditionalProperty(PropertyDefinition property) {
-		getAdditionalProperties().add(property);
+		if (additionalProperties == null) {
+			additionalProperties = new ArrayList<>();
+		}
+		additionalProperties.add(property);
 	}
 
 	@Override
 	public List<MappedFieldDefinition> getMappedFields() {
+		return mappedFields;
+	}
+	
+	@Override
+	public void addMappedField(MappedFieldDefinition mappedField) {
 		if (mappedFields == null) {
 			mappedFields = new ArrayList<>();
 		}
-		return mappedFields;
-	}
-
-
-	@Override
-	public void addMappedField(MappedFieldDefinition mappedField) {
-		getMappedFields().add(mappedField);
+		mappedFields.add(mappedField);
 	}
 
 	public void setProperties(List<PropertyDefinition> properties) {
@@ -76,5 +75,4 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 	public void setMappedFields(List<MappedFieldDefinition> mappedFields) {
 		this.mappedFields = mappedFields;
 	}
-
 }

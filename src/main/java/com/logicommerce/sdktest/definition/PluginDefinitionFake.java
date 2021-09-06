@@ -63,6 +63,7 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		this.connectors = connectors;
 	}
 
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends ConnectorDefinition> T getConnectorDefinition(ConnectorType connectorType) {
@@ -77,7 +78,7 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		if (getConnectorDefinition(connectorDefinition.getType()) != null) {
 			throw new PluginDefinitionException(getClass(), "Connector is already defined");
 		}
-		getConnectorDefinitions().add(connectorDefinition);
+		getConnectorDefinitions().add(connectorDefinition);		
 	}
 
 }

@@ -14,16 +14,16 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 	
 	private String trackingNumber;
 
-	private List<OrderShippingTrackingPackage> trackingPackages;
+	private List<OrderShippingTrackingPackage> packages;
 
 	private List<ElementProperty> properties;
 	
 	@Override
 	public void addPackage(OrderShippingTrackingPackage trackingPackage) {
-		if (trackingPackages == null) {
-			trackingPackages = new ArrayList<>();
+		if (packages == null) {
+			packages = new ArrayList<>();
 		}
-		trackingPackages.add(trackingPackage);
+		packages.add(trackingPackage);
 	}
 
 	@Override
@@ -59,8 +59,8 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 	}
 
 	@Override
-	public List<OrderShippingTrackingPackage> getTrackingPackages() {
-		return trackingPackages;
+	public List<OrderShippingTrackingPackage> getPackages() {
+		return packages;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 	}
 
 	public void setTrackingPackages(List<OrderShippingTrackingPackage> trackingPackages) {
-		this.trackingPackages = trackingPackages;
+		this.packages = trackingPackages;
 	}
 
 	public void setProperties(List<ElementProperty> properties) {

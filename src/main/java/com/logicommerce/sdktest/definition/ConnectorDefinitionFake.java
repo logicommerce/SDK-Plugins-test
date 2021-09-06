@@ -27,5 +27,4 @@ public class ConnectorDefinitionFake extends ConfigDefinitionFake implements Con
 	public void setAdditionalData(Map<String, Object> additionalData) {
 		this.additionalData = additionalData;
 	}
-
 }
