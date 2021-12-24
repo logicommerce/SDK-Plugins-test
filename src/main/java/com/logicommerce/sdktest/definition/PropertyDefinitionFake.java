@@ -24,6 +24,8 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	private boolean multipleValue;
 
 	private String entryValueMode;
+	
+	private String reference;
 
 	@Override
 	public String getIdentifier() {
@@ -104,6 +106,15 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	@Override
 	public boolean isMultipleValue() {
 		return multipleValue;
+	}
+
+	@Override
+	public String getReference() {
+		return reference;
+	}
+	
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 	
 }

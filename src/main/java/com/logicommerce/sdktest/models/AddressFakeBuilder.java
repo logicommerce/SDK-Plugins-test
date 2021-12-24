@@ -18,7 +18,7 @@ public class AddressFakeBuilder<T, S> extends AddressBuilder<T, S> {
 		super.alias = "alias DEFAULT";
 		super.firstName = "firstName DEFAULT";
 		super.lastName = "lastName DEFAULT";
-		super.companyy = "companyy DEFAULT";
+		super.company = "companyy DEFAULT";
 		super.address = "address DEFAULT";
 		super.addressAdditionalInformation = "addressAdditionalInformation DEFAULT";
 		super.number = "number DEFAULT";

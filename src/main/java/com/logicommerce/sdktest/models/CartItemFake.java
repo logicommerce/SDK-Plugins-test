@@ -1,7 +1,10 @@
 package com.logicommerce.sdktest.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdk.models.CartItem;
+import com.logicommerce.sdk.models.CustomTag;
 
 public class CartItemFake implements CartItem {
 
@@ -102,6 +105,18 @@ public class CartItemFake implements CartItem {
 
 	public void setTotalTaxes(Double totalTaxes) {
 		this.totalTaxes = totalTaxes;
+	}
+
+	@Override
+	public List<CustomTag> getCustomTagValues() {
+		List<CustomTag> customTags = new ArrayList<>();
+		return customTags;
+	}
+
+	@Override
+	public List<CustomTag> getCustomTagPluginValues() {
+		List<CustomTag> customTags = new ArrayList<>();
+		return customTags;
 	}
 
 }

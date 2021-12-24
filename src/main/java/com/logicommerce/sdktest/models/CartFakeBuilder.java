@@ -15,7 +15,7 @@ public class CartFakeBuilder {
 	private CartTotalsFakeBuilder totals;
 	
 	private CartDeliVeryFakeBuilder delivery;
-
+	
 	public CartFakeBuilder() {
 		items = new ArrayList<>();
 		totals = new CartTotalsFakeBuilder(this);
