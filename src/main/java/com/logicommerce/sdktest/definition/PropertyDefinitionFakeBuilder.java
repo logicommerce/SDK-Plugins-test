@@ -20,6 +20,8 @@ public class PropertyDefinitionFakeBuilder<T> {
 	private DefinitionLanguagesFakeBuilder<PropertyDefinitionFakeBuilder<T>> languages;
 
 	private List<PropertyDefinitionValueBuilder<PropertyDefinitionFakeBuilder<T>>> values;
+	
+	private String reference;
 
 	public PropertyDefinitionFakeBuilder() {
 		values = new ArrayList<>();
@@ -60,6 +62,11 @@ public class PropertyDefinitionFakeBuilder<T> {
 		values.add(value);
 		return value;
 	}
+	
+	public PropertyDefinitionFakeBuilder<T> reference(String reference) {
+		this.reference = reference;
+		return this;
+	}
 
 	public PropertyDefinitionFake build() {
 		PropertyDefinitionFake propertyDefinition = new PropertyDefinitionFake();
@@ -69,6 +76,7 @@ public class PropertyDefinitionFakeBuilder<T> {
 		propertyDefinition.setRequired(required);
 		propertyDefinition.setType(type);
 		propertyDefinition.setValues(getValues());
+		propertyDefinition.setReference(reference);
 		return propertyDefinition;
 	}
 

@@ -16,6 +16,8 @@ public class CartFake implements Cart {
 	private CartTotals totals;
 
 	private CartDelivery delivery;
+	
+	private String abandonedBasketLink;
 
 	@Override
 	public LocalDateTime getCreatedAt() {
@@ -53,4 +55,8 @@ public class CartFake implements Cart {
 		this.delivery = delivery;
 	}
 
+	@Override
+	public String getAbandonedBasketLink() {
+		return abandonedBasketLink;
+	}
 }

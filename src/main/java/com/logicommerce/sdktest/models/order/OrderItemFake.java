@@ -36,7 +36,9 @@ public class OrderItemFake implements OrderItem {
 	private BackorderMode backOrder;
 	private boolean onRequest;
 	private int onRequestDays;
-	private String link;
+	private String link;	
+	private Integer combinationId;	
+	private String supplierReference;
 
 	@Override
 	public double getAffiliatePercentCommission() {
@@ -253,5 +255,23 @@ public class OrderItemFake implements OrderItem {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
+	@Override
+	public Integer getCombinationId() {
+		return combinationId;
+	}
 
+	@Override
+	public void setCombinationId(Integer combinationId) {
+		this.combinationId = combinationId;
+	}
+
+	@Override
+	public String getSupplierReference() {
+		return supplierReference;
+	}
+
+	public void setSupplierReference(String supplierReference) {
+		this.supplierReference = supplierReference;
+	}
 }

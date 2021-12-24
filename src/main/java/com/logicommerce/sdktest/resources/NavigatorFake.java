@@ -1,5 +1,6 @@
 package com.logicommerce.sdktest.resources;
 
+import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,7 +27,9 @@ public class NavigatorFake implements Navigator {
 	private String url;
 	
 	private String ip;
-
+	
+	private URL storeUrl;
+	
 	public NavigatorFake() {
 		cookies = new LinkedHashMap<>();
 	}
@@ -137,6 +140,15 @@ public class NavigatorFake implements Navigator {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	@Override
+	public URL getStoreUrl() {
+		return storeUrl;
+	}
+
+	public void setStoreUrl(URL storeUrl) {
+		this.storeUrl = storeUrl;
 	}
 
 }
