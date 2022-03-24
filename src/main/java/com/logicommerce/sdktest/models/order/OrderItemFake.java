@@ -25,7 +25,6 @@ public class OrderItemFake implements OrderItem {
 	private Integer productId;
 	private double weight;
 	private OrderItemPrices prices;
-	private double affiliatePercentCommission;
 	private Integer vinculatedTo;
 	private String image;
 	private boolean sale;
@@ -39,11 +38,6 @@ public class OrderItemFake implements OrderItem {
 	private String link;	
 	private Integer combinationId;	
 	private String supplierReference;
-
-	@Override
-	public double getAffiliatePercentCommission() {
-		return affiliatePercentCommission;
-	}
 
 	@Override
 	public BackorderMode getBackOrder() {
@@ -158,10 +152,6 @@ public class OrderItemFake implements OrderItem {
 	@Override
 	public String getLink() {
 		return link;
-	}
-
-	public void setAffiliatePercentCommission(double affiliatePercentCommission) {
-		this.affiliatePercentCommission = affiliatePercentCommission;
 	}
 
 	public void setBackOrder(BackorderMode backOrder) {

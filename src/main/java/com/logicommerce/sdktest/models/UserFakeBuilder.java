@@ -10,8 +10,6 @@ import com.logicommerce.sdk.models.User;
 
 public class UserFakeBuilder {
 
-	private Integer affiliateId;
-
 	private List<UserAddressFakeBuilder> billingAddresses;
 
 	private LocalDate birthday;
@@ -35,7 +33,6 @@ public class UserFakeBuilder {
 	private Boolean salesAgent;
 
 	public UserFakeBuilder() {
-		affiliateId = 1;
 		billingAddresses = new ArrayList<>();
 		birthday = null;
 		company = "company DEFAULT";
@@ -47,11 +44,6 @@ public class UserFakeBuilder {
 		salesAgentId = 1;
 		shippingAddresses = new ArrayList<>();
 		salesAgent = false;
-	}
-
-	public UserFakeBuilder affiliateId(Integer affiliateId) {
-		this.affiliateId = affiliateId;
-		return this;
 	}
 
 	public UserFakeBuilder birthday(LocalDate birthday) {
@@ -113,7 +105,6 @@ public class UserFakeBuilder {
 
 	public User build() {
 		UserFake user = new UserFake();
-		user.setAffiliateId(affiliateId);
 		user.setBirthday(birthday);
 		user.setCompany(company);
 		user.setEmail(email);
