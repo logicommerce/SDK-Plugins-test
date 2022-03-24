@@ -14,12 +14,7 @@ public class OrderInformationFake implements OrderInformation {
 
 	private Integer marketplaceId;
 
-	private Integer affiliateId;
-
-	private String affiliateCode;
-
 	private boolean commissionPaid;
-
 
 	@Override
 	public Integer getId() {
@@ -47,16 +42,6 @@ public class OrderInformationFake implements OrderInformation {
 	}
 
 	@Override
-	public Integer getAffiliateId() {
-		return affiliateId;
-	}
-
-	@Override
-	public String getAffiliateCode() {
-		return affiliateCode;
-	}
-
-	@Override
 	public boolean isCommissionPaid() {
 		return commissionPaid;
 	}
@@ -79,14 +64,6 @@ public class OrderInformationFake implements OrderInformation {
 
 	public void setMarketplaceId(Integer marketplaceId) {
 		this.marketplaceId = marketplaceId;
-	}
-
-	public void setAffiliateId(Integer affiliateId) {
-		this.affiliateId = affiliateId;
-	}
-
-	public void setAffiliateCode(String affiliateCode) {
-		this.affiliateCode = affiliateCode;
 	}
 
 	public void setCommissionPaid(boolean commissionPaid) {

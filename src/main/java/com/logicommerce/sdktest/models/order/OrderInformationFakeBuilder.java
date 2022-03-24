@@ -21,8 +21,6 @@ public class OrderInformationFakeBuilder<T> extends OrderInformationBuilder<T> {
 		super.transactionId = "transactionId DEFAULT";
 		super.authNumber = "authNumber DEFAULT";
 		super.marketplaceId = 0;
-		super.affiliateId = 0;
-		super.affiliateCode = "affiliateCode DEFAULT";
 		super.commissionPaid = false;
 	}
 
@@ -31,8 +29,6 @@ public class OrderInformationFakeBuilder<T> extends OrderInformationBuilder<T> {
 		OrderInformation orderInformationSdk = super.build();
 		OrderInformationFake orderInformationFake = new OrderInformationFake();
 		orderInformationFake.setId(super.id);
-		orderInformationFake.setAffiliateCode(orderInformationSdk.getAffiliateCode());
-		orderInformationFake.setAffiliateId(orderInformationSdk.getAffiliateId());
 		orderInformationFake.setAuthNumber(orderInformationSdk.getAuthNumber());
 		orderInformationFake.setChannelId(orderInformationSdk.getChannelId());
 		orderInformationFake.setCommissionPaid(orderInformationSdk.isCommissionPaid());
