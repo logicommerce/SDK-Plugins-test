@@ -29,7 +29,6 @@ public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
 		super.productId = 0;
 		super.weight = 0d;
 		super.prices = new OrderItemPricesFakeBuilder<>(this);
-		super.affiliatePercentCommission = 0d;
 		super.vinculatedTo = 0;
 		super.image = "image DEFAULT";
 		super.sale = false;
@@ -70,12 +69,14 @@ public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
 		return discount;
 	}
 
+	@Override
 	public OrderItemOptionFakeBuilder<OrderItemBuilder<T>> options() {
 		OrderItemOptionFakeBuilder<OrderItemBuilder<T>> option = new OrderItemOptionFakeBuilder<>(this);
 		options.add(option);
 		return option;
 	}
 
+	@Override
 	public OrderItemFake build() {
 		OrderItem itemSdk = super.build();
 		OrderItemFake item = new OrderItemFake();
@@ -91,7 +92,6 @@ public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
 		item.setProductId(itemSdk.getProductId());
 		item.setWeight(itemSdk.getWeight());
 		item.setPrices(itemSdk.getPrices());
-		item.setAffiliatePercentCommission(itemSdk.getAffiliatePercentCommission());
 		item.setVinculatedTo(itemSdk.getVinculatedTo());
 		item.setImage(itemSdk.getImage());
 		item.setSale(itemSdk.isSale());

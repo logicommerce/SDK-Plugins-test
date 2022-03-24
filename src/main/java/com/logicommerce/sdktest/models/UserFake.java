@@ -8,8 +8,6 @@ import com.logicommerce.sdk.models.UserAddress;
 
 public class UserFake implements User {
 
-	private Integer affiliateId;
-
 	private LocalDate birthday;
 
 	private String company;
@@ -31,11 +29,6 @@ public class UserFake implements User {
 	private List<UserAddress> billingAddresses;
 
 	private List<UserAddress> shippingAddresses;
-
-	@Override
-	public Integer getAffiliateId() {
-		return affiliateId;
-	}
 
 	@Override
 	public List<UserAddress> getBillingAddresses() {
@@ -90,10 +83,6 @@ public class UserFake implements User {
 	@Override
 	public Boolean isSalesAgent() {
 		return salesAgent;
-	}
-
-	public void setAffiliateId(Integer affiliateId) {
-		this.affiliateId = affiliateId;
 	}
 
 	public void setBirthday(LocalDate birthday) {
