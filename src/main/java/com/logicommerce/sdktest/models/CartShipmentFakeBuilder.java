@@ -3,11 +3,10 @@ package com.logicommerce.sdktest.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import com.logicommerce.sdk.models.CartShipment;
 
 public class CartShipmentFakeBuilder {
-	
+
 	private CartDeliVeryFakeBuilder parentBuilder;
 
 	private List<CartShipmentItemFakeBuilder> items;
@@ -23,29 +22,29 @@ public class CartShipmentFakeBuilder {
 		warehouse = new CartWarehouseFakeBuilder(this);
 	}
 
+	public CartShipmentFakeBuilder(CartDeliVeryFakeBuilder parentBuilder) {
+		this();
+		this.parentBuilder = parentBuilder;
+	}
+
 	public CartShipmentItemFakeBuilder item() {
 		CartShipmentItemFakeBuilder item = new CartShipmentItemFakeBuilder(this);
 		items.add(item);
 		return item;
 	}
-	
+
 	public CartShipmentFakeBuilder total(double total) {
 		this.total = total;
 		return this;
 	}
-	
+
 	public CartShipmentFakeBuilder weight(double weight) {
 		this.weight = weight;
 		return this;
 	}
-	
+
 	public CartWarehouseFakeBuilder warehouse() {
 		return warehouse;
-	}
-
-	public CartShipmentFakeBuilder(CartDeliVeryFakeBuilder parentBuilder) {
-		this();
-		this.parentBuilder = parentBuilder;
 	}
 
 	public CartShipment build( ) {
@@ -58,7 +57,7 @@ public class CartShipmentFakeBuilder {
 		shipment.setWarehouse(warehouse.build());
 		return shipment;
 	}
-	
+
 	public CartDeliVeryFakeBuilder done() {
 		return parentBuilder;
 	}

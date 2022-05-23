@@ -14,8 +14,6 @@ public class OrderInformationFake implements OrderInformation {
 
 	private Integer marketplaceId;
 
-	private boolean commissionPaid;
-
 	@Override
 	public Integer getId() {
 		return id;
@@ -41,11 +39,6 @@ public class OrderInformationFake implements OrderInformation {
 		return marketplaceId;
 	}
 
-	@Override
-	public boolean isCommissionPaid() {
-		return commissionPaid;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -64,10 +57,6 @@ public class OrderInformationFake implements OrderInformation {
 
 	public void setMarketplaceId(Integer marketplaceId) {
 		this.marketplaceId = marketplaceId;
-	}
-
-	public void setCommissionPaid(boolean commissionPaid) {
-		this.commissionPaid = commissionPaid;
 	}
 
 }

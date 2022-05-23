@@ -6,13 +6,13 @@ import com.logicommerce.sdk.models.CartItem;
 public class CartItemFakeBuilder {
 
 	private CartFakeBuilder parentBuilder;
-	
+
 	private Integer id;
 
 	private String hash;
 
 	private String name;
-	
+
 	private CartItemType cartItemType;
 
 	private Integer quantity;
@@ -25,6 +25,8 @@ public class CartItemFakeBuilder {
 
 	private Double totalTaxes;
 
+	private CartItemCodesFakeBuilder codes;
+
 	public CartItemFakeBuilder() {
 		id = 1;
 		hash = "hash DEFAULT";
@@ -35,13 +37,14 @@ public class CartItemFakeBuilder {
 		subTotal = 0.0;
 		total = 0.0;
 		totalTaxes = 0.0;
+		codes = new CartItemCodesFakeBuilder(this);
 	}
 
 	public CartItemFakeBuilder(CartFakeBuilder parentBuilder) {
 		this();
 		this.parentBuilder = parentBuilder;
 	}
-	
+
 	public CartItemFakeBuilder id(Integer id) {
 		this.id = id;
 		return this;
@@ -86,7 +89,11 @@ public class CartItemFakeBuilder {
 		this.totalTaxes = totalTaxes;
 		return this;
 	}
-	
+
+	public CartItemCodesFakeBuilder codes() {
+		return codes;
+	}
+
 	public CartItem build() {
 		CartItemFake cartItem = new CartItemFake();
 		cartItem.setId(id);
@@ -98,6 +105,7 @@ public class CartItemFakeBuilder {
 		cartItem.setSubTotal(subTotal);
 		cartItem.setTotal(total);
 		cartItem.setTotalTaxes(totalTaxes);
+		cartItem.setCodes(codes.build());
 		return cartItem;
 	}
 
