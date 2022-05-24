@@ -29,6 +29,10 @@ public class CartItemFake implements CartItem {
 
 	private CartItemCodes codes;
 
+	private String urlSeo;
+
+	private String imageUrl;
+
 	@Override
 	public String getHash() {
 		return hash;
@@ -129,6 +133,24 @@ public class CartItemFake implements CartItem {
 
 	public void setCodes(CartItemCodes codes) {
 		this.codes = codes;
+	}
+
+	@Override
+	public String getUrlSeo() {
+		return urlSeo;
+	}
+
+	public void setUrlSeo(String urlSeo) {
+		this.urlSeo = urlSeo;
+	}
+
+	@Override
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }

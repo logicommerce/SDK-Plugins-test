@@ -27,6 +27,10 @@ public class CartItemFakeBuilder {
 
 	private CartItemCodesFakeBuilder codes;
 
+	private String urlSeo;
+
+	private String imageUrl;
+
 	public CartItemFakeBuilder() {
 		id = 1;
 		hash = "hash DEFAULT";
@@ -94,6 +98,16 @@ public class CartItemFakeBuilder {
 		return codes;
 	}
 
+	public CartItemFakeBuilder urlSeo(String urlSeo) {
+		this.urlSeo = urlSeo;
+		return this;
+	}
+
+	public CartItemFakeBuilder imageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+		return this;
+	}
+
 	public CartItem build() {
 		CartItemFake cartItem = new CartItemFake();
 		cartItem.setId(id);
@@ -106,6 +120,8 @@ public class CartItemFakeBuilder {
 		cartItem.setTotal(total);
 		cartItem.setTotalTaxes(totalTaxes);
 		cartItem.setCodes(codes.build());
+		cartItem.setUrlSeo(urlSeo);
+		cartItem.setImageUrl(imageUrl);
 		return cartItem;
 	}
 
