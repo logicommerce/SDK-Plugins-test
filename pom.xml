@@ -58,7 +58,7 @@
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
 		<logicommerce-sdk.version>1.0.15</logicommerce-sdk.version>
-		<logicommerce-utilities.version>1.0.1</logicommerce-utilities.version>
+		<logicommerce-utilities.version>1.0.3</logicommerce-utilities.version>
 		<jackson.version>2.11.4</jackson.version>
 	</properties>
 		
