@@ -76,4 +76,9 @@ public class ConnectionFake implements Connection {
 		return this;
 	}
 
+	@Override
+	public Connection queryParam(String name, String value) {
+		return this;
+	}
+
 }
