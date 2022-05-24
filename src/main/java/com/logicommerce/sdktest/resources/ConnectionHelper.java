@@ -195,4 +195,10 @@ public class ConnectionHelper implements Connection {
 		return this;
 	}
 
+	@Override
+	public Connection queryParam(String name, String value) {
+		attributes.setQueryParam(name, value);
+		return this;
+	}
+
 }

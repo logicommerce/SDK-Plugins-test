@@ -2,7 +2,7 @@ package com.logicommerce.sdktest.resources;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,9 +18,11 @@ public class ConnectionAttributes {
 
 	private String acceptType = "application/json";
 
-	private final Map<String, String> headers = new LinkedHashMap<>();
+	private final Map<String, String> headers = new HashMap<>();
 
-	private final Map<String, String> cookies = new LinkedHashMap<>();
+	private final Map<String, String> cookies = new HashMap<>();
+
+	private final Map<String, String> queryParams = new HashMap<>();
 
 	private String endPoint = "";
 
@@ -33,7 +35,7 @@ public class ConnectionAttributes {
 	private Integer timeout = 3000;
 
 	protected boolean hasAuthorization() {
-		return getAuthorization() != null && !getAuthorization().trim().isEmpty();
+		return getAuthorization() != null && !getAuthorization().isBlank();
 	}
 
 	protected URL getUrl() throws MalformedURLException {
@@ -51,10 +53,8 @@ public class ConnectionAttributes {
 		if (hasAuthorization()) {
 			return true;
 		}
-
 		Pattern pattern = Pattern.compile("^https", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(getEndPoint());
-
 		return matcher.find();
 	}
 
@@ -62,8 +62,7 @@ public class ConnectionAttributes {
 		if (getMethod().equalsIgnoreCase("GET") || getMethod().equalsIgnoreCase("DELETE")) {
 			return false;
 		}
-		return getBody() != null && !getBody().trim()
-				.isEmpty();
+		return getBody() != null && !getBody().isBlank();
 	}
 
 	public String getAuthorization() {
@@ -120,6 +119,10 @@ public class ConnectionAttributes {
 		cookies.put(name, value);
 	}
 
+	public void setQueryParam(String name, String value) {
+		queryParams.put(name, value);
+	}
+
 	public String getEndPoint() {
 		return endPoint;
 	}
@@ -140,7 +143,12 @@ public class ConnectionAttributes {
 	}
 
 	public String getParams() {
-		return params;
+		if (queryParams.isEmpty()) {
+			return params;
+		}
+		return queryParams.entrySet().stream()
+			.map(entry -> String.format("%s=%s", entry.getKey(), entry.getValue()))
+			.collect(Collectors.joining("&"));
 	}
 
 	public void setParams(String params) {
