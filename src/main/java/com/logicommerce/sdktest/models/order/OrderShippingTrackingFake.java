@@ -2,7 +2,6 @@ package com.logicommerce.sdktest.models.order;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.logicommerce.sdk.models.ElementProperty;
 import com.logicommerce.sdk.models.order.OrderShippingTracking;
 import com.logicommerce.sdk.models.order.OrderShippingTrackingPackage;
@@ -11,13 +10,13 @@ import com.logicommerce.sdktest.models.ElementPropertyFake;
 public class OrderShippingTrackingFake implements OrderShippingTracking {
 
 	private Integer id;
-	
-	private String trackingNumber;
 
 	private List<OrderShippingTrackingPackage> packages;
 
 	private List<ElementProperty> properties;
-	
+
+	private String trackingReference;
+
 	@Override
 	public void addPackage(OrderShippingTrackingPackage trackingPackage) {
 		if (packages == null) {
@@ -43,7 +42,7 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -54,18 +53,8 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 	}
 
 	@Override
-	public String getTrackingNumber() {
-		return trackingNumber;
-	}
-
-	@Override
 	public List<OrderShippingTrackingPackage> getPackages() {
 		return packages;
-	}
-
-	@Override
-	public void setTrackingNumber(String trackingNumber) {
-		this.trackingNumber = trackingNumber;
 	}
 
 	public void setTrackingPackages(List<OrderShippingTrackingPackage> trackingPackages) {
@@ -74,5 +63,15 @@ public class OrderShippingTrackingFake implements OrderShippingTracking {
 
 	public void setProperties(List<ElementProperty> properties) {
 		this.properties = properties;
-	}	
+	}
+
+	@Override
+	public String getTrackingReference() {
+		return trackingReference;
+	}
+
+	@Override
+	public void setTrackingReference(String trackingReference) {
+		this.trackingReference = trackingReference;
+	}
 }

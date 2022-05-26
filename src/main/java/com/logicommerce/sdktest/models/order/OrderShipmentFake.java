@@ -22,6 +22,9 @@ public class OrderShipmentFake implements OrderShipment {
 	private String hash;
 	private ShipmentAddress originAddress;
 	private ShipmentAddress destinationAddress;
+	private String trackingNumber;
+	private String documentNumber;
+	private Integer substatus;
 
 	@Override
 	public Integer getId() {
@@ -133,6 +136,34 @@ public class OrderShipmentFake implements OrderShipment {
 
 	public void setDestinationAddress(ShipmentAddress destinationAddress) {
 		this.destinationAddress = destinationAddress;
+	}
+
+	@Override
+	public String getTrackingNumber() {
+		return trackingNumber;
+	}
+
+	@Override
+	public void setTrackingNumber(String trackingNumber) {
+		this.trackingNumber = trackingNumber;
+	}
+
+	@Override
+	public String getDocumentNumber() {
+		return documentNumber;
+	}
+
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
+	}
+
+	@Override
+	public Integer getSubstatus() {
+		return substatus;
+	}
+
+	public void setSubstatus(Integer substatus) {
+		this.substatus = substatus;
 	}
 
 }

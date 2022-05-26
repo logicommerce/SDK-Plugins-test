@@ -25,11 +25,15 @@ public class NavigatorFake implements Navigator {
 	private Map<String, String> cookies;
 
 	private String url;
-	
+
 	private String ip;
-	
+
 	private URL storeUrl;
-	
+
+	private String baseUrl;
+
+	private String cdnAssets;
+
 	public NavigatorFake() {
 		cookies = new LinkedHashMap<>();
 	}
@@ -116,8 +120,9 @@ public class NavigatorFake implements Navigator {
 
 	@Override
 	public void removeCookie(String name) {
-		if (cookies.containsKey(name))
+		if (cookies.containsKey(name)) {
 			cookies.remove(name);
+		}
 	}
 
 	public void setCookies(Map<String, String> cookies) {
@@ -149,6 +154,24 @@ public class NavigatorFake implements Navigator {
 
 	public void setStoreUrl(URL storeUrl) {
 		this.storeUrl = storeUrl;
+	}
+
+	@Override
+	public String getBaseUrl() {
+		return baseUrl;
+	}
+
+	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
+
+	@Override
+	public String getCdnAssets() {
+		return cdnAssets;
+	}
+
+	public void setCdnAssets(String cdnAssets) {
+		this.cdnAssets = cdnAssets;
 	}
 
 }

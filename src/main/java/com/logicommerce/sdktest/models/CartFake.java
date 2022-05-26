@@ -6,8 +6,11 @@ import com.logicommerce.sdk.models.Cart;
 import com.logicommerce.sdk.models.CartDelivery;
 import com.logicommerce.sdk.models.CartItem;
 import com.logicommerce.sdk.models.CartTotals;
+import com.logicommerce.sdk.models.User;
 
 public class CartFake implements Cart {
+
+	private String token;
 
 	private LocalDateTime createdAt;
 
@@ -16,8 +19,10 @@ public class CartFake implements Cart {
 	private CartTotals totals;
 
 	private CartDelivery delivery;
-	
+
 	private String abandonedBasketLink;
+
+	private User user;
 
 	@Override
 	public LocalDateTime getCreatedAt() {
@@ -39,6 +44,21 @@ public class CartFake implements Cart {
 		return delivery;
 	}
 
+	@Override
+	public String getAbandonedBasketLink() {
+		return abandonedBasketLink;
+	}
+
+	@Override
+	public String getToken() {
+		return token;
+	}
+
+	@Override
+	public User getUser() {
+		return user;
+	}
+
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -55,8 +75,16 @@ public class CartFake implements Cart {
 		this.delivery = delivery;
 	}
 
-	@Override
-	public String getAbandonedBasketLink() {
-		return abandonedBasketLink;
+	public void setToken(String token) {
+		this.token = token;
 	}
+
+	public void setAbandonedBasketLink(String abandonedBasketLink) {
+		this.abandonedBasketLink = abandonedBasketLink;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }
