@@ -10,6 +10,8 @@ import com.logicommerce.sdk.models.User;
 
 public class UserFakeBuilder {
 
+	private CartFakeBuilder parentBuilder;
+
 	private List<UserAddressFakeBuilder> billingAddresses;
 
 	private LocalDate birthday;
@@ -44,6 +46,11 @@ public class UserFakeBuilder {
 		salesAgentId = 1;
 		shippingAddresses = new ArrayList<>();
 		salesAgent = false;
+	}
+
+	public UserFakeBuilder(CartFakeBuilder parentBuilder) {
+		this();
+		this.parentBuilder = parentBuilder;
 	}
 
 	public UserFakeBuilder birthday(LocalDate birthday) {
@@ -121,5 +128,9 @@ public class UserFakeBuilder {
 				.map(UserAddressFakeBuilder::build)
 				.collect(Collectors.toList()));
 		return user;
+	}
+
+	public CartFakeBuilder done() {
+		return parentBuilder;
 	}
 }
