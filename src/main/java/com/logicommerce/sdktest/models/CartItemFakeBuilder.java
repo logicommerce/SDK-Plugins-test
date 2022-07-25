@@ -31,6 +31,10 @@ public class CartItemFakeBuilder {
 
 	private String imageUrl;
 
+	private BrandFakeBuilder brand;
+
+	private CategoryFakeBuilder mainCategory;
+
 	public CartItemFakeBuilder() {
 		id = 1;
 		hash = "hash DEFAULT";
@@ -42,6 +46,8 @@ public class CartItemFakeBuilder {
 		total = 0.0;
 		totalTaxes = 0.0;
 		codes = new CartItemCodesFakeBuilder(this);
+		brand = new BrandFakeBuilder(this);
+		mainCategory = new CategoryFakeBuilder(this);
 	}
 
 	public CartItemFakeBuilder(CartFakeBuilder parentBuilder) {
@@ -108,6 +114,14 @@ public class CartItemFakeBuilder {
 		return this;
 	}
 
+	public BrandFakeBuilder brand() {
+		return brand;
+	}
+
+	public CategoryFakeBuilder mainCategory() {
+		return mainCategory;
+	}
+
 	public CartItem build() {
 		CartItemFake cartItem = new CartItemFake();
 		cartItem.setId(id);
@@ -122,6 +136,8 @@ public class CartItemFakeBuilder {
 		cartItem.setCodes(codes.build());
 		cartItem.setUrlSeo(urlSeo);
 		cartItem.setImageUrl(imageUrl);
+		cartItem.setBrand(brand.build());
+		cartItem.setMainCategory(mainCategory.build());
 		return cartItem;
 	}
 

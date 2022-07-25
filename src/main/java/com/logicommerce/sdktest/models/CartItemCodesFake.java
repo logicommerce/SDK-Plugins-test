@@ -46,10 +46,6 @@ public class CartItemCodesFake implements CartItemCodes {
 		return upc;
 	}
 
-	public String getpId() {
-		return pId;
-	}
-
 	public void setpId(String pId) {
 		this.pId = pId;
 	}

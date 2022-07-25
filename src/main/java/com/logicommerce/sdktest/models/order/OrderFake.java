@@ -23,7 +23,7 @@ import com.logicommerce.sdk.models.order.OrderVoucher;
 import com.logicommerce.sdktest.models.ElementPropertyFake;
 
 public class OrderFake implements Order {
-	
+
 	private String comment;
 	private List<CustomTag> customTags;
 	private OrderUser user;
@@ -51,6 +51,7 @@ public class OrderFake implements Order {
 	private List<ElementProperty> properties;
 	private OrderDelivery orderDelivery;
 	private Integer languageId;
+	private Integer documentId;
 
 	@Override
 	public List<OrderAdditionalInformation> getAdditionalInformation() {
@@ -302,6 +303,19 @@ public class OrderFake implements Order {
 
 	public void setLanguageId(Integer languageId) {
 		this.languageId = languageId;
+	}
+
+	@Override
+	public Integer getDocumentId() {
+		return documentId;
+	}
+
+	public void setProperties(List<ElementProperty> properties) {
+		this.properties = properties;
+	}
+
+	public void setDocumentId(Integer documentId) {
+		this.documentId = documentId;
 	}
 
 }

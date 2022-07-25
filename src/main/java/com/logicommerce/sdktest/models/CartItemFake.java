@@ -3,8 +3,10 @@ package com.logicommerce.sdktest.models;
 import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.enums.CartItemType;
+import com.logicommerce.sdk.models.Brand;
 import com.logicommerce.sdk.models.CartItem;
 import com.logicommerce.sdk.models.CartItemCodes;
+import com.logicommerce.sdk.models.Category;
 import com.logicommerce.sdk.models.CustomTag;
 
 public class CartItemFake implements CartItem {
@@ -32,6 +34,16 @@ public class CartItemFake implements CartItem {
 	private String urlSeo;
 
 	private String imageUrl;
+
+	private Double unitPrice;
+
+	private Brand brand;
+
+	private Category mainCategory;
+
+	private List<CustomTag> customTags = new ArrayList<>();
+
+	private List<CustomTag> customTagPluginValues = new ArrayList<>();
 
 	@Override
 	public String getHash() {
@@ -116,14 +128,12 @@ public class CartItemFake implements CartItem {
 
 	@Override
 	public List<CustomTag> getCustomTagValues() {
-		List<CustomTag> customTags = new ArrayList<>();
 		return customTags;
 	}
 
 	@Override
 	public List<CustomTag> getCustomTagPluginValues() {
-		List<CustomTag> customTags = new ArrayList<>();
-		return customTags;
+		return customTagPluginValues;
 	}
 
 	@Override
@@ -151,6 +161,33 @@ public class CartItemFake implements CartItem {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	@Override
+	public Double getUnitPrice() {
+		return unitPrice;
+	}
+
+	@Override
+	public Brand getBrand() {
+		return brand;
+	}
+
+	@Override
+	public Category getMainCategory() {
+		return mainCategory;
+	}
+
+	public void setUnitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public void setMainCategory(Category mainCategory) {
+		this.mainCategory = mainCategory;
 	}
 
 }
