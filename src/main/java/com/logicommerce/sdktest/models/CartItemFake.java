@@ -23,6 +23,8 @@ public class CartItemFake implements CartItem {
 
 	private Double weight;
 
+	private Double unitPrice;
+
 	private Double subTotal;
 
 	private Double total;
@@ -34,8 +36,6 @@ public class CartItemFake implements CartItem {
 	private String urlSeo;
 
 	private String imageUrl;
-
-	private Double unitPrice;
 
 	private Brand brand;
 
