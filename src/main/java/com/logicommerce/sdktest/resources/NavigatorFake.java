@@ -34,6 +34,8 @@ public class NavigatorFake implements Navigator {
 
 	private String cdnAssets;
 
+	private String cdnImages;
+
 	public NavigatorFake() {
 		cookies = new LinkedHashMap<>();
 	}
@@ -172,6 +174,15 @@ public class NavigatorFake implements Navigator {
 
 	public void setCdnAssets(String cdnAssets) {
 		this.cdnAssets = cdnAssets;
+	}
+
+	@Override
+	public String getCdnImages() {
+		return cdnImages;
+	}
+
+	public void setCdnImages(String cdnImages) {
+		this.cdnImages = cdnImages;
 	}
 
 }
