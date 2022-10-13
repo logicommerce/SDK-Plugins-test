@@ -5,7 +5,7 @@
 
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>1.0.4</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -51,13 +51,16 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
-		<logicommerce-sdk.version>1.0.18</logicommerce-sdk.version>
+		<logicommerce-sdk.version>1.1.0</logicommerce-sdk.version>
 		<logicommerce-utilities.version>1.0.3</logicommerce-utilities.version>
 		<jackson.version>2.11.4</jackson.version>
 	</properties>
