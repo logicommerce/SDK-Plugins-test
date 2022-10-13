@@ -19,6 +19,8 @@ public class CartItemFakeBuilder {
 
 	private Double weight;
 
+	private Double unitPrice;
+
 	private Double subTotal;
 
 	private Double total;
@@ -42,6 +44,7 @@ public class CartItemFakeBuilder {
 		cartItemType = CartItemType.PRODUCT;
 		quantity = 1;
 		weight = 0.0;
+		unitPrice = 0.0;
 		subTotal = 0.0;
 		total = 0.0;
 		totalTaxes = 0.0;
@@ -82,6 +85,11 @@ public class CartItemFakeBuilder {
 
 	public CartItemFakeBuilder weight(Double weight) {
 		this.weight = weight;
+		return this;
+	}
+
+	public CartItemFakeBuilder unitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
 		return this;
 	}
 
@@ -130,6 +138,7 @@ public class CartItemFakeBuilder {
 		cartItem.setCartItemType(cartItemType);
 		cartItem.setQuantity(quantity);
 		cartItem.setWeight(weight);
+		cartItem.setUnitPrice(unitPrice);
 		cartItem.setSubTotal(subTotal);
 		cartItem.setTotal(total);
 		cartItem.setTotalTaxes(totalTaxes);

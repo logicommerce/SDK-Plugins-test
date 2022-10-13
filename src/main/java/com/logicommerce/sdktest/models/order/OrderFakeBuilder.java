@@ -10,10 +10,9 @@ import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
 public class OrderFakeBuilder extends OrderSdkBuilder {
 
 	public OrderFakeBuilder() {
-		super();
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.comment = "comment DEFAULT";
 		super.languageId = 1;
@@ -35,48 +34,56 @@ public class OrderFakeBuilder extends OrderSdkBuilder {
 		super.reverseChargeVat = false;
 	}
 
+	@Override
 	public CustomTagFakeBuilder<OrderSdkBuilder> customTag() {
 		CustomTagFakeBuilder<OrderSdkBuilder> customTag = new CustomTagFakeBuilder<>(this);
 		customTags.add(customTag);
 		return customTag;
 	}
 
+	@Override
 	public OrderVoucherFakeBuilder<OrderSdkBuilder> voucher() {
 		OrderVoucherFakeBuilder<OrderSdkBuilder> voucher = new OrderVoucherFakeBuilder<>(this);
 		vouchers.add(voucher);
 		return voucher;
 	}
 
+	@Override
 	public OrderItemFakeBuilder<OrderSdkBuilder> item() {
 		OrderItemFakeBuilder<OrderSdkBuilder> item = new OrderItemFakeBuilder<>(this);
 		items.add(item);
 		return item;
 	}
-	
+
+	@Override
 	public OrderAdditionalInformationFakeBuilder<OrderSdkBuilder> additionalInformation() {
 		OrderAdditionalInformationFakeBuilder<OrderSdkBuilder> additionalInfo = new OrderAdditionalInformationFakeBuilder<>(this);
 		additionalInformation.add(additionalInfo);
 		return additionalInfo;
 	}
 
+	@Override
 	public OrderCurrencyFakeBuilder<OrderSdkBuilder> currencies() {
 		OrderCurrencyFakeBuilder<OrderSdkBuilder> currency = new OrderCurrencyFakeBuilder<>(this);
 		currencies.add(currency);
 		return currency;
 	}
 
+	@Override
 	public OrderDiscountFakeBuilder<OrderSdkBuilder> discounts() {
 		OrderDiscountFakeBuilder<OrderSdkBuilder> discount = new OrderDiscountFakeBuilder<>(this);
 		discounts.add(discount);
 		return discount;
 	}
 
+	@Override
 	public OrderStatusFakeBuilder<OrderSdkBuilder> statuses() {
 		OrderStatusFakeBuilder<OrderSdkBuilder> statusItem = new OrderStatusFakeBuilder<>(this);
 		statuses.add(statusItem);
 		return statusItem;
 	}
-	
+
+	@Override
 	public OrderTaxFakeBuilder<OrderSdkBuilder> tax() {
 		OrderTaxFakeBuilder<OrderSdkBuilder> tax = new OrderTaxFakeBuilder<>(this);
 		taxes.add(tax);
