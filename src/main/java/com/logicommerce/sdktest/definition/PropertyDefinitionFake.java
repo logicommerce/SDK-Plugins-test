@@ -3,6 +3,7 @@ package com.logicommerce.sdktest.definition;
 import java.util.List;
 import com.logicommerce.sdk.definition.DefinitionLanguages;
 import com.logicommerce.sdk.definition.PropertyDefinition;
+import com.logicommerce.sdk.definition.PropertyDefinitionPermission;
 import com.logicommerce.sdk.definition.PropertyDefinitionValue;
 
 public class PropertyDefinitionFake implements PropertyDefinition {
@@ -26,6 +27,8 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	private String entryValueMode;
 	
 	private String reference;
+	
+	private List<PropertyDefinitionPermission> permissions;
 
 	@Override
 	public String getIdentifier() {
@@ -115,6 +118,15 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	
 	public void setReference(String reference) {
 		this.reference = reference;
+	}
+
+	@Override
+	public List<PropertyDefinitionPermission> getPermissions() {
+		return permissions;
+	}
+	
+	public void setPermissions(List<PropertyDefinitionPermission> permissions) {
+		this.permissions = permissions;
 	}
 	
 }
