@@ -16,8 +16,6 @@ public class CartWarehouseFakeBuilder {
 
 	private String state;
 
-	private int locationId;
-
 	private String postalCode;
 
 	private Integer physicalLocationId;
@@ -32,7 +30,6 @@ public class CartWarehouseFakeBuilder {
 		country = "country DEFAULT";
 		name = "name DEFAULT";
 		state = "state DEFAULT";
-		locationId = 0;
 		postalCode = "postalCode DEFAULT";
 		physicalLocationId = 0;
 		offsetDays = 0;
@@ -69,11 +66,6 @@ public class CartWarehouseFakeBuilder {
 		return this;
 	}
 
-	public CartWarehouseFakeBuilder locationId(int locationId) {
-		this.locationId = locationId;
-		return this;
-	}
-
 	public CartWarehouseFakeBuilder postalCode(String postalCode) {
 		this.postalCode = postalCode;
 		return this;
@@ -101,7 +93,6 @@ public class CartWarehouseFakeBuilder {
 		warehouse.setCountry(country);
 		warehouse.setName(name);
 		warehouse.setState(state);
-		warehouse.setLocationId(locationId);
 		warehouse.setPostalCode(postalCode);
 		warehouse.setPhysicalLocationId(physicalLocationId);
 		warehouse.setOffsetDays(offsetDays);
