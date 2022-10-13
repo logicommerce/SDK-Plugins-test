@@ -14,8 +14,6 @@ public class CartWarehouseFake implements CartWarehouse {
 
 	private String state;
 
-	private int locationId;
-
 	private String postalCode;
 
 	private Integer physicalLocationId;
@@ -47,11 +45,6 @@ public class CartWarehouseFake implements CartWarehouse {
 	@Override
 	public String getState() {
 		return state;
-	}
-
-	@Override
-	public int getLocationId() {
-		return locationId;
 	}
 
 	@Override
@@ -92,10 +85,6 @@ public class CartWarehouseFake implements CartWarehouse {
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
 	}
 
 	public void setPostalCode(String postalCode) {
