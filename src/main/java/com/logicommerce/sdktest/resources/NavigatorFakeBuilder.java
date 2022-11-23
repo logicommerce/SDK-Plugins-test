@@ -2,9 +2,11 @@ package com.logicommerce.sdktest.resources;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
+import com.logicommerce.sdk.models.Cookie;
 import com.logicommerce.sdk.resources.Navigator;
+import com.logicommerce.sdktest.models.CookieFake;
 
 public class NavigatorFakeBuilder {
 
@@ -22,7 +24,7 @@ public class NavigatorFakeBuilder {
 
 	protected String pageType;
 
-	protected Map<String, String> cookies;
+	protected Map<String, Cookie> cookies;
 
 	protected String url;
 
@@ -44,7 +46,7 @@ public class NavigatorFakeBuilder {
 		currency = "EUR";
 		defaultCurrency = "EUR";
 		pageType = "";
-		cookies = new LinkedHashMap<>();
+		cookies = new HashMap<>();
 		url = "https://www.yourshop.com";
 		ip = "127.0.0.1";
 		try {
@@ -92,8 +94,9 @@ public class NavigatorFakeBuilder {
 		return this;
 	}
 
-	public NavigatorFakeBuilder addCookie(String name, String value) {
-		this.cookies.put(name, value);
+	public NavigatorFakeBuilder addCookie(String name, String value, int ttl) {
+		Cookie cookie = new CookieFake(name, value, ttl);
+		cookies.put(name, cookie);
 		return this;
 	}
 

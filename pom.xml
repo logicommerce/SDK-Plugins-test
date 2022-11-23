@@ -5,7 +5,7 @@
 
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -60,9 +60,9 @@
 		<maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
-		<logicommerce-sdk.version>1.1.1</logicommerce-sdk.version>
+		<logicommerce-sdk.version>1.1.5</logicommerce-sdk.version>
 		<logicommerce-utilities.version>1.0.3</logicommerce-utilities.version>
-		<jackson.version>2.11.4</jackson.version>
+		<jackson.version>2.13.2.2</jackson.version>
 	</properties>
 		
 	<dependencies>
