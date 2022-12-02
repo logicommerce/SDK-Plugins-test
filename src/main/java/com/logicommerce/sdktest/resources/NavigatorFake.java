@@ -4,7 +4,9 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.logicommerce.sdk.models.Cookie;
 import com.logicommerce.sdk.resources.Navigator;
+import com.logicommerce.sdktest.models.CookieFake;
 
 public class NavigatorFake implements Navigator {
 
@@ -22,7 +24,7 @@ public class NavigatorFake implements Navigator {
 
 	private String pageType;
 
-	private Map<String, String> cookies;
+	private Map<String, Cookie> cookies;
 
 	private String url;
 
@@ -103,31 +105,7 @@ public class NavigatorFake implements Navigator {
 		this.pageType = pageType;
 	}
 
-	@Override
-	public String getCookie(String name) {
-		return cookies.get(name);
-	}
-
-	@Override
-	public void setCookie(String name, String value) {
-		cookies.put(name, value);
-	}
-
-	@Override
-	public String getCookies() {
-		return cookies.entrySet().stream()
-				.map(e -> e.getKey() + "=" + e.getValue())
-				.collect(Collectors.joining("; "));
-	}
-
-	@Override
-	public void removeCookie(String name) {
-		if (cookies.containsKey(name)) {
-			cookies.remove(name);
-		}
-	}
-
-	public void setCookies(Map<String, String> cookies) {
+	public void setCookies(Map<String, Cookie> cookies) {
 		this.cookies = cookies;
 	}
 
@@ -183,6 +161,37 @@ public class NavigatorFake implements Navigator {
 
 	public void setCdnImages(String cdnImages) {
 		this.cdnImages = cdnImages;
+	}
+
+
+	@Override
+	public String getCookies() {
+		return cookies.entrySet().stream()
+				.map(e -> e.getKey() + "=" + e.getValue())
+				.collect(Collectors.joining("; "));
+	}
+
+	@Override
+	public void removeCookie(String name) {
+		if (cookies.containsKey(name)) {
+			cookies.remove(name);
+		}
+	}
+
+	@Override
+	public Cookie getCookie(String name) {
+		return cookies.get(name);
+	}
+
+	@Override
+	public void setCookie(Cookie cookie) {
+		cookies.put(cookie.getName(), cookie);
+	}
+
+	@Override
+	public void setCookie(String name, String value, int ttl) {
+		Cookie cookie = new CookieFake(name, value, ttl);
+		cookies.put(name, cookie);
 	}
 
 }
