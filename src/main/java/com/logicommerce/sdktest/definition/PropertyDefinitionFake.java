@@ -21,13 +21,13 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	private List<PropertyDefinitionValue> values;
 
 	private boolean languageValue;
-	
+
 	private boolean multipleValue;
 
 	private String entryValueMode;
-	
+
 	private String reference;
-	
+
 	private List<PropertyDefinitionPermission> permissions;
 
 	@Override
@@ -70,6 +70,21 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 		return entryValueMode;
 	}
 
+	@Override
+	public boolean isMultipleValue() {
+		return multipleValue;
+	}
+
+	@Override
+	public String getReference() {
+		return reference;
+	}
+
+	@Override
+	public List<PropertyDefinitionPermission> getPermissions() {
+		return permissions;
+	}
+
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
@@ -106,27 +121,12 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 		this.multipleValue = multipleValue;
 	}
 
-	@Override
-	public boolean isMultipleValue() {
-		return multipleValue;
-	}
-
-	@Override
-	public String getReference() {
-		return reference;
-	}
-	
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
 
-	@Override
-	public List<PropertyDefinitionPermission> getPermissions() {
-		return permissions;
-	}
-	
 	public void setPermissions(List<PropertyDefinitionPermission> permissions) {
 		this.permissions = permissions;
 	}
-	
+
 }
