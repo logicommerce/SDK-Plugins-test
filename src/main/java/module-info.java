@@ -5,6 +5,11 @@ module com.logicommerce.sdktest {
 	requires org.apache.httpcomponents.client5.httpclient5;
 	requires org.apache.httpcomponents.core5.httpcore5;
 
+	requires async.http.client;
+	requires org.reactivestreams;
+	requires io.netty.codec.http;
+	requires io.netty.buffer;
+
 	opens com.logicommerce.sdktest.resources;
 
 	exports com.logicommerce.sdktest;

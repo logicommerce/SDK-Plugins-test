@@ -7,3 +7,4 @@
 **/bin/*
 **/codemr/*
 /target/
+.vscode/*
