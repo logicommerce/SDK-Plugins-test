@@ -1,8 +1,6 @@
 package com.logicommerce.sdktest.models;
 
-import com.logicommerce.sdk.models.UserAddress;
-
-public class UserAddressFake extends AddressFake implements UserAddress {
+public class UserAddressFake extends AddressFake {
 
 	private boolean defaultAddress;
 

@@ -166,4 +166,8 @@ public class ClientAttributes {
 	public void setTimeout(Integer timeout) {
 		this.timeout = timeout;
 	}
+
+	public boolean hasTimeout() {
+		return timeout != null && timeout > 0;
+	}
 }
