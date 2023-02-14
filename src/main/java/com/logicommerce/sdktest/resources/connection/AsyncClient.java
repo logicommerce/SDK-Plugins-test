@@ -53,8 +53,7 @@ public class AsyncClient {
 		if (attributes.hasTimeout()) {
 			config.setRequestTimeout(attributes.getTimeout());
 		}
-		AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient(config);
-		return asyncHttpClient;
+		return Dsl.asyncHttpClient(config);
 	}
 
 	private CompletableFuture<ClientResponse> send(BoundRequestBuilder request) {
@@ -89,9 +88,11 @@ public class AsyncClient {
 	private ClientResponse arrangeResponse(Response response) {
 		ClientResponse clientResponse = new ClientResponse(response.getStatusCode(), response.getResponseBody());
 		HttpHeaders headers = response.getHeaders();
-		Map<String, List<String>> responseHeaders = new HashMap<>();
-		headers.forEach(entry -> responseHeaders.put(entry.getKey(), Arrays.asList(entry.getValue())));
-		clientResponse.setHeaders(responseHeaders);
+		if (headers != null && !headers.isEmpty()) {
+			Map<String, List<String>> responseHeaders = new HashMap<>();
+			headers.forEach(entry -> responseHeaders.put(entry.getKey(), Arrays.asList(entry.getValue())));
+			clientResponse.setHeaders(responseHeaders);
+		}
 		return clientResponse;
 	}
 
