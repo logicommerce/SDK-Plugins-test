@@ -1,7 +1,6 @@
 package com.logicommerce.sdktest.resources;
 
 import java.util.concurrent.CompletableFuture;
-
 import com.logicommerce.sdk.resources.AsyncConnection;
 import com.logicommerce.sdk.resources.Response;
 import com.logicommerce.sdktest.resources.connection.AsyncClient;

@@ -11,7 +11,7 @@ import io.netty.handler.codec.http.cookie.Cookie;
 import org.asynchttpclient.Response;
 import org.asynchttpclient.uri.Uri;
 
-public class AsyncErrorResponse implements Response{
+public class AsyncErrorResponse implements Response {
 	
 	private int statusCode;
 	private String responseBody;
