@@ -23,6 +23,8 @@ public class CartFake implements Cart {
 	private String abandonedBasketLink;
 
 	private User user;
+	
+	private String currencyCode;
 
 	@Override
 	public LocalDateTime getCreatedAt() {
@@ -59,6 +61,11 @@ public class CartFake implements Cart {
 		return user;
 	}
 
+	@Override
+	public String getCurrencyCode() {
+		return currencyCode;
+	}
+
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -85,6 +92,10 @@ public class CartFake implements Cart {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void setCurrencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
 	}
 
 }

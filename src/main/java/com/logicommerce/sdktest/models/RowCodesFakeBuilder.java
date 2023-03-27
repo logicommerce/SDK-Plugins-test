@@ -1,9 +1,8 @@
 package com.logicommerce.sdktest.models;
 
-import com.logicommerce.sdk.models.CartItemCodes;
+import com.logicommerce.sdk.models.RowCodes;
 
-@Deprecated(forRemoval = true, since = "1.1.10")
-public class CartItemCodesFakeBuilder {
+public class RowCodesFakeBuilder {
 
 	private CartItemFakeBuilder parentBuilder;
 
@@ -18,60 +17,68 @@ public class CartItemCodesFakeBuilder {
 	private String jan;
 
 	private String upc;
+	
+	private String manufacturerSku;
 
-	public CartItemCodesFakeBuilder() {
+	public RowCodesFakeBuilder() {
 		pId = "default_pId";
 		sku = "default_sku";
 		ean = "default_ean";
 		isbn = "default_isbn";
 		jan = "default_jan";
 		upc = "default_upc";
+		manufacturerSku = "default_manufacturerSku";
 	}
 
-	public CartItemCodesFakeBuilder(CartItemFakeBuilder parentBuilder) {
+	public RowCodesFakeBuilder(CartItemFakeBuilder parentBuilder) {
 		this();
 		this.parentBuilder = parentBuilder;
 	}
 
-	public CartItemCodesFakeBuilder pId(String pId) {
+	public RowCodesFakeBuilder pId(String pId) {
 		this.pId = pId;
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder sku(String sku) {
+	public RowCodesFakeBuilder sku(String sku) {
 		this.sku = sku;
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder ean(String ean) {
+	public RowCodesFakeBuilder ean(String ean) {
 		this.ean = ean;
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder isbn(String isbn) {
+	public RowCodesFakeBuilder isbn(String isbn) {
 		this.isbn = isbn;
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder jan(String jan) {
+	public RowCodesFakeBuilder jan(String jan) {
 		this.jan = jan;
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder upc(String upc) {
+	public RowCodesFakeBuilder upc(String upc) {
 		this.upc = upc;
 		return this;
 	}
 
+	public RowCodesFakeBuilder manufacturerSku(String manufacturerSku) {
+		this.manufacturerSku = manufacturerSku;
+		return this;
+	}
 
-	public CartItemCodes build() {
-		CartItemCodesFake codes = new CartItemCodesFake();
+	public RowCodes build() {
+		RowCodesFake codes = new RowCodesFake();
 		codes.setpId(pId);
 		codes.setSku(sku);
 		codes.setEan(ean);
 		codes.setIsbn(isbn);
 		codes.setJan(jan);
 		codes.setUpc(upc);
+		codes.setManufacturerSku(manufacturerSku);
 		return codes;
 	}
 

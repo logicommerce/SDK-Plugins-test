@@ -21,7 +21,6 @@ public abstract class Client {
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String COOKIE = "Cookie";
 	private static final String AUTHORIZATION = "Authorization";
-	private static final String AUTH_BEARER = "Bearer %s";
 
 	private HttpUriRequestBase http;
 
@@ -60,7 +59,7 @@ public abstract class Client {
 
 	private void setAuthorization() {
 		if (this.attributes.hasAuthorization()) {
-			this.setHeader(AUTHORIZATION, String.format(AUTH_BEARER, this.attributes.getAuthorization()));
+			this.setHeader(AUTHORIZATION, this.attributes.getAuthorization());
 		}
 	}
 
