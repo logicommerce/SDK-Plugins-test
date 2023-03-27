@@ -4,6 +4,7 @@ import java.util.List;
 import com.logicommerce.sdk.enums.BackorderMode;
 import com.logicommerce.sdk.models.CustomTag;
 import com.logicommerce.sdk.models.ProductCodes;
+import com.logicommerce.sdk.models.RowCodes;
 import com.logicommerce.sdk.models.order.OrderDiscount;
 import com.logicommerce.sdk.models.order.OrderItem;
 import com.logicommerce.sdk.models.order.OrderItemOption;
@@ -31,6 +32,7 @@ public class OrderItemFake implements OrderItem {
 	private boolean stockManagement;
 	private boolean reverseChargeVat;
 	private ProductCodes codes;
+	private RowCodes rowCodes;
 	private boolean noReturn;
 	private BackorderMode backOrder;
 	private boolean onRequest;
@@ -263,5 +265,14 @@ public class OrderItemFake implements OrderItem {
 
 	public void setSupplierReference(String supplierReference) {
 		this.supplierReference = supplierReference;
+	}
+
+	@Override
+	public RowCodes getRowCodes() {
+		return rowCodes;
+	}
+
+	public void setRowCodes(RowCodes rowCodes) {
+		this.rowCodes = rowCodes;
 	}
 }

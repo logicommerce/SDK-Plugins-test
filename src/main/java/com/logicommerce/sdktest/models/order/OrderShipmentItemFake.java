@@ -10,6 +10,8 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 
 	private Integer orderItemId;
 
+	private double weight;
+
 	@Override
 	public Integer getId() {
 		return id;
@@ -25,6 +27,11 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 		return orderItemId;
 	}
 
+	@Override
+	public double getWeight() {
+		return weight;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -37,4 +44,7 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 		this.orderItemId = orderItemId;
 	}
 
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
 }

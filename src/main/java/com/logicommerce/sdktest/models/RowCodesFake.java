@@ -1,9 +1,8 @@
 package com.logicommerce.sdktest.models;
 
-import com.logicommerce.sdk.models.CartItemCodes;
+import com.logicommerce.sdk.models.RowCodes;
 
-@Deprecated(forRemoval = true, since = "1.1.10")
-public class CartItemCodesFake implements CartItemCodes {
+public class RowCodesFake implements RowCodes {
 
 	private String pId;
 
@@ -16,6 +15,8 @@ public class CartItemCodesFake implements CartItemCodes {
 	private String jan;
 
 	private String upc;
+	
+	private String manufacturerSku;
 
 	@Override
 	public String getPId() {
@@ -47,6 +48,11 @@ public class CartItemCodesFake implements CartItemCodes {
 		return upc;
 	}
 
+	@Override
+	public String getManufacturerSku() {
+		return manufacturerSku;
+	}
+
 	public void setpId(String pId) {
 		this.pId = pId;
 	}
@@ -71,4 +77,7 @@ public class CartItemCodesFake implements CartItemCodes {
 		this.upc = upc;
 	}
 
+	public void setManufacturerSku(String manufacturerSku) {
+		this.manufacturerSku = manufacturerSku;
+	}
 }

@@ -8,6 +8,7 @@ import com.logicommerce.sdk.models.CartItem;
 import com.logicommerce.sdk.models.CartItemCodes;
 import com.logicommerce.sdk.models.Category;
 import com.logicommerce.sdk.models.CustomTag;
+import com.logicommerce.sdk.models.RowCodes;
 
 public class CartItemFake implements CartItem {
 
@@ -32,6 +33,8 @@ public class CartItemFake implements CartItem {
 	private Double totalTaxes;
 
 	private CartItemCodes codes;
+	
+	private RowCodes rowCodes;
 
 	private String urlSeo;
 
@@ -190,4 +193,12 @@ public class CartItemFake implements CartItem {
 		this.mainCategory = mainCategory;
 	}
 
+	@Override
+	public RowCodes getRowCodes() {
+		return rowCodes;
+	}
+
+	public void setRowCodes(RowCodes rowCodes) {
+		this.rowCodes = rowCodes;
+	}
 }

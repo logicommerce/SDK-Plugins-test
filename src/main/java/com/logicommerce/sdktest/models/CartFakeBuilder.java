@@ -22,12 +22,15 @@ public class CartFakeBuilder {
 	private UserFakeBuilder userBuilder;
 
 	private User user;
+	
+	private String currencyCode;
 
 	public CartFakeBuilder() {
 		items = new ArrayList<>();
 		totals = new CartTotalsFakeBuilder(this);
 		delivery = new CartDeliVeryFakeBuilder(this);
 		userBuilder = new UserFakeBuilder(this);
+		currencyCode = "EUR";
 	}
 
 	public CartItemFakeBuilder item() {
@@ -58,6 +61,11 @@ public class CartFakeBuilder {
 		this.user = user;
 		return this;
 	}
+	
+	public CartFakeBuilder currencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
+		return this;
+	}
 
 	public Cart build() {
 		CartFake cart = new CartFake();
@@ -72,6 +80,7 @@ public class CartFakeBuilder {
 			user = userBuilder.build();
 		}
 		cart.setUser(user);
+		cart.setCurrencyCode(currencyCode);
 		return cart;
 	}
 
