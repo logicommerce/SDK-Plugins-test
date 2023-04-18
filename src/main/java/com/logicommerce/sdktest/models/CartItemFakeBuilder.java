@@ -26,10 +26,8 @@ public class CartItemFakeBuilder {
 	private Double total;
 
 	private Double totalTaxes;
-
-	private CartItemCodesFakeBuilder codes;
 	
-	private RowCodesFakeBuilder rowCodes;
+	private RowCodesFakeBuilder<CartItemFakeBuilder> codes;
 
 	private String urlSeo;
 
@@ -50,8 +48,7 @@ public class CartItemFakeBuilder {
 		subTotal = 0.0;
 		total = 0.0;
 		totalTaxes = 0.0;
-		codes = new CartItemCodesFakeBuilder(this);
-		rowCodes = new RowCodesFakeBuilder(this);
+		codes = new RowCodesFakeBuilder<>(this);
 		brand = new BrandFakeBuilder(this);
 		mainCategory = new CategoryFakeBuilder(this);
 	}
@@ -111,13 +108,8 @@ public class CartItemFakeBuilder {
 		return this;
 	}
 
-	public CartItemCodesFakeBuilder codes() {
+	public RowCodesFakeBuilder<CartItemFakeBuilder> codes() {
 		return codes;
-	}
-	
-
-	public RowCodesFakeBuilder rowCodes() {
-		return rowCodes;
 	}
 
 	public CartItemFakeBuilder urlSeo(String urlSeo) {
@@ -151,7 +143,6 @@ public class CartItemFakeBuilder {
 		cartItem.setTotal(total);
 		cartItem.setTotalTaxes(totalTaxes);
 		cartItem.setCodes(codes.build());
-		cartItem.setRowCodes(rowCodes.build());
 		cartItem.setUrlSeo(urlSeo);
 		cartItem.setImageUrl(imageUrl);
 		cartItem.setBrand(brand.build());

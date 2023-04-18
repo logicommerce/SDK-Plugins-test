@@ -8,14 +8,14 @@ public class ProductFakeBuilder {
 	
 	protected ProductLanguageFakeBuilder language;
 	
-	protected ProductCodesFakeBuilder<ProductFakeBuilder> codes;
+	protected RowCodesFakeBuilder<ProductFakeBuilder> codes;
 	
 	protected ProductMediaFakeBuilder mainImages;
 	
 	public ProductFakeBuilder() {
 		id = 0;
 		language = new ProductLanguageFakeBuilder(this);
-		codes = new ProductCodesFakeBuilder<>(this);
+		codes = new RowCodesFakeBuilder<>();
 		mainImages = new ProductMediaFakeBuilder(this);
 	}
 	
@@ -29,10 +29,10 @@ public class ProductFakeBuilder {
 	}
 	
 	public ProductMediaFakeBuilder mainImages() {
-		return mainImages;
+		return mainImages;	
 	}
 	
-	public ProductCodesFakeBuilder<ProductFakeBuilder> codes(){
+	public RowCodesFakeBuilder<ProductFakeBuilder> codes() {
 		return codes;
 	}
 	

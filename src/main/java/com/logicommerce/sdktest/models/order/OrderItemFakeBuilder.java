@@ -6,7 +6,7 @@ import com.logicommerce.sdk.builders.order.OrderItemTaxBuilder;
 import com.logicommerce.sdk.enums.BackorderMode;
 import com.logicommerce.sdk.models.order.OrderItem;
 import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
-import com.logicommerce.sdktest.models.ProductCodesFakeBuilder;
+import com.logicommerce.sdktest.models.RowCodesFakeBuilder;
 
 public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
 
@@ -34,7 +34,7 @@ public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
 		super.sale = false;
 		super.stockManagement = false;
 		super.reverseChargeVat = false;
-		super.codes = new ProductCodesFakeBuilder<>(this);
+		super.codes = new RowCodesFakeBuilder<>(this);
 		super.noReturn = false;
 		super.backOrder = BackorderMode.NONE;
 		super.onRequest = false;

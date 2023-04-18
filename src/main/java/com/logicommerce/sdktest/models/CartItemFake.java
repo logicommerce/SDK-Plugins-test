@@ -5,7 +5,6 @@ import java.util.List;
 import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdk.models.Brand;
 import com.logicommerce.sdk.models.CartItem;
-import com.logicommerce.sdk.models.CartItemCodes;
 import com.logicommerce.sdk.models.Category;
 import com.logicommerce.sdk.models.CustomTag;
 import com.logicommerce.sdk.models.RowCodes;
@@ -31,10 +30,8 @@ public class CartItemFake implements CartItem {
 	private Double total;
 
 	private Double totalTaxes;
-
-	private CartItemCodes codes;
 	
-	private RowCodes rowCodes;
+	private RowCodes codes;
 
 	private String urlSeo;
 
@@ -140,15 +137,6 @@ public class CartItemFake implements CartItem {
 	}
 
 	@Override
-	public CartItemCodes getCodes() {
-		return codes;
-	}
-
-	public void setCodes(CartItemCodes codes) {
-		this.codes = codes;
-	}
-
-	@Override
 	public String getUrlSeo() {
 		return urlSeo;
 	}
@@ -194,11 +182,11 @@ public class CartItemFake implements CartItem {
 	}
 
 	@Override
-	public RowCodes getRowCodes() {
-		return rowCodes;
+	public RowCodes getCodes() {
+		return codes;
 	}
 
-	public void setRowCodes(RowCodes rowCodes) {
-		this.rowCodes = rowCodes;
+	public void setCodes(RowCodes codes) {
+		this.codes = codes;
 	}
 }
