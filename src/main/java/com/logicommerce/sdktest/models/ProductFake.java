@@ -1,15 +1,15 @@
 package com.logicommerce.sdktest.models;
 
 import com.logicommerce.sdk.models.Product;
-import com.logicommerce.sdk.models.ProductCodes;
 import com.logicommerce.sdk.models.ProductLanguage;
 import com.logicommerce.sdk.models.ProductMedia;
+import com.logicommerce.sdk.models.RowCodes;
 
 public class ProductFake implements Product {
 
 	private Integer id;
 	
-	private ProductCodes codes;
+	private RowCodes codes;
 	
 	private ProductLanguage language;
 	
@@ -19,9 +19,9 @@ public class ProductFake implements Product {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	@Override
-	public ProductCodes getCodes() {
+	public RowCodes getCodes() {
 		return codes;
 	}
 
@@ -38,8 +38,8 @@ public class ProductFake implements Product {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public void setCodes(ProductCodes codes) {
+	
+	public void setCodes(RowCodes codes) {
 		this.codes = codes;
 	}
 
