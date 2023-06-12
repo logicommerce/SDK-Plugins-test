@@ -67,7 +67,7 @@ public class ConnectionHelper implements Connection {
 	}
 
 	@Override
-	public Connection timeout(Integer timeout) {
+	public Connection timeout(int timeout) {
 		this.clientConnection.timeout(timeout);
 		return this;
 	}

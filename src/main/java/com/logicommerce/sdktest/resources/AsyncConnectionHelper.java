@@ -101,7 +101,7 @@ public class AsyncConnectionHelper implements AsyncConnection {
 	}
 
 	@Override
-	public AsyncConnection timeout(Integer timeout) {
+	public AsyncConnection timeout(int timeout) {
 		this.attributes.setTimeout(timeout);
 		return this;
 	}

@@ -7,6 +7,8 @@ public class CookieFake implements Cookie {
 	private String value;
 	private String name;
 	private int ttl;
+	private boolean httpOnly;
+	private boolean secure;
 
 	public CookieFake() {
 
@@ -46,6 +48,26 @@ public class CookieFake implements Cookie {
 	@Override
 	public void setTtl(int ttl) {
 		this.ttl = ttl;
+	}
+
+	@Override
+	public boolean getHttpOnly() {
+		return httpOnly;
+	}
+
+	@Override
+	public boolean getSecure() {
+		return secure;
+	}
+
+	@Override
+	public void setHttpOnly(boolean httpOnly) {
+		this.httpOnly = httpOnly;
+	}
+
+	@Override
+	public void setSecure(boolean secure) {
+		this.secure = secure;
 	}
 
 }

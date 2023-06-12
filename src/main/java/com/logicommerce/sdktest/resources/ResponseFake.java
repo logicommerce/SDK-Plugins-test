@@ -53,4 +53,13 @@ public class ResponseFake implements Response {
 	public void addHeader(String key, List<String> header) {
 		this.headers.put(key, header);
 	}
+
+	@Override
+	public String getHeader(String name) {
+		List<String> header = headers.get(name);
+		if (header != null && !header.isEmpty()) {
+			return header.get(0);
+		}
+		return null;
+	}
 }
