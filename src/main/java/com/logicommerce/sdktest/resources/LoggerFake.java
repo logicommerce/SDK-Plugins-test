@@ -5,8 +5,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoggerFake implements com.logicommerce.sdk.resources.Logger {
-	
-	private Logger logger; 
+
+	private Logger logger;
+
+	@Override
+	public void debug(String... args) {
+		log(Level.FINE, args);
+	}
 
 	@Override
 	public void info(String... args) {
@@ -29,9 +34,10 @@ public class LoggerFake implements com.logicommerce.sdk.resources.Logger {
 	}
 
 	private Logger getLogger() {
-		if (logger == null)
+		if (logger == null) {
 			logger = Logger.getLogger("com.logicommerce.sdktest");
-		return logger;		
+		}
+		return logger;
 	}
 
 }

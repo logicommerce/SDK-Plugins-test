@@ -41,11 +41,11 @@ public class AddressBuilder<T, S> {
 	private boolean re;
 
 	private boolean reverseChargeVat;
-	
+
 	private LocationFakeBuilder<AddressBuilder<T, S>> location;
-	
+
 	private String name;
-	
+
 	public AddressBuilder() {
 		alias = "alias DEFAULT";
 		firstName = "firstName DEFAULT";
@@ -64,7 +64,7 @@ public class AddressBuilder<T, S> {
 		fax = "fax DEFAULT";
 		location = new LocationFakeBuilder<>(returnThis());
 		name = "name DEFAULT";
-		
+
 	}
 
 	public AddressBuilder(T parentBuilder) {
@@ -161,11 +161,11 @@ public class AddressBuilder<T, S> {
 		this.reverseChargeVat = reverseChargeVat;
 		return returnThis();
 	}
-	
+
 	public LocationFakeBuilder<AddressBuilder<T, S>> location() {
 		return location;
 	}
-	
+
 	public AddressBuilder<T, S> name(String name) {
 		this.name = name;
 		return returnThis();
@@ -176,7 +176,7 @@ public class AddressBuilder<T, S> {
 		setElements(addressFake);
 		return addressFake;
 	}
-	
+
 	protected void setElements(AddressFake addressFake) {
 		addressFake.setAlias(alias);
 		addressFake.setFirstName(firstName);
@@ -203,7 +203,7 @@ public class AddressBuilder<T, S> {
 	public T done() {
 		return parentBuilder;
 	}
-	
+
 	protected AddressBuilder<T, S> returnThis() {
 		return this;
 	}
