@@ -3,17 +3,17 @@ package com.logicommerce.sdktest.models;
 import com.logicommerce.sdk.builders.AddressBuilder;
 
 public class AddressFakeBuilder<T, S> extends AddressBuilder<T, S> {
-	
+
 	public AddressFakeBuilder() {
 		super();
 		defaultValues();
 	}
-	
+
 	public AddressFakeBuilder(T parentBuilder) {
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	public void defaultValues() {
 		super.alias = "alias DEFAULT";
 		super.firstName = "firstName DEFAULT";
@@ -29,7 +29,6 @@ public class AddressFakeBuilder<T, S> extends AddressBuilder<T, S> {
 		super.nif = "nif DEFAULT";
 		super.phone = "phone DEFAULT";
 		super.mobile = "mobile DEFAULT";
-		super.fax = "fax DEFAULT";
 		super.name = "name DEFAULT";
 		super.location = new LocationFakeBuilder<>(returnThis());
 	}
