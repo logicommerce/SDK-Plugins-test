@@ -33,13 +33,9 @@ public class AddressFake implements UserAddress {
 
 	private String mobile;
 
-	private String fax;
-
 	private boolean tax;
 
 	private boolean re;
-
-	private boolean reverseChargeVat;
 
 	private Location location;
 
@@ -118,12 +114,6 @@ public class AddressFake implements UserAddress {
 	}
 
 	@Override
-	@Deprecated(since = "1.1.17", forRemoval = true)
-	public String getFax() {
-		return fax;
-	}
-
-	@Override
 	public boolean isTax() {
 		return tax;
 	}
@@ -131,12 +121,6 @@ public class AddressFake implements UserAddress {
 	@Override
 	public boolean isRe() {
 		return re;
-	}
-
-	@Override
-	@Deprecated(since = "1.1.17", forRemoval = true)
-	public boolean isReverseChargeVat() {
-		return reverseChargeVat;
 	}
 
 	@Override
@@ -200,22 +184,12 @@ public class AddressFake implements UserAddress {
 		this.mobile = mobile;
 	}
 
-	@Deprecated(since = "1.1.17", forRemoval = true)
-	public void setFax(String fax) {
-		this.fax = fax;
-	}
-
 	public void setTax(boolean tax) {
 		this.tax = tax;
 	}
 
 	public void setRe(boolean re) {
 		this.re = re;
-	}
-
-	@Deprecated(since = "1.1.17", forRemoval = true)
-	public void setReverseChargeVat(boolean reverseChargeVat) {
-		this.reverseChargeVat = reverseChargeVat;
 	}
 
 	public void setLocation(Location location) {

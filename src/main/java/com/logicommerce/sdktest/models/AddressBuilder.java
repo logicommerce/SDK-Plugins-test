@@ -34,13 +34,9 @@ public class AddressBuilder<T, S> {
 
 	private String mobile;
 
-	private String fax;
-
 	private boolean tax;
 
 	private boolean re;
-
-	private boolean reverseChargeVat;
 
 	private LocationFakeBuilder<AddressBuilder<T, S>> location;
 
@@ -61,7 +57,6 @@ public class AddressBuilder<T, S> {
 		nif = "nif DEFAULT";
 		phone = "phone DEFAULT";
 		mobile = "mobile DEFAULT";
-		fax = "fax DEFAULT";
 		location = new LocationFakeBuilder<>(returnThis());
 		name = "name DEFAULT";
 
@@ -142,11 +137,6 @@ public class AddressBuilder<T, S> {
 		return returnThis();
 	}
 
-	public AddressBuilder<T, S> fax(String fax) {
-		this.fax = fax;
-		return returnThis();
-	}
-
 	public AddressBuilder<T, S> tax(boolean tax) {
 		this.tax = tax;
 		return returnThis();
@@ -154,11 +144,6 @@ public class AddressBuilder<T, S> {
 
 	public AddressBuilder<T, S> re(boolean re) {
 		this.re = re;
-		return returnThis();
-	}
-
-	public AddressBuilder<T, S> reverseChargeVat(boolean reverseChargeVat) {
-		this.reverseChargeVat = reverseChargeVat;
 		return returnThis();
 	}
 
@@ -192,10 +177,8 @@ public class AddressBuilder<T, S> {
 		addressFake.setNif(nif);
 		addressFake.setPhone(phone);
 		addressFake.setMobile(mobile);
-		addressFake.setFax(fax);
 		addressFake.setTax(tax);
 		addressFake.setRe(re);
-		addressFake.setReverseChargeVat(reverseChargeVat);
 		addressFake.setLocation(location.build());
 		addressFake.setName(name);
 	}
