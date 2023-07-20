@@ -18,6 +18,8 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 
 	private List<ConnectorDefinition> connectors;
 
+	private boolean multipleAccount;
+
 	@Override
 	public String getName() {
 		return name;
@@ -43,6 +45,28 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		return connectors;
 	}
 
+	@Override
+	public boolean getMultipleAccount() {
+		return multipleAccount;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends ConnectorDefinition> T getConnectorDefinition(ConnectorType connectorType) {
+		return (T) connectors.stream()
+			.filter(connector -> connector.getType().equals(connectorType))
+			.findFirst()
+			.orElse(null);
+	}
+
+	@Override
+	public <T extends ConnectorDefinition> void addConnectorDefinition(T connectorDefinition) throws PluginDefinitionException {
+		if (getConnectorDefinition(connectorDefinition.getType()) != null) {
+			throw new PluginDefinitionException(getClass(), "Connector is already defined");
+		}
+		getConnectorDefinitions().add(connectorDefinition);
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -63,22 +87,8 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		this.connectors = connectors;
 	}
 
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends ConnectorDefinition> T getConnectorDefinition(ConnectorType connectorType) {
-		return (T) connectors.stream()
-				.filter(connector -> connector.getType().equals(connectorType))
-				.findFirst()
-				.orElse(null);
-	}
-
-	@Override
-	public <T extends ConnectorDefinition> void addConnectorDefinition(T connectorDefinition) throws PluginDefinitionException {
-		if (getConnectorDefinition(connectorDefinition.getType()) != null) {
-			throw new PluginDefinitionException(getClass(), "Connector is already defined");
-		}
-		getConnectorDefinitions().add(connectorDefinition);		
+	public void setMultipleAccount(boolean multipleAccount) {
+		this.multipleAccount = multipleAccount;
 	}
 
 }
