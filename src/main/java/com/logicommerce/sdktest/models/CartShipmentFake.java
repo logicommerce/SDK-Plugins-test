@@ -8,14 +8,11 @@ import com.logicommerce.sdk.models.CartWarehouse;
 public class CartShipmentFake implements CartShipment {
 
 	private List<CartShipmentItem> items;
-
 	private double total;
-
 	private double weight;
-
 	private CartWarehouse warehouse;
-
 	private String hash;
+	private String taxCode;
 
 	@Override
 	public List<CartShipmentItem> getItems() {
@@ -60,6 +57,15 @@ public class CartShipmentFake implements CartShipment {
 
 	public void setHash(String hash) {
 		this.hash = hash;
+	}
+
+	@Override
+	public String getTaxCode() {
+		return taxCode;
+	}
+
+	public void setTaxCode(String taxCode) {
+		this.taxCode = taxCode;
 	}
 
 }

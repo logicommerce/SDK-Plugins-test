@@ -8,18 +8,17 @@ import com.logicommerce.sdk.models.CartShipment;
 public class CartShipmentFakeBuilder {
 
 	private CartDeliVeryFakeBuilder parentBuilder;
-
 	private List<CartShipmentItemFakeBuilder> items;
-
 	private double total;
-
 	private double weight;
-
 	private CartWarehouseFakeBuilder warehouse;
+	private String taxCode;
 
 	public CartShipmentFakeBuilder() {
 		items = new ArrayList<>();
 		warehouse = new CartWarehouseFakeBuilder(this);
+		taxCode = "taxCode DEFAULT";
+
 	}
 
 	public CartShipmentFakeBuilder(CartDeliVeryFakeBuilder parentBuilder) {
@@ -43,18 +42,24 @@ public class CartShipmentFakeBuilder {
 		return this;
 	}
 
+	public CartShipmentFakeBuilder taxCode(String taxCode) {
+		this.taxCode = taxCode;
+		return this;
+	}
+
 	public CartWarehouseFakeBuilder warehouse() {
 		return warehouse;
 	}
 
-	public CartShipment build( ) {
+	public CartShipment build() {
 		CartShipmentFake shipment = new CartShipmentFake();
 		shipment.setItems(items.stream()
-				.map(CartShipmentItemFakeBuilder::build)
-				.collect(Collectors.toList()));
+			.map(CartShipmentItemFakeBuilder::build)
+			.collect(Collectors.toList()));
 		shipment.setTotal(total);
 		shipment.setWeight(weight);
 		shipment.setWarehouse(warehouse.build());
+		shipment.setTaxCode(taxCode);
 		return shipment;
 	}
 
