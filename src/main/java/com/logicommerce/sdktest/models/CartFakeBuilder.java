@@ -18,6 +18,7 @@ public class CartFakeBuilder {
 	private User user;
 	private String currencyCode;
 	private CartPaymentSystemFakeBuilder paymentSystem;
+	private List<CartDiscountFakeBuilder> discounts;
 
 	public CartFakeBuilder() {
 		items = new ArrayList<>();
@@ -25,6 +26,7 @@ public class CartFakeBuilder {
 		delivery = new CartDeliVeryFakeBuilder(this);
 		userBuilder = new UserFakeBuilder(this);
 		paymentSystem = new CartPaymentSystemFakeBuilder(this);
+		discounts = new ArrayList<>();
 		currencyCode = "EUR";
 	}
 
@@ -75,6 +77,12 @@ public class CartFakeBuilder {
 		return paymentSystem;
 	}
 
+	public CartDiscountFakeBuilder discount() {
+		CartDiscountFakeBuilder discount = new CartDiscountFakeBuilder(this);
+		discounts.add(discount);
+		return discount;
+	}
+
 	public Cart build() {
 		CartFake cart = new CartFake();
 		cart.setToken(token);
@@ -90,6 +98,9 @@ public class CartFakeBuilder {
 		cart.setUser(user);
 		cart.setCurrencyCode(currencyCode);
 		cart.setPaymentSystem(paymentSystem.build());
+		cart.setDiscounts(discounts.stream()
+			.map(CartDiscountFakeBuilder::build)
+			.collect(Collectors.toList()));
 		return cart;
 	}
 
