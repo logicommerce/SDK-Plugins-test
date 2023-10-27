@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdk.models.Brand;
+import com.logicommerce.sdk.models.CartDiscount;
 import com.logicommerce.sdk.models.CartItem;
 import com.logicommerce.sdk.models.Category;
 import com.logicommerce.sdk.models.CustomTag;
@@ -29,6 +30,7 @@ public class CartItemFake implements CartItem {
 	private List<CustomTag> customTags = new ArrayList<>();
 	private List<CustomTag> customTagPluginValues = new ArrayList<>();
 	private String taxCode;
+	private List<CartDiscount> discounts = new ArrayList<>();
 
 	@Override
 	public String getHash() {
@@ -184,4 +186,12 @@ public class CartItemFake implements CartItem {
 		this.taxCode = taxCode;
 	}
 
+	@Override
+	public List<CartDiscount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<CartDiscount> discounts) {
+		this.discounts = discounts;
+	}
 }

@@ -1,6 +1,7 @@
 package com.logicommerce.sdktest.models.order;
 
 import com.logicommerce.sdk.builders.order.OrderItemTaxBuilder;
+import com.logicommerce.sdk.enums.TaxType;
 
 public class OrderItemTaxFakeBuilder<T> extends OrderItemTaxBuilder<T> {
 
@@ -13,9 +14,10 @@ public class OrderItemTaxFakeBuilder<T> extends OrderItemTaxBuilder<T> {
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
-		super.base = 0.0;
-		super.taxValue = 0.0;		
+		base(0.0);
+		taxValue(0.0);
+		type(TaxType.LOGICOMMERCE);
 	}
 }

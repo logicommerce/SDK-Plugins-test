@@ -11,7 +11,7 @@ module com.logicommerce.sdktest {
 	requires transitive io.netty.buffer;
 
 	opens com.logicommerce.sdktest.resources;
-	
+
 	exports com.logicommerce.sdktest;
 	exports com.logicommerce.sdktest.definition;
 	exports com.logicommerce.sdktest.models;

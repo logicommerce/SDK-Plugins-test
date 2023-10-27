@@ -1,5 +1,8 @@
 package com.logicommerce.sdktest.models;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdk.models.CartItem;
 
@@ -22,6 +25,7 @@ public class CartItemFakeBuilder {
 	private BrandFakeBuilder brand;
 	private CategoryFakeBuilder mainCategory;
 	private String taxCode;
+	private List<CartDiscountFakeBuilder<CartItemFakeBuilder>> discounts;
 
 	public CartItemFakeBuilder() {
 		id = 1;
@@ -38,6 +42,7 @@ public class CartItemFakeBuilder {
 		brand = new BrandFakeBuilder(this);
 		mainCategory = new CategoryFakeBuilder(this);
 		taxCode = "taxCode DEFAULT";
+		discounts = new ArrayList<>();
 	}
 
 	public CartItemFakeBuilder(CartFakeBuilder parentBuilder) {
@@ -122,6 +127,12 @@ public class CartItemFakeBuilder {
 		return this;
 	}
 
+	public CartDiscountFakeBuilder<CartItemFakeBuilder> discount() {
+		var discount = new CartDiscountFakeBuilder<CartItemFakeBuilder>(this);
+		discounts.add(discount);
+		return discount;
+	}
+
 	public CartItem build() {
 		CartItemFake cartItem = new CartItemFake();
 		cartItem.setId(id);
@@ -140,6 +151,9 @@ public class CartItemFakeBuilder {
 		cartItem.setBrand(brand.build());
 		cartItem.setMainCategory(mainCategory.build());
 		cartItem.setTaxCode(taxCode);
+		cartItem.setDiscounts(discounts.stream()
+			.map(CartDiscountFakeBuilder::build)
+			.collect(Collectors.toList()));
 		return cartItem;
 	}
 

@@ -2,7 +2,7 @@ package com.logicommerce.sdktest.models;
 
 import com.logicommerce.sdk.models.CartDiscount;
 
-public class CartDiscountFakeBuilder {
+public class CartDiscountFakeBuilder<T> {
 
 	private int discountId;
 	private String name;
@@ -11,41 +11,41 @@ public class CartDiscountFakeBuilder {
 	private double discountValue = 0.0;
 	private double valueWithTaxes = 0.0;
 
-	private CartFakeBuilder parentBuilder;
+	private T parentBuilder;
 
 	public CartDiscountFakeBuilder() {}
 
-	public CartDiscountFakeBuilder(CartFakeBuilder parentBuilder) {
+	public CartDiscountFakeBuilder(T parentBuilder) {
 		this();
 		this.parentBuilder = parentBuilder;
 	}
 
-	public CartDiscountFakeBuilder discountId(int discountId) {
+	public CartDiscountFakeBuilder<T> discountId(int discountId) {
 		this.discountId = discountId;
 		return this;
 	}
 
-	public CartDiscountFakeBuilder name(String name) {
+	public CartDiscountFakeBuilder<T> name(String name) {
 		this.name = name;
 		return this;
 	}
 
-	public CartDiscountFakeBuilder description(String description) {
+	public CartDiscountFakeBuilder<T> description(String description) {
 		this.description = description;
 		return this;
 	}
 
-	public CartDiscountFakeBuilder multiplier(Integer multiplier) {
+	public CartDiscountFakeBuilder<T> multiplier(Integer multiplier) {
 		this.multiplier = multiplier;
 		return this;
 	}
 
-	public CartDiscountFakeBuilder discountValue(double discountValue) {
+	public CartDiscountFakeBuilder<T> discountValue(double discountValue) {
 		this.discountValue = discountValue;
 		return this;
 	}
 
-	public CartDiscountFakeBuilder valueWithTaxes(double valueWithTaxes) {
+	public CartDiscountFakeBuilder<T> valueWithTaxes(double valueWithTaxes) {
 		this.valueWithTaxes = valueWithTaxes;
 		return this;
 	}
@@ -61,7 +61,7 @@ public class CartDiscountFakeBuilder {
 		return discount;
 	}
 
-	public CartFakeBuilder done() {
+	public T done() {
 		return parentBuilder;
 	}
 

@@ -25,6 +25,7 @@ public class OrderShipmentFake implements OrderShipment {
 	private String trackingNumber;
 	private String documentNumber;
 	private Integer substatus;
+	private String trackingUrl;
 
 	@Override
 	public Integer getId() {
@@ -164,6 +165,16 @@ public class OrderShipmentFake implements OrderShipment {
 
 	public void setSubstatus(Integer substatus) {
 		this.substatus = substatus;
+	}
+
+	@Override
+	public String getTrackingUrl() {
+		return trackingUrl;
+	}
+
+	@Override
+	public void setTrackingUrl(String trackingUrl) {
+		this.trackingUrl = trackingUrl;
 	}
 
 }

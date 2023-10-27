@@ -18,7 +18,7 @@ public class CartFakeBuilder {
 	private User user;
 	private String currencyCode;
 	private CartPaymentSystemFakeBuilder paymentSystem;
-	private List<CartDiscountFakeBuilder> discounts;
+	private List<CartDiscountFakeBuilder<CartFakeBuilder>> discounts;
 
 	public CartFakeBuilder() {
 		items = new ArrayList<>();
@@ -77,8 +77,8 @@ public class CartFakeBuilder {
 		return paymentSystem;
 	}
 
-	public CartDiscountFakeBuilder discount() {
-		CartDiscountFakeBuilder discount = new CartDiscountFakeBuilder(this);
+	public CartDiscountFakeBuilder<CartFakeBuilder> discount() {
+		var discount = new CartDiscountFakeBuilder<CartFakeBuilder>(this);
 		discounts.add(discount);
 		return discount;
 	}
