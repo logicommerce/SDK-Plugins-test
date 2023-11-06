@@ -74,6 +74,7 @@ public abstract class DocumentFakeBuilder<T extends DocumentFakeBuilder<T>> {
 		paymentDate = LocalDateTime.now();
 		paid = false;
 		reverseChargeVat = false;
+		customTags = new ArrayList<>();
 		vouchers = new ArrayList<>();
 		items = new ArrayList<>();
 		additionalInformation = new ArrayList<>();
