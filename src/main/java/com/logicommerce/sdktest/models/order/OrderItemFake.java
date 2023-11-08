@@ -15,14 +15,10 @@ public class OrderItemFake implements OrderItem {
 
 	private Integer id;
 	private String pId;
-	private List<OrderItemTax> taxes;
-	private List<OrderItemOption> options;
-	private List<OrderItemStock> stocks;
-	private List<CustomTag> customTags;
-	private List<OrderDiscount> discounts;
+	private String hash;
 	private String name;
-	private int quantity;
 	private Integer productId;
+	private int quantity;
 	private double weight;
 	private OrderItemPrices prices;
 	private Integer vinculatedTo;
@@ -35,48 +31,22 @@ public class OrderItemFake implements OrderItem {
 	private BackorderMode backOrder;
 	private boolean onRequest;
 	private int onRequestDays;
-	private String link;	
-	private Integer combinationId;	
+	private String link;
+	private Integer combinationId;
 	private String supplierReference;
-
-	@Override
-	public BackorderMode getBackOrder() {
-		return backOrder;
-	}
-
-	@Override
-	public List<CustomTag> getCustomTags() {
-		return customTags;
-	}
-
-	@Override
-	public List<OrderDiscount> getDiscounts() {
-		return discounts;
-	}
+	private List<OrderItemOption> options;
+	private List<OrderItemStock> stocks;
+	private List<OrderItemTax> taxes;
+	private List<CustomTag> customTags;
+	private List<OrderDiscount> discounts;
 
 	@Override
 	public Integer getId() {
 		return id;
 	}
 
-	@Override
-	public String getImage() {
-		return image;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public int getOnRequestDays() {
-		return onRequestDays;
-	}
-
-	@Override
-	public List<OrderItemOption> getOptions() {
-		return options;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override
@@ -84,9 +54,26 @@ public class OrderItemFake implements OrderItem {
 		return pId;
 	}
 
+	public void setPId(String pId) {
+		this.pId = pId;
+	}
+
 	@Override
-	public OrderItemPrices getPrices() {
-		return prices;
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -94,24 +81,17 @@ public class OrderItemFake implements OrderItem {
 		return productId;
 	}
 
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
 	@Override
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@Override
-	public List<OrderItemStock> getStocks() {
-		return stocks;
-	}
-
-	@Override
-	public List<OrderItemTax> getTaxes() {
-		return taxes;
-	}
-
-	@Override
-	public Integer getVinculatedTo() {
-		return vinculatedTo;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override
@@ -119,19 +99,35 @@ public class OrderItemFake implements OrderItem {
 		return weight;
 	}
 
-	@Override
-	public boolean isNoReturn() {
-		return noReturn;
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 	@Override
-	public boolean isOnRequest() {
-		return onRequest;
+	public OrderItemPrices getPrices() {
+		return prices;
+	}
+
+	public void setPrices(OrderItemPrices prices) {
+		this.prices = prices;
 	}
 
 	@Override
-	public boolean isReverseChargeVat() {
-		return reverseChargeVat;
+	public Integer getVinculatedTo() {
+		return vinculatedTo;
+	}
+
+	public void setVinculatedTo(Integer vinculatedTo) {
+		this.vinculatedTo = vinculatedTo;
+	}
+
+	@Override
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override
@@ -139,9 +135,71 @@ public class OrderItemFake implements OrderItem {
 		return sale;
 	}
 
+	public void setSale(boolean sale) {
+		this.sale = sale;
+	}
+
 	@Override
 	public boolean isStockManagement() {
 		return stockManagement;
+	}
+
+	public void setStockManagement(boolean stockManagement) {
+		this.stockManagement = stockManagement;
+	}
+
+	@Override
+	public boolean isReverseChargeVat() {
+		return reverseChargeVat;
+	}
+
+	public void setReverseChargeVat(boolean reverseChargeVat) {
+		this.reverseChargeVat = reverseChargeVat;
+	}
+
+	@Override
+	public RowCodes getCodes() {
+		return codes;
+	}
+
+	public void setCodes(RowCodes codes) {
+		this.codes = codes;
+	}
+
+	@Override
+	public boolean isNoReturn() {
+		return noReturn;
+	}
+
+	public void setNoReturn(boolean noReturn) {
+		this.noReturn = noReturn;
+	}
+
+	@Override
+	public BackorderMode getBackOrder() {
+		return backOrder;
+	}
+
+	public void setBackOrder(BackorderMode backOrder) {
+		this.backOrder = backOrder;
+	}
+
+	@Override
+	public boolean isOnRequest() {
+		return onRequest;
+	}
+
+	public void setOnRequest(boolean onRequest) {
+		this.onRequest = onRequest;
+	}
+
+	@Override
+	public int getOnRequestDays() {
+		return onRequestDays;
+	}
+
+	public void setOnRequestDays(int onRequestDays) {
+		this.onRequestDays = onRequestDays;
 	}
 
 	@Override
@@ -149,100 +207,15 @@ public class OrderItemFake implements OrderItem {
 		return link;
 	}
 
-	public void setBackOrder(BackorderMode backOrder) {
-		this.backOrder = backOrder;
-	}
-
-	public void setCustomTags(List<CustomTag> customTags) {
-		this.customTags = customTags;
-	}
-
-	public void setDiscounts(List<OrderDiscount> discounts) {
-		this.discounts = discounts;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setOnRequestDays(int onRequestDays) {
-		this.onRequestDays = onRequestDays;
-	}
-
-	public void setOptions(List<OrderItemOption> options) {
-		this.options = options;
-	}
-
-	public void setPId(String pId) {
-		this.pId = pId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-
-	public void setPrices(OrderItemPrices prices) {
-		this.prices = prices;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setStocks(List<OrderItemStock> stocks) {
-		this.stocks = stocks;
-	}
-
-	public void setTaxes(List<OrderItemTax> taxes) {
-		this.taxes = taxes;
-	}
-
-	public void setVinculatedTo(Integer vinculatedTo) {
-		this.vinculatedTo = vinculatedTo;
-	}
-
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
-
-	public void setNoReturn(boolean noReturn) {
-		this.noReturn = noReturn;
-	}
-
-	public void setOnRequest(boolean onRequest) {
-		this.onRequest = onRequest;
-	}
-
-	public void setReverseChargeVat(boolean reverseChargeVat) {
-		this.reverseChargeVat = reverseChargeVat;
-	}
-
-	public void setSale(boolean sale) {
-		this.sale = sale;
-	}
-
-	public void setStockManagement(boolean stockManagement) {
-		this.stockManagement = stockManagement;
-	}
-	
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
+
 	@Override
 	public Integer getCombinationId() {
 		return combinationId;
 	}
 
-	@Override
 	public void setCombinationId(Integer combinationId) {
 		this.combinationId = combinationId;
 	}
@@ -257,11 +230,48 @@ public class OrderItemFake implements OrderItem {
 	}
 
 	@Override
-	public RowCodes getCodes() {
-		return codes;
+	public List<OrderItemOption> getOptions() {
+		return options;
 	}
 
-	public void setCodes(RowCodes codes) {
-		this.codes = codes;
+	public void setOptions(List<OrderItemOption> options) {
+		this.options = options;
 	}
+
+	@Override
+	public List<OrderItemStock> getStocks() {
+		return stocks;
+	}
+
+	public void setStocks(List<OrderItemStock> stocks) {
+		this.stocks = stocks;
+	}
+
+	@Override
+	public List<OrderItemTax> getTaxes() {
+		return taxes;
+	}
+
+	public void setTaxes(List<OrderItemTax> taxes) {
+		this.taxes = taxes;
+	}
+
+	@Override
+	public List<CustomTag> getCustomTags() {
+		return customTags;
+	}
+
+	public void setCustomTags(List<CustomTag> customTags) {
+		this.customTags = customTags;
+	}
+
+	@Override
+	public List<OrderDiscount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<OrderDiscount> discounts) {
+		this.discounts = discounts;
+	}
+
 }
