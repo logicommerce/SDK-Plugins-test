@@ -3,7 +3,6 @@ package com.logicommerce.sdktest.models.order;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.logicommerce.sdk.models.order.CreditNote;
 
 public class CreditNoteFakeBuilder extends DocumentFakeBuilder<CreditNoteFakeBuilder> {
 
@@ -20,7 +19,7 @@ public class CreditNoteFakeBuilder extends DocumentFakeBuilder<CreditNoteFakeBui
 		return additionalItem;
 	}
 
-	public CreditNote build() {
+	public CreditNoteFake build() {
 		CreditNoteFake creditNoteFake = new CreditNoteFake();
 		creditNoteFake.setAdditionalItems(additionalItems.stream()
 			.map(AdditionalItemFakeBuilder::build)
