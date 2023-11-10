@@ -1,7 +1,6 @@
 package com.logicommerce.sdktest.models.order;
 
 import java.util.List;
-
 import com.logicommerce.sdk.enums.DeliveryType;
 import com.logicommerce.sdk.models.order.GeographicalZone;
 import com.logicommerce.sdk.models.order.OrderDelivery;
@@ -9,15 +8,15 @@ import com.logicommerce.sdk.models.order.OrderDeliveryPhysicalLocation;
 import com.logicommerce.sdk.models.order.OrderShipment;
 
 public class OrderDeliveryFake implements OrderDelivery {
-	
+
 	private DeliveryType type;
-	
+
 	private OrderDeliveryPhysicalLocation physicalLocation;
-	
+
 	private List<OrderShipment> shipments;
-		
+
 	private GeographicalZone geographicalZone;
-	
+
 	@Override
 	public GeographicalZone getGeographicalZone() {
 		return geographicalZone;

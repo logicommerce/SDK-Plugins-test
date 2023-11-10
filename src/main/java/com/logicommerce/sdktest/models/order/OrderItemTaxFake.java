@@ -8,7 +8,7 @@ public class OrderItemTaxFake implements OrderItemTax {
 	private double base;
 	private double taxValue;
 	private double taxRate;
-	private TaxType taxType;
+	private TaxType type;
 	private String code;
 
 	@Override
@@ -28,7 +28,7 @@ public class OrderItemTaxFake implements OrderItemTax {
 
 	@Override
 	public TaxType getType() {
-		return taxType;
+		return type;
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class OrderItemTaxFake implements OrderItemTax {
 		this.taxRate = taxRate;
 	}
 
-	public void setTaxType(TaxType taxType) {
-		this.taxType = taxType;
+	public void setType(TaxType type) {
+		this.type = type;
 	}
 
 	public void setCode(String code) {

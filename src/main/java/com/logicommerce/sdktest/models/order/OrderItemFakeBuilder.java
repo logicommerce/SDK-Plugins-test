@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.logicommerce.sdk.builders.CustomTagBuilder;
-import com.logicommerce.sdk.builders.order.OrderItemTaxBuilder;
 import com.logicommerce.sdk.enums.BackorderMode;
 import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
 import com.logicommerce.sdktest.models.RowCodesFakeBuilder;
@@ -176,7 +175,7 @@ public class OrderItemFakeBuilder<T> {
 		return this;
 	}
 
-	public OrderItemTaxBuilder<OrderItemFakeBuilder<T>> taxes() {
+	public OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>> taxes() {
 		OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>> tax = new OrderItemTaxFakeBuilder<>(this);
 		taxes.add(tax);
 		return tax;

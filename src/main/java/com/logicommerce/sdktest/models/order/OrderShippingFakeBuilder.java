@@ -1,71 +1,88 @@
 package com.logicommerce.sdktest.models.order;
 
-import com.logicommerce.sdk.builders.order.OrderItemTaxBuilder;
-import com.logicommerce.sdk.builders.order.OrderShippingBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import com.logicommerce.sdk.enums.ShippingCalculation;
 import com.logicommerce.sdk.models.order.OrderShipping;
 
-public class OrderShippingFakeBuilder<T> extends OrderShippingBuilder<T> {
+public class OrderShippingFakeBuilder<T> {
+
+	private T parentBuilder;
+	private Integer id;
+	private int shippingTypeId;
+	private String name;
+	private Double price;
+	private String shippingTypeName;
+	private Integer shippingSectionId;
+	private ShippingCalculation shippingCalculation;
+	private String shipperPId;
+	private int shipperId;
+	private String shippingTypePId;
+	private boolean cashOnDelivery;
+	private List<OrderItemTaxFakeBuilder<OrderShippingFakeBuilder<T>>> taxes;
+	private List<OrderDiscountFakeBuilder<OrderShippingFakeBuilder<T>>> discounts;
+	private OrderShippingTrackingFakeBuilder<OrderShippingFakeBuilder<T>> tracking;
 
 	public OrderShippingFakeBuilder() {
-		super();
-		defaultValues();
+		id = 0;
+		shippingTypeId = 0;
+		name = "name DEFAULT";
+		price = 0d;
+		shippingTypeName = "shippingTypeName DEFAULT";
+		shippingSectionId = 0;
+		shippingCalculation = ShippingCalculation.BY_WEIGHT;
+		shipperPId = "shipperPId DEFAULT";
+		shippingTypePId = "shippingTypePId DEFAULT";
+		cashOnDelivery = false;
+		tracking = new OrderShippingTrackingFakeBuilder<>(this);
+		taxes = new ArrayList<>();
+		discounts = new ArrayList<>();
 	}
 
 	public OrderShippingFakeBuilder(T parentBuilder) {
-		super(parentBuilder);
-		defaultValues();
-	}
-	
-	private void defaultValues() {
-		super.id = 0;
-		super.shippingTypeId = 0;
-		super.name = "name DEFAULT";
-		super.price = 0d;
-		super.shippingTypeName = "shippingTypeName DEFAULT";
-		super.shippingSectionId = 0;
-		super.shippingCalculation = ShippingCalculation.BY_WEIGHT;
-		super.shipperPId = "shipperPId DEFAULT";
-		super.shippingTypePId = "shippingTypePId DEFAULT";
-		super.cashOnDelivery = false;
-		super.tracking = new OrderShippingTrackingFakeBuilder<>(this);
+		this();
+		this.parentBuilder = parentBuilder;
 	}
 
-	public OrderItemTaxBuilder<OrderShippingBuilder<T>> tax() {
-		OrderItemTaxBuilder<OrderShippingBuilder<T>> tax = new OrderItemTaxFakeBuilder<>(this);
+	public OrderItemTaxFakeBuilder<OrderShippingFakeBuilder<T>> tax() {
+		var tax = new OrderItemTaxFakeBuilder<OrderShippingFakeBuilder<T>>(this);
 		taxes.add(tax);
 		return tax;
 	}
 
-	public OrderDiscountFakeBuilder<OrderShippingBuilder<T>> discount() {
-		OrderDiscountFakeBuilder<OrderShippingBuilder<T>> discount = new OrderDiscountFakeBuilder<>(this);
+	public OrderDiscountFakeBuilder<OrderShippingFakeBuilder<T>> discount() {
+		var discount = new OrderDiscountFakeBuilder<OrderShippingFakeBuilder<T>>(this);
 		discounts.add(discount);
 		return discount;
 	}
-	
-	public OrderShippingTrackingFakeBuilder<OrderShippingBuilder<T>> tracking() {
-		OrderShippingTrackingFakeBuilder<OrderShippingBuilder<T>> tracking = new OrderShippingTrackingFakeBuilder<>(this); 
+
+	public OrderShippingTrackingFakeBuilder<OrderShippingFakeBuilder<T>> tracking() {
+		var tracking = new OrderShippingTrackingFakeBuilder<OrderShippingFakeBuilder<T>>(this);
 		this.tracking = tracking;
 		return tracking;
 	}
-	
-	@Override
+
 	public OrderShipping build() {
-		OrderShipping shipping = super.build();		
 		OrderShippingFake shippingFake = new OrderShippingFake();
-		shippingFake.setId(super.id);
-		shippingFake.setShippingTypeId(shipping.getShippingTypeId());
-		shippingFake.setName(shipping.getName());
-		shippingFake.setPrice(shipping.getPrice());
-		shippingFake.setShippingTypeName(shipping.getShippingTypeName());
-		shippingFake.setShippingSectionId(shipping.getShippingSectionId());
-		shippingFake.setShippingCalculation(shipping.getShippingCalculation());
-		shippingFake.setShipperPId(shipping.getShipperPId());
-		shippingFake.setShippingTypePId(shipping.getShippingTypePId());
-		shippingFake.setCashOnDelivery(shipping.isCashOnDelivery());
-		shippingFake.setTaxes(shipping.getTaxes());
-		shippingFake.setDiscounts(shipping.getDiscounts());
-		shippingFake.setTracking(shipping.getTracking());
+		shippingFake.setId(id);
+		shippingFake.setShippingTypeId(shippingTypeId);
+		shippingFake.setName(name);
+		shippingFake.setPrice(price);
+		shippingFake.setShippingTypeName(shippingTypeName);
+		shippingFake.setShippingSectionId(shippingSectionId);
+		shippingFake.setShippingCalculation(shippingCalculation);
+		shippingFake.setShipperId(shipperId);
+		shippingFake.setShipperPId(shipperPId);
+		shippingFake.setShippingTypePId(shippingTypePId);
+		shippingFake.setCashOnDelivery(cashOnDelivery);
+		shippingFake.setTaxes(taxes.stream().map(OrderItemTaxFakeBuilder::build).collect(Collectors.toList()));
+		shippingFake.setDiscounts(discounts.stream().map(OrderDiscountFakeBuilder::build).collect(Collectors.toList()));
+		shippingFake.setTracking(tracking.build());
 		return shippingFake;
+	}
+
+	public T done() {
+		return parentBuilder;
 	}
 }

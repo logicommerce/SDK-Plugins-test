@@ -151,7 +151,12 @@ public class OrderShippingFake implements OrderShipping {
 		if (properties == null) {
 			properties = new ArrayList<>();
 		}
-		properties.add(property);		
+		properties.add(property);
+	}
+
+	@Override
+	public void addProperty(String name, String value) {
+		addProperty(new ElementProperyImpl(name, value));
 	}
 
 	@Override
@@ -162,11 +167,6 @@ public class OrderShippingFake implements OrderShipping {
 	@Override
 	public void setTracking(OrderShippingTracking tracking) {
 		this.tracking = tracking;
-	}
-
-	@Override
-	public void addProperty(String name, String value) {
-		addProperty(new ElementProperyImpl(name, value));
 	}
 
 	@Override
