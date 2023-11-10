@@ -13,34 +13,20 @@ import com.logicommerce.sdk.models.order.OrderShippingTracking;
 public class OrderShippingFake implements OrderShipping {
 
 	private Integer id;
-
 	private int shippingTypeId;
-
 	private String name;
-
 	private Double price;
-
 	private String shippingTypeName;
-
 	private Integer shippingSectionId;
-
 	private ShippingCalculation shippingCalculation;
-
-	private String shipperPId;
-
-	private String shippingTypePId;
-
-	private List<OrderItemTax> taxes;
-
-	private List<OrderDiscount> discounts;
-
-	private List<ElementProperty> properties;
-
-	private OrderShippingTracking tracking;
-
-	private boolean cashOnDelivery;
-
 	private int shipperId;
+	private String shipperPId;
+	private String shippingTypePId;
+	private boolean cashOnDelivery;
+	private OrderShippingTracking tracking;
+	private List<OrderItemTax> taxes;
+	private List<OrderDiscount> discounts;
+	private List<ElementProperty> properties;
 
 	@Override
 	public Integer getId() {
@@ -157,6 +143,10 @@ public class OrderShippingFake implements OrderShipping {
 	@Override
 	public void addProperty(String name, String value) {
 		addProperty(new ElementProperyImpl(name, value));
+	}
+
+	public void setProperties(List<ElementProperty> properties) {
+		this.properties = properties;
 	}
 
 	@Override

@@ -16,6 +16,8 @@ public class OrderShipmentFakeBuilder<T> {
 	private String status;
 	private LocalDate incomingDate;
 	private ExportStatusType exportStatusType;
+	private String hash;
+	private String documentNumber;
 	private Integer substatus;
 	private String trackingNumber;
 	private String trackingUrl;
@@ -32,6 +34,8 @@ public class OrderShipmentFakeBuilder<T> {
 		status = "status DEFAULT";
 		incomingDate = LocalDate.now();
 		exportStatusType = ExportStatusType.PENDING_TO_SEND;
+		hash = "hash DEFAULT";
+		documentNumber = "documentNumber DEFAULT";
 		substatus = 0;
 		trackingNumber = "trackingNumber DEFAULT";
 		trackingUrl = "trackingUrl DEFAULT";
@@ -69,6 +73,16 @@ public class OrderShipmentFakeBuilder<T> {
 
 	public OrderShipmentFakeBuilder<T> exportStatusType(ExportStatusType exportStatusType) {
 		this.exportStatusType = exportStatusType;
+		return this;
+	}
+
+	public OrderShipmentFakeBuilder<T> hash(String hash) {
+		this.hash = hash;
+		return this;
+	}
+
+	public OrderShipmentFakeBuilder<T> documentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
 		return this;
 	}
 
@@ -118,6 +132,8 @@ public class OrderShipmentFakeBuilder<T> {
 		shipmentFake.setStatus(status);
 		shipmentFake.setIncomingDate(incomingDate);
 		shipmentFake.setExportStatusType(exportStatusType);
+		shipmentFake.setHash(hash);
+		shipmentFake.setDocumentNumber(documentNumber);
 		shipmentFake.setSubstatus(substatus);
 		shipmentFake.setTrackingNumber(trackingNumber);
 		shipmentFake.setTrackingUrl(trackingUrl);
