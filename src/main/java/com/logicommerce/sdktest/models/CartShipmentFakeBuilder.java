@@ -12,13 +12,13 @@ public class CartShipmentFakeBuilder {
 	private double total;
 	private double weight;
 	private CartWarehouseFakeBuilder warehouse;
-	private String taxCode;
+	private CartShippingFakeBuilder shipping;
 	private String hash;
 
 	public CartShipmentFakeBuilder() {
 		items = new ArrayList<>();
 		warehouse = new CartWarehouseFakeBuilder(this);
-		taxCode = "taxCode DEFAULT";
+		shipping = new CartShippingFakeBuilder(this);
 		hash = "hash_DEFAULT";
 	}
 
@@ -43,11 +43,6 @@ public class CartShipmentFakeBuilder {
 		return this;
 	}
 
-	public CartShipmentFakeBuilder taxCode(String taxCode) {
-		this.taxCode = taxCode;
-		return this;
-	}
-
 	public CartShipmentFakeBuilder hash(String hash) {
 		this.hash = hash;
 		return this;
@@ -55,6 +50,10 @@ public class CartShipmentFakeBuilder {
 
 	public CartWarehouseFakeBuilder warehouse() {
 		return warehouse;
+	}
+
+	public CartShippingFakeBuilder shipping() {
+		return shipping;
 	}
 
 	public CartShipment build() {
@@ -65,7 +64,7 @@ public class CartShipmentFakeBuilder {
 		shipment.setTotal(total);
 		shipment.setWeight(weight);
 		shipment.setWarehouse(warehouse.build());
-		shipment.setTaxCode(taxCode);
+		shipment.setShipping(shipping.build());
 		shipment.setHash(hash);
 		return shipment;
 	}

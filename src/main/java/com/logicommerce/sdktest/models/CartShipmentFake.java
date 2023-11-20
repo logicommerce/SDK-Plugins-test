@@ -3,6 +3,7 @@ package com.logicommerce.sdktest.models;
 import java.util.List;
 import com.logicommerce.sdk.models.CartShipment;
 import com.logicommerce.sdk.models.CartShipmentItem;
+import com.logicommerce.sdk.models.CartShipping;
 import com.logicommerce.sdk.models.CartWarehouse;
 
 public class CartShipmentFake implements CartShipment {
@@ -11,8 +12,8 @@ public class CartShipmentFake implements CartShipment {
 	private double total;
 	private double weight;
 	private CartWarehouse warehouse;
+	private CartShipping shipping;
 	private String hash;
-	private String taxCode;
 
 	@Override
 	public List<CartShipmentItem> getItems() {
@@ -32,6 +33,11 @@ public class CartShipmentFake implements CartShipment {
 	@Override
 	public CartWarehouse getWarehouse() {
 		return warehouse;
+	}
+
+	@Override
+	public CartShipping getShipping() {
+		return shipping;
 	}
 
 	@Override
@@ -55,17 +61,12 @@ public class CartShipmentFake implements CartShipment {
 		this.warehouse = warehouse;
 	}
 
+	public void setShipping(CartShipping shipping) {
+		this.shipping = shipping;
+	}
+
 	public void setHash(String hash) {
 		this.hash = hash;
-	}
-
-	@Override
-	public String getTaxCode() {
-		return taxCode;
-	}
-
-	public void setTaxCode(String taxCode) {
-		this.taxCode = taxCode;
 	}
 
 }
