@@ -1,35 +1,57 @@
 package com.logicommerce.sdktest.models.order;
 
-import com.logicommerce.sdk.builders.order.OrderShipmentItemBuilder;
 import com.logicommerce.sdk.models.order.OrderShipmentItem;
 
-public class OrderShipmentItemFakeBuilder<T> extends OrderShipmentItemBuilder<T> {
+public class OrderShipmentItemFakeBuilder<T> {
+
+	private T parentBuilder;
+	private Integer id;
+	private int quantity;
+	private Integer orderItemId;
+	private double weight;
 
 	public OrderShipmentItemFakeBuilder() {
-		super();
-		defaultValues();
+		id = 0;
+		quantity = 0;
+		orderItemId = 0;
+		weight = 1;
 	}
 
 	public OrderShipmentItemFakeBuilder(T parentBuilder) {
-		super(parentBuilder);
-		defaultValues();
+		this();
+		this.parentBuilder = parentBuilder;
 	}
 
-	private void defaultValues() {
-		super.id = 0;
-		super.quantity = 0;
-		super.orderItemId = 0;
-		super.weight = 1;
+	public OrderShipmentItemFakeBuilder<T> id(Integer id) {
+		this.id = id;
+		return this;
 	}
 
-	@Override
+	public OrderShipmentItemFakeBuilder<T> quantity(int quantity) {
+		this.quantity = quantity;
+		return this;
+	}
+
+	public OrderShipmentItemFakeBuilder<T> orderItemId(Integer orderItemId) {
+		this.orderItemId = orderItemId;
+		return this;
+	}
+
+	public OrderShipmentItemFakeBuilder<T> weight(double weight) {
+		this.weight = weight;
+		return this;
+	}
+
 	public OrderShipmentItem build() {
-		OrderShipmentItem ordershipmentItem = super.build();
 		OrderShipmentItemFake item = new OrderShipmentItemFake();
 		item.setId(id);
-		item.setQuantity(ordershipmentItem.getQuantity());
-		item.setOrderItemId(ordershipmentItem.getOrderItemId());
-		item.setWeight(ordershipmentItem.getWeight());
+		item.setQuantity(quantity);
+		item.setOrderItemId(orderItemId);
+		item.setWeight(weight);
 		return item;
+	}
+
+	public T done() {
+		return parentBuilder;
 	}
 }

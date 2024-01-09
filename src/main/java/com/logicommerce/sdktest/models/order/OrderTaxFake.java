@@ -20,6 +20,8 @@ public class OrderTaxFake implements OrderTax {
 
 	private double discount;
 
+	private String code;
+
 	@Override
 	public double getTaxRate() {
 		return taxRate;
@@ -60,6 +62,11 @@ public class OrderTaxFake implements OrderTax {
 		return discount;
 	}
 
+	@Override
+	public String getCode() {
+		return code;
+	}
+
 	public void setTaxRate(double taxRate) {
 		this.taxRate = taxRate;
 	}
@@ -90,6 +97,10 @@ public class OrderTaxFake implements OrderTax {
 
 	public void setDiscount(double discount) {
 		this.discount = discount;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }
