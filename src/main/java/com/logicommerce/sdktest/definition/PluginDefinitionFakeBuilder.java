@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.logicommerce.sdk.definition.ConnectorDefinition;
 
-public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<PluginDefinitionFakeBuilder>{
+public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<PluginDefinitionFakeBuilder> {
 
 	private String name;
-
 	private String description;
-
 	private String author;
-
 	private String version;
-
 	private List<ConnectorDefinitionFakeBuilder> connectorDefinitions;
+	private boolean multipleAccount;
+	private boolean userGroupsFilter;
+	private boolean countryZonesFilter;
+
 
 	public PluginDefinitionFakeBuilder() {
 		connectorDefinitions = new ArrayList<>();
@@ -47,6 +47,21 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 		return connectorDefinition;
 	}
 
+	public PluginDefinitionFakeBuilder multipleAccount(boolean multipleAccount) {
+		this.multipleAccount = multipleAccount;
+		return returnThis();
+	}
+
+	public PluginDefinitionFakeBuilder userGroupsFilter(boolean userGroupsFilter) {
+		this.userGroupsFilter = userGroupsFilter;
+		return returnThis();
+	}
+
+	public PluginDefinitionFakeBuilder countryZonesFilter(boolean countryZonesFilter) {
+		this.countryZonesFilter = countryZonesFilter;
+		return returnThis();
+	}
+
 
 	public PluginDefinitionFake build() {
 		PluginDefinitionFake pluginDefinition = new PluginDefinitionFake();
@@ -55,14 +70,17 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 		pluginDefinition.setAuthor(author);
 		pluginDefinition.setVersion(version);
 		pluginDefinition.setConnectorDefinitions(getConnectorDefinitions());
+		pluginDefinition.setMultipleAccount(multipleAccount);
+		pluginDefinition.setUserGroupsFilter(userGroupsFilter);
+		pluginDefinition.setCountryZonesFilter(countryZonesFilter);
 		setAttributes(pluginDefinition);
 		return pluginDefinition;
 	}
 
 	private List<ConnectorDefinition> getConnectorDefinitions() {
 		return connectorDefinitions.stream()
-				.map(ConnectorDefinitionFakeBuilder::build)
-				.collect(Collectors.toList());
+			.map(ConnectorDefinitionFakeBuilder::build)
+			.collect(Collectors.toList());
 	}
 
 	@Override

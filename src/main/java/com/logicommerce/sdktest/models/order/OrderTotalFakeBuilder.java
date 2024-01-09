@@ -2,7 +2,7 @@ package com.logicommerce.sdktest.models.order;
 
 import com.logicommerce.sdk.builders.order.OrderTotalBuilder;
 
-public class OrderTotalFakeBuilder<T> extends OrderTotalBuilder<T>{
+public class OrderTotalFakeBuilder<T> extends OrderTotalBuilder<T> {
 
 	public OrderTotalFakeBuilder() {
 		super();
@@ -13,7 +13,7 @@ public class OrderTotalFakeBuilder<T> extends OrderTotalBuilder<T>{
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.subtotal = 0d;
 		super.subtotalItems = 0d;

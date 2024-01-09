@@ -9,16 +9,13 @@ import com.logicommerce.sdk.enums.ConnectorType;
 public class PluginDefinitionFake extends ConfigDefinitionFake implements PluginDefinition {
 
 	private String name;
-
 	private String description;
-
 	private String author;
-
 	private String version;
-
 	private List<ConnectorDefinition> connectors;
-
 	private boolean multipleAccount;
+	private boolean userGroupsFilter;
+	private boolean countryZonesFilter;
 
 	@Override
 	public String getName() {
@@ -67,6 +64,16 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		getConnectorDefinitions().add(connectorDefinition);
 	}
 
+	@Override
+	public boolean getUserGroupsFilter() {
+		return userGroupsFilter;
+	}
+
+	@Override
+	public boolean getCountryZonesFilter() {
+		return countryZonesFilter;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -89,6 +96,14 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 
 	public void setMultipleAccount(boolean multipleAccount) {
 		this.multipleAccount = multipleAccount;
+	}
+
+	public void setUserGroupsFilter(boolean userGroupsFilter) {
+		this.userGroupsFilter = userGroupsFilter;
+	}
+
+	public void setCountryZonesFilter(boolean countryZonesFilter) {
+		this.countryZonesFilter = countryZonesFilter;
 	}
 
 }

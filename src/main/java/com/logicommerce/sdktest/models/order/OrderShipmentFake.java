@@ -15,16 +15,17 @@ public class OrderShipmentFake implements OrderShipment {
 	private String pId;
 	private String status;
 	private LocalDate incomingDate;
-	private List<OrderShipmentItem> items;
-	private List<OrderShipmentStatus> statuses;
-	private OrderShipping shipping;
 	private ExportStatusType exportStatusType;
 	private String hash;
-	private ShipmentAddress originAddress;
-	private ShipmentAddress destinationAddress;
-	private String trackingNumber;
 	private String documentNumber;
 	private Integer substatus;
+	private String trackingNumber;
+	private String trackingUrl;
+	private OrderShipping shipping;
+	private ShipmentAddress originAddress;
+	private ShipmentAddress destinationAddress;
+	private List<OrderShipmentItem> items;
+	private List<OrderShipmentStatus> statuses;
 
 	@Override
 	public Integer getId() {
@@ -164,6 +165,16 @@ public class OrderShipmentFake implements OrderShipment {
 
 	public void setSubstatus(Integer substatus) {
 		this.substatus = substatus;
+	}
+
+	@Override
+	public String getTrackingUrl() {
+		return trackingUrl;
+	}
+
+	@Override
+	public void setTrackingUrl(String trackingUrl) {
+		this.trackingUrl = trackingUrl;
 	}
 
 }

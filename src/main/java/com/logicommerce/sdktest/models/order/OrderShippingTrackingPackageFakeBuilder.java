@@ -6,30 +6,31 @@ import com.logicommerce.sdk.builders.order.OrderShippingTrackingPackageBuilder;
 import com.logicommerce.sdk.models.order.OrderShippingTrackingPackage;
 
 public class OrderShippingTrackingPackageFakeBuilder<T> extends OrderShippingTrackingPackageBuilder<T> {
-	
+
 	public OrderShippingTrackingPackageFakeBuilder() {
 		super();
 		defaultValues();
 	}
-	
+
 	public OrderShippingTrackingPackageFakeBuilder(T parentBuilder) {
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.id = 0;
 		super.weight = 1d;
 		super.weightUnits = "kg";
-		super.lastUpdate  = LocalDateTime.now();
+		super.lastUpdate = LocalDateTime.now();
 	}
-	
+
 	public OrderShippingTrackingPackageActivityBuilder<OrderShippingTrackingPackageBuilder<T>> activities() {
-		OrderShippingTrackingPackageActivityBuilder<OrderShippingTrackingPackageBuilder<T>> activity = new OrderShippingTrackingPackageActivityFakeBuilder<>(this);
-		activities.add(activity);		
+		OrderShippingTrackingPackageActivityBuilder<OrderShippingTrackingPackageBuilder<T>> activity =
+			new OrderShippingTrackingPackageActivityFakeBuilder<>(this);
+		activities.add(activity);
 		return activity;
 	}
-	
+
 	@Override
 	public OrderShippingTrackingPackage build() {
 		OrderShippingTrackingPackage trackingPackage = super.build();
@@ -39,7 +40,7 @@ public class OrderShippingTrackingPackageFakeBuilder<T> extends OrderShippingTra
 		trackingPackageFake.setId(super.id);
 		trackingPackageFake.setLastUpdate(trackingPackage.getLastUpdate());
 		trackingPackageFake.setActivities(trackingPackage.getActivities());
-		
+
 		return trackingPackageFake;
 	}
 }

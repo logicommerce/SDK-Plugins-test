@@ -25,7 +25,8 @@ public class OrderShippingTrackingFakeBuilder<T> extends OrderShippingTrackingBu
 	}
 
 	public OrderShippingTrackingPackageFakeBuilder<OrderShippingTrackingBuilder<T>> packages() {
-		OrderShippingTrackingPackageFakeBuilder<OrderShippingTrackingBuilder<T>> trackingPackage = new OrderShippingTrackingPackageFakeBuilder<>(this);
+		OrderShippingTrackingPackageFakeBuilder<OrderShippingTrackingBuilder<T>> trackingPackage =
+			new OrderShippingTrackingPackageFakeBuilder<>(this);
 		super.trackingPackages.add(trackingPackage);
 		return trackingPackage;
 	}

@@ -1,107 +1,243 @@
 package com.logicommerce.sdktest.models.order;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import com.logicommerce.sdk.builders.CustomTagBuilder;
-import com.logicommerce.sdk.builders.order.OrderItemBuilder;
-import com.logicommerce.sdk.builders.order.OrderItemTaxBuilder;
 import com.logicommerce.sdk.enums.BackorderMode;
-import com.logicommerce.sdk.models.order.OrderItem;
 import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
 import com.logicommerce.sdktest.models.RowCodesFakeBuilder;
 
-public class OrderItemFakeBuilder<T> extends OrderItemBuilder<T> {
+public class OrderItemFakeBuilder<T> {
 
+	private T parentBuilder;
+	private Integer id;
+	private String pId;
+	private String hash;
+	private String name;
+	private Integer productId;
+	private int quantity;
+	private double weight;
+	private OrderItemPricesFakeBuilder<OrderItemFakeBuilder<T>> prices;
+	private Integer vinculatedTo;
+	private String image;
+	private boolean sale;
+	private boolean stockManagement;
+	private boolean reverseChargeVat;
+	private RowCodesFakeBuilder<OrderItemFakeBuilder<T>> codes;
+	private boolean noReturn;
+	private BackorderMode backOrder;
+	private boolean onRequest;
+	private int onRequestDays;
+	private String link;
+	private Integer combinationId;
+	private String supplierReference;
+	private List<OrderItemOptionFakeBuilder<OrderItemFakeBuilder<T>>> options;
+	private List<OrderItemStockFakeBuilder<OrderItemFakeBuilder<T>>> stocks;
+	private List<OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>>> taxes;
+	private List<CustomTagFakeBuilder<OrderItemFakeBuilder<T>>> customTags;
+	private List<OrderDiscountFakeBuilder<OrderItemFakeBuilder<T>>> discounts;
 
 	public OrderItemFakeBuilder() {
-		super();
-		defaultValues();
+		id = 0;
+		pId = "pId DEFAULT";
+		hash = "hash DEFAULT";
+		name = "name DEFAULT";
+		productId = 0;
+		quantity = 0;
+		weight = 0d;
+		prices = new OrderItemPricesFakeBuilder<>(this);
+		vinculatedTo = 0;
+		image = "image DEFAULT";
+		sale = false;
+		stockManagement = false;
+		reverseChargeVat = false;
+		codes = new RowCodesFakeBuilder<>(this);
+		noReturn = false;
+		backOrder = BackorderMode.NONE;
+		onRequest = false;
+		onRequestDays = 0;
+		link = "link DEFAULT";
+		combinationId = 0;
+		supplierReference = "supplierReference DEFAULT";
+		options = new ArrayList<>();
+		stocks = new ArrayList<>();
+		taxes = new ArrayList<>();
+		customTags = new ArrayList<>();
+		discounts = new ArrayList<>();
 	}
 
 	public OrderItemFakeBuilder(T parentBuilder) {
-		super(parentBuilder);
-		defaultValues();
-	}		
-	
-	private void defaultValues() {
-		super.id = 0;
-		super.pId = "pId DEFAULT";
-		super.name = "name DEFAULT";
-		super.quantity = 0;
-		super.productId = 0;
-		super.weight = 0d;
-		super.prices = new OrderItemPricesFakeBuilder<>(this);
-		super.vinculatedTo = 0;
-		super.image = "image DEFAULT";
-		super.sale = false;
-		super.stockManagement = false;
-		super.reverseChargeVat = false;
-		super.codes = new RowCodesFakeBuilder<>(this);
-		super.noReturn = false;
-		super.backOrder = BackorderMode.NONE;
-		super.onRequest = false;
-		super.onRequestDays = 0;
+		this();
+		this.parentBuilder = parentBuilder;
 	}
 
-	@Override
-	public OrderItemTaxBuilder<OrderItemBuilder<T>> taxes() {
-		OrderItemTaxBuilder<OrderItemBuilder<T>> tax = new OrderItemTaxFakeBuilder<>(this);
+	public OrderItemFakeBuilder<T> id(Integer id) {
+		this.id = id;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> pId(String pId) {
+		this.pId = pId;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> hash(String hash) {
+		this.hash = hash;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> name(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> productId(Integer productId) {
+		this.productId = productId;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> quantity(int quantity) {
+		this.quantity = quantity;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> weight(double weight) {
+		this.weight = weight;
+		return this;
+	}
+
+	public OrderItemPricesFakeBuilder<OrderItemFakeBuilder<T>> prices() {
+		return prices;
+	}
+
+	public OrderItemFakeBuilder<T> vinculatedTo(Integer vinculatedTo) {
+		this.vinculatedTo = vinculatedTo;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> image(String image) {
+		this.image = image;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> sale(boolean sale) {
+		this.sale = sale;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> stockManagement(boolean stockManagement) {
+		this.stockManagement = stockManagement;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> reverseChargeVat(boolean reverseChargeVat) {
+		this.reverseChargeVat = reverseChargeVat;
+		return this;
+	}
+
+	public RowCodesFakeBuilder<OrderItemFakeBuilder<T>> codes() {
+		return codes;
+	}
+
+	public OrderItemFakeBuilder<T> noReturn(boolean noReturn) {
+		this.noReturn = noReturn;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> backOrder(BackorderMode backOrder) {
+		this.backOrder = backOrder;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> onRequest(boolean onRequest) {
+		this.onRequest = onRequest;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> onRequestDays(int onRequestDays) {
+		this.onRequestDays = onRequestDays;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> link(String link) {
+		this.link = link;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> combinationId(Integer combinationId) {
+		this.combinationId = combinationId;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<T> supplierReference(String supplierReference) {
+		this.supplierReference = supplierReference;
+		return this;
+	}
+
+	public OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>> taxes() {
+		OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>> tax = new OrderItemTaxFakeBuilder<>(this);
 		taxes.add(tax);
 		return tax;
 	}
 
-	@Override
-	public OrderItemStockFakeBuilder<OrderItemBuilder<T>> stocks() {
-		OrderItemStockFakeBuilder<OrderItemBuilder<T>> stock = new OrderItemStockFakeBuilder<>(this);
+	public OrderItemStockFakeBuilder<OrderItemFakeBuilder<T>> stocks() {
+		OrderItemStockFakeBuilder<OrderItemFakeBuilder<T>> stock = new OrderItemStockFakeBuilder<>(this);
 		stocks.add(stock);
 		return stock;
 	}
 
-	@Override
-	public CustomTagBuilder<OrderItemBuilder<T>> customTag() {
-		CustomTagBuilder<OrderItemBuilder<T>> customTag = new CustomTagFakeBuilder<>(this);
+	public CustomTagBuilder<OrderItemFakeBuilder<T>> customTag() {
+		CustomTagFakeBuilder<OrderItemFakeBuilder<T>> customTag = new CustomTagFakeBuilder<>(this);
 		customTags.add(customTag);
 		return customTag;
 	}
 
-	@Override
-	public OrderDiscountFakeBuilder<OrderItemBuilder<T>> discount() {
-		OrderDiscountFakeBuilder<OrderItemBuilder<T>> discount = new OrderDiscountFakeBuilder<>(this);
+	public OrderDiscountFakeBuilder<OrderItemFakeBuilder<T>> discount() {
+		OrderDiscountFakeBuilder<OrderItemFakeBuilder<T>> discount = new OrderDiscountFakeBuilder<>(this);
 		discounts.add(discount);
 		return discount;
 	}
 
-	@Override
-	public OrderItemOptionFakeBuilder<OrderItemBuilder<T>> options() {
-		OrderItemOptionFakeBuilder<OrderItemBuilder<T>> option = new OrderItemOptionFakeBuilder<>(this);
+	public OrderItemOptionFakeBuilder<OrderItemFakeBuilder<T>> options() {
+		OrderItemOptionFakeBuilder<OrderItemFakeBuilder<T>> option = new OrderItemOptionFakeBuilder<>(this);
 		options.add(option);
 		return option;
 	}
 
-	@Override
 	public OrderItemFake build() {
-		OrderItem itemSdk = super.build();
 		OrderItemFake item = new OrderItemFake();
-		item.setId(super.id);
-		item.setPId(itemSdk.getPId());
-		item.setTaxes(itemSdk.getTaxes());
-		item.setOptions(itemSdk.getOptions());
-		item.setStocks(itemSdk.getStocks());
-		item.setCustomTags(itemSdk.getCustomTags());
-		item.setDiscounts(itemSdk.getDiscounts());
-		item.setName(itemSdk.getName());
-		item.setQuantity(itemSdk.getQuantity());
-		item.setProductId(itemSdk.getProductId());
-		item.setWeight(itemSdk.getWeight());
-		item.setPrices(itemSdk.getPrices());
-		item.setVinculatedTo(itemSdk.getVinculatedTo());
-		item.setImage(itemSdk.getImage());
-		item.setSale(itemSdk.isSale());
-		item.setStockManagement(itemSdk.isStockManagement());
-		item.setReverseChargeVat(itemSdk.isReverseChargeVat());
-		item.setCodes(itemSdk.getCodes());
-		item.setNoReturn(itemSdk.isNoReturn());
-		item.setBackOrder(itemSdk.getBackOrder());
-		item.setOnRequest(itemSdk.isOnRequest());
-		item.setOnRequestDays(itemSdk.getOnRequestDays());
+		item.setId(id);
+		item.setPId(pId);
+		item.setHash(hash);
+		item.setName(name);
+		item.setProductId(productId);
+		item.setQuantity(quantity);
+		item.setWeight(weight);
+		item.setPrices(prices.build());
+		item.setVinculatedTo(vinculatedTo);
+		item.setImage(image);
+		item.setSale(sale);
+		item.setStockManagement(stockManagement);
+		item.setReverseChargeVat(reverseChargeVat);
+		item.setCodes(codes.build());
+		item.setNoReturn(noReturn);
+		item.setBackOrder(backOrder);
+		item.setOnRequest(onRequest);
+		item.setOnRequestDays(onRequestDays);
+		item.setLink(link);
+		item.setCombinationId(combinationId);
+		item.setSupplierReference(supplierReference);
+
+		item.setOptions(options.stream().map(OrderItemOptionFakeBuilder::build).collect(Collectors.toList()));
+		item.setTaxes(taxes.stream().map(OrderItemTaxFakeBuilder::build).collect(Collectors.toList()));
+		item.setStocks(stocks.stream().map(OrderItemStockFakeBuilder::build).collect(Collectors.toList()));
+		item.setCustomTags(customTags.stream().map(CustomTagFakeBuilder::build).collect(Collectors.toList()));
+		item.setDiscounts(discounts.stream().map(OrderDiscountFakeBuilder::build).collect(Collectors.toList()));
 		return item;
+	}
+
+	public T done() {
+		return parentBuilder;
 	}
 }

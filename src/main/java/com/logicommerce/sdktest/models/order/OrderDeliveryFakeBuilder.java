@@ -1,42 +1,65 @@
 package com.logicommerce.sdktest.models.order;
 
-import com.logicommerce.sdk.builders.order.OrderDeliveryBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import com.logicommerce.sdk.builders.GeographicalZoneBuilder;
+import com.logicommerce.sdk.builders.order.OrderDeliveryPhysicalLocationBuilder;
 import com.logicommerce.sdk.enums.DeliveryType;
 import com.logicommerce.sdk.models.order.OrderDelivery;
 
-public class OrderDeliveryFakeBuilder<T> extends OrderDeliveryBuilder<T> {
-	
-	public OrderDeliveryFakeBuilder() {		
-		super();
-		defaultValues();
+public class OrderDeliveryFakeBuilder<T> {
+
+	private T parentBuilder;
+	private DeliveryType type;
+	private OrderDeliveryPhysicalLocationBuilder<OrderDeliveryFakeBuilder<T>> physicalLocation;
+	private GeographicalZoneBuilder<OrderDeliveryFakeBuilder<T>> geographicalZone;
+	private List<OrderShipmentFakeBuilder<OrderDeliveryFakeBuilder<T>>> shipments;
+
+
+	public OrderDeliveryFakeBuilder() {
+		type = DeliveryType.SHIPPING;
+		geographicalZone = new GeographicalZoneFakeBuilder<>(this);
+		physicalLocation = new OrderDeliveryPhysicalLocationFakeBuilder<>(this);
+		shipments = new ArrayList<>();
 	}
-	
+
 	public OrderDeliveryFakeBuilder(T parentBuilder) {
-		super(parentBuilder);
-		defaultValues();
+		this();
+		this.parentBuilder = parentBuilder;
 	}
-	
-	private void defaultValues() {
-		super.type = DeliveryType.SHIPPING;
-		super.geographicalZone = new GeographicalZoneFakeBuilder<>(this);
-		super.physicalLocation = new OrderDeliveryPhysicalLocationFakeBuilder<>(this);
+
+	public OrderDeliveryFakeBuilder<T> type(DeliveryType type) {
+		this.type = type;
+		return this;
 	}
-	
-	@Override
-	public OrderShipmentFakeBuilder<OrderDeliveryBuilder<T>> shipments() {
-		OrderShipmentFakeBuilder<OrderDeliveryBuilder<T>> shipment = new OrderShipmentFakeBuilder<>(this);
-		super.shipments.add(shipment);
+
+	public GeographicalZoneBuilder<OrderDeliveryFakeBuilder<T>> geographicalZone() {
+		return geographicalZone;
+	}
+
+	public OrderDeliveryPhysicalLocationBuilder<OrderDeliveryFakeBuilder<T>> physicalLocation() {
+		return physicalLocation;
+	}
+
+	public OrderShipmentFakeBuilder<OrderDeliveryFakeBuilder<T>> shipments() {
+		var shipment = new OrderShipmentFakeBuilder<OrderDeliveryFakeBuilder<T>>(this);
+		shipments.add(shipment);
 		return shipment;
 	}
-	
-	@Override
+
 	public OrderDelivery build() {
-		OrderDelivery delivery = super.build();
-		OrderDeliveryFake deliveryFake = new OrderDeliveryFake(); 
-		deliveryFake.setGeographicalZone(delivery.getGeographicalZone());
-		deliveryFake.setPhysicalLocation(delivery.getPhysicalLocation());
-		deliveryFake.setShipments(delivery.getShipments());
-		deliveryFake.setType(delivery.getType());
+		OrderDeliveryFake deliveryFake = new OrderDeliveryFake();
+		deliveryFake.setType(type);
+		deliveryFake.setGeographicalZone(geographicalZone.build());
+		deliveryFake.setPhysicalLocation(physicalLocation.build());
+		deliveryFake.setShipments(shipments.stream()
+			.map(OrderShipmentFakeBuilder::build)
+			.collect(Collectors.toList()));
 		return deliveryFake;
+	}
+
+	public T done() {
+		return parentBuilder;
 	}
 }

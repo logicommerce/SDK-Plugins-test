@@ -8,18 +8,18 @@ import com.logicommerce.sdk.models.CartShipment;
 public class CartShipmentFakeBuilder {
 
 	private CartDeliVeryFakeBuilder parentBuilder;
-
 	private List<CartShipmentItemFakeBuilder> items;
-
 	private double total;
-
 	private double weight;
-
 	private CartWarehouseFakeBuilder warehouse;
+	private CartShippingFakeBuilder shipping;
+	private String hash;
 
 	public CartShipmentFakeBuilder() {
 		items = new ArrayList<>();
 		warehouse = new CartWarehouseFakeBuilder(this);
+		shipping = new CartShippingFakeBuilder(this);
+		hash = "hash_DEFAULT";
 	}
 
 	public CartShipmentFakeBuilder(CartDeliVeryFakeBuilder parentBuilder) {
@@ -43,18 +43,29 @@ public class CartShipmentFakeBuilder {
 		return this;
 	}
 
+	public CartShipmentFakeBuilder hash(String hash) {
+		this.hash = hash;
+		return this;
+	}
+
 	public CartWarehouseFakeBuilder warehouse() {
 		return warehouse;
 	}
 
-	public CartShipment build( ) {
+	public CartShippingFakeBuilder shipping() {
+		return shipping;
+	}
+
+	public CartShipment build() {
 		CartShipmentFake shipment = new CartShipmentFake();
 		shipment.setItems(items.stream()
-				.map(CartShipmentItemFakeBuilder::build)
-				.collect(Collectors.toList()));
+			.map(CartShipmentItemFakeBuilder::build)
+			.collect(Collectors.toList()));
 		shipment.setTotal(total);
 		shipment.setWeight(weight);
 		shipment.setWarehouse(warehouse.build());
+		shipment.setShipping(shipping.build());
+		shipment.setHash(hash);
 		return shipment;
 	}
 

@@ -3,18 +3,16 @@ package com.logicommerce.sdktest.models;
 import java.util.List;
 import com.logicommerce.sdk.models.CartShipment;
 import com.logicommerce.sdk.models.CartShipmentItem;
+import com.logicommerce.sdk.models.CartShipping;
 import com.logicommerce.sdk.models.CartWarehouse;
 
 public class CartShipmentFake implements CartShipment {
 
 	private List<CartShipmentItem> items;
-
 	private double total;
-
 	private double weight;
-
 	private CartWarehouse warehouse;
-
+	private CartShipping shipping;
 	private String hash;
 
 	@Override
@@ -38,6 +36,11 @@ public class CartShipmentFake implements CartShipment {
 	}
 
 	@Override
+	public CartShipping getShipping() {
+		return shipping;
+	}
+
+	@Override
 	public String getHash() {
 		return hash;
 	}
@@ -56,6 +59,10 @@ public class CartShipmentFake implements CartShipment {
 
 	public void setWarehouse(CartWarehouse warehouse) {
 		this.warehouse = warehouse;
+	}
+
+	public void setShipping(CartShipping shipping) {
+		this.shipping = shipping;
 	}
 
 	public void setHash(String hash) {

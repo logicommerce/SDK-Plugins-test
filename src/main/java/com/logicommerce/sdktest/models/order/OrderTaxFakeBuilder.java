@@ -13,7 +13,7 @@ public class OrderTaxFakeBuilder<T> extends OrderTaxBuilder<T> {
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.taxRate = 0d;
 		super.reRate = 0d;
@@ -23,5 +23,6 @@ public class OrderTaxFakeBuilder<T> extends OrderTaxBuilder<T> {
 		super.totalPrice = 0d;
 		super.baseWithoutDiscounts = 0d;
 		super.discount = 0d;
+		super.code = "tax_code DEFAULT";
 	}
 }

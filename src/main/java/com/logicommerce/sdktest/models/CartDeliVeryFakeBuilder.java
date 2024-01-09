@@ -3,7 +3,6 @@ package com.logicommerce.sdktest.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import com.logicommerce.sdk.models.CartDelivery;
 
 public class CartDeliVeryFakeBuilder {

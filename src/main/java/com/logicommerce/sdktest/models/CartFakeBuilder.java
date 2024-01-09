@@ -10,26 +10,23 @@ import com.logicommerce.sdk.models.User;
 public class CartFakeBuilder {
 
 	private String token;
-
 	private LocalDateTime createdAt;
-
 	private List<CartItemFakeBuilder> items;
-
 	private CartTotalsFakeBuilder totals;
-
 	private CartDeliVeryFakeBuilder delivery;
-
 	private UserFakeBuilder userBuilder;
-
 	private User user;
-	
 	private String currencyCode;
+	private CartPaymentSystemFakeBuilder paymentSystem;
+	private List<CartDiscountFakeBuilder<CartFakeBuilder>> discounts;
 
 	public CartFakeBuilder() {
 		items = new ArrayList<>();
 		totals = new CartTotalsFakeBuilder(this);
 		delivery = new CartDeliVeryFakeBuilder(this);
 		userBuilder = new UserFakeBuilder(this);
+		paymentSystem = new CartPaymentSystemFakeBuilder(this);
+		discounts = new ArrayList<>();
 		currencyCode = "EUR";
 	}
 
@@ -61,10 +58,29 @@ public class CartFakeBuilder {
 		this.user = user;
 		return this;
 	}
-	
+
+	public CartFakeBuilder delivery(CartDeliVeryFakeBuilder delivery) {
+		this.delivery = delivery;
+		return this;
+	}
+
+	public CartDeliVeryFakeBuilder delivery() {
+		return delivery;
+	}
+
 	public CartFakeBuilder currencyCode(String currencyCode) {
 		this.currencyCode = currencyCode;
 		return this;
+	}
+
+	public CartPaymentSystemFakeBuilder paymentSystem() {
+		return paymentSystem;
+	}
+
+	public CartDiscountFakeBuilder<CartFakeBuilder> discount() {
+		var discount = new CartDiscountFakeBuilder<CartFakeBuilder>(this);
+		discounts.add(discount);
+		return discount;
 	}
 
 	public Cart build() {
@@ -72,8 +88,8 @@ public class CartFakeBuilder {
 		cart.setToken(token);
 		cart.setCreatedAt(createdAt);
 		cart.setItems(items.stream()
-				.map(CartItemFakeBuilder::build)
-				.collect(Collectors.toList()));
+			.map(CartItemFakeBuilder::build)
+			.collect(Collectors.toList()));
 		cart.setTotals(totals.build());
 		cart.setDelivery(delivery.build());
 		if (user == null) {
@@ -81,6 +97,10 @@ public class CartFakeBuilder {
 		}
 		cart.setUser(user);
 		cart.setCurrencyCode(currencyCode);
+		cart.setPaymentSystem(paymentSystem.build());
+		cart.setDiscounts(discounts.stream()
+			.map(CartDiscountFakeBuilder::build)
+			.collect(Collectors.toList()));
 		return cart;
 	}
 

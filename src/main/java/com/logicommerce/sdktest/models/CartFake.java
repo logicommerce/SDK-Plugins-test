@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.logicommerce.sdk.models.Cart;
 import com.logicommerce.sdk.models.CartDelivery;
+import com.logicommerce.sdk.models.CartDiscount;
 import com.logicommerce.sdk.models.CartItem;
+import com.logicommerce.sdk.models.CartPaymentSystem;
 import com.logicommerce.sdk.models.CartTotals;
 import com.logicommerce.sdk.models.User;
 
@@ -23,8 +25,12 @@ public class CartFake implements Cart {
 	private String abandonedBasketLink;
 
 	private User user;
-	
+
 	private String currencyCode;
+
+	private CartPaymentSystem paymentSystem;
+
+	private List<CartDiscount> discounts;
 
 	@Override
 	public LocalDateTime getCreatedAt() {
@@ -66,6 +72,16 @@ public class CartFake implements Cart {
 		return currencyCode;
 	}
 
+	@Override
+	public CartPaymentSystem getPaymentSystem() {
+		return paymentSystem;
+	}
+
+	@Override
+	public List<CartDiscount> getDiscounts() {
+		return discounts;
+	}
+
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -93,9 +109,17 @@ public class CartFake implements Cart {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public void setCurrencyCode(String currencyCode) {
 		this.currencyCode = currencyCode;
+	}
+
+	public void setPaymentSystem(CartPaymentSystem paymentSystem) {
+		this.paymentSystem = paymentSystem;
+	}
+
+	public void setDiscounts(List<CartDiscount> discounts) {
+		this.discounts = discounts;
 	}
 
 }
