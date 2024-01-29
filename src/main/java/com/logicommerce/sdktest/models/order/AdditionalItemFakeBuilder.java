@@ -8,7 +8,7 @@ import com.logicommerce.sdk.models.order.OrderTax;
 
 public class AdditionalItemFakeBuilder {
 
-	private CreditNoteFakeBuilder parentBuilder;
+	private ReturnDocumentFakeBuilder parentBuilder;
 	private Integer id;
 	private String name;
 	private String comment;
@@ -23,7 +23,7 @@ public class AdditionalItemFakeBuilder {
 		taxes = new ArrayList<>();
 	}
 
-	public AdditionalItemFakeBuilder(CreditNoteFakeBuilder parentBuilder) {
+	public AdditionalItemFakeBuilder(ReturnDocumentFakeBuilder parentBuilder) {
 		this();
 		this.parentBuilder = parentBuilder;
 	}
@@ -69,7 +69,7 @@ public class AdditionalItemFakeBuilder {
 		return additionalItem;
 	}
 
-	public CreditNoteFakeBuilder done() {
+	public ReturnDocumentFakeBuilder done() {
 		return parentBuilder;
 	}
 }
