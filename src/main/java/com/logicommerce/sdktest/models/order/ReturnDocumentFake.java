@@ -2,9 +2,9 @@ package com.logicommerce.sdktest.models.order;
 
 import java.util.List;
 import com.logicommerce.sdk.models.order.AdditionalItem;
-import com.logicommerce.sdk.models.order.CreditNote;
+import com.logicommerce.sdk.models.order.ReturnDocument;
 
-public class CreditNoteFake extends DocumentFake implements CreditNote {
+public class ReturnDocumentFake extends DocumentFake implements ReturnDocument {
 
 	private List<AdditionalItem> additionalItems;
 

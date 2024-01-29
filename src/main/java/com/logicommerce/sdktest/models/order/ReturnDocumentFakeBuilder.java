@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CreditNoteFakeBuilder extends DocumentFakeBuilder<CreditNoteFakeBuilder> {
+public class ReturnDocumentFakeBuilder extends DocumentFakeBuilder<ReturnDocumentFakeBuilder> {
 
 	private List<AdditionalItemFakeBuilder> additionalItems;
 
-	public CreditNoteFakeBuilder() {
+	public ReturnDocumentFakeBuilder() {
 		super();
 		additionalItems = new ArrayList<>();
 	}
@@ -19,8 +19,8 @@ public class CreditNoteFakeBuilder extends DocumentFakeBuilder<CreditNoteFakeBui
 		return additionalItem;
 	}
 
-	public CreditNoteFake build() {
-		CreditNoteFake creditNoteFake = new CreditNoteFake();
+	public ReturnDocumentFake build() {
+		ReturnDocumentFake creditNoteFake = new ReturnDocumentFake();
 		creditNoteFake.setAdditionalItems(additionalItems.stream()
 			.map(AdditionalItemFakeBuilder::build)
 			.collect(Collectors.toList()));
@@ -29,7 +29,7 @@ public class CreditNoteFakeBuilder extends DocumentFakeBuilder<CreditNoteFakeBui
 	}
 
 	@Override
-	public CreditNoteFakeBuilder returnThis() {
+	public ReturnDocumentFakeBuilder returnThis() {
 		return this;
 	}
 }
