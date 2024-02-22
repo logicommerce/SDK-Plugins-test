@@ -80,6 +80,10 @@ public abstract class Client {
 		}
 		InputStream content = entity.getContent();
 		InputStreamReader in = new InputStreamReader(content, StandardCharsets.UTF_8);
-		return new BufferedReader(in).lines().collect(Collectors.joining(""));
+		try (BufferedReader reader = new BufferedReader(in)) {
+			return reader.lines().collect(Collectors.joining(""));
+		} catch (IOException e) {
+			return null;
+		}
 	}
 }
