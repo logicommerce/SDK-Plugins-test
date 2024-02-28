@@ -12,7 +12,7 @@ public class UserFakeBuilder {
 
 	private CartFakeBuilder parentBuilder;
 
-	private List<UserAddressFakeBuilder> billingAddresses;
+	private List<UserAddressFakeBuilder<UserFakeBuilder>> billingAddresses;
 
 	private LocalDate birthday;
 
@@ -30,7 +30,7 @@ public class UserFakeBuilder {
 
 	private Integer salesAgentId;
 
-	private List<UserAddressFakeBuilder> shippingAddresses;
+	private List<UserAddressFakeBuilder<UserFakeBuilder>> shippingAddresses;
 
 	private Boolean salesAgent;
 
@@ -93,14 +93,14 @@ public class UserFakeBuilder {
 		return this;
 	}
 
-	public UserAddressFakeBuilder billingAddress() {
-		UserAddressFakeBuilder builder = new UserAddressFakeBuilder(this);
+	public UserAddressFakeBuilder<UserFakeBuilder> billingAddress() {
+		var builder = new UserAddressFakeBuilder<>(this);
 		billingAddresses.add(builder);
 		return builder;
 	}
 
-	public UserAddressFakeBuilder shippingAddress() {
-		UserAddressFakeBuilder builder = new UserAddressFakeBuilder(this);
+	public UserAddressFakeBuilder<UserFakeBuilder> shippingAddress() {
+		var builder = new UserAddressFakeBuilder<>(this);
 		shippingAddresses.add(builder);
 		return builder;
 	}
@@ -122,11 +122,11 @@ public class UserFakeBuilder {
 		user.setSalesAgent(salesAgent);
 		user.setCustomTags(customTags);
 		user.setBillingAddresses(billingAddresses.stream()
-				.map(UserAddressFakeBuilder::build)
-				.collect(Collectors.toList()));
+			.map(UserAddressFakeBuilder::build)
+			.collect(Collectors.toList()));
 		user.setShippingAddresses(shippingAddresses.stream()
-				.map(UserAddressFakeBuilder::build)
-				.collect(Collectors.toList()));
+			.map(UserAddressFakeBuilder::build)
+			.collect(Collectors.toList()));
 		return user;
 	}
 

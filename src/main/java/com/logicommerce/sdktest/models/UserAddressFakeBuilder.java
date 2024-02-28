@@ -1,30 +1,36 @@
 package com.logicommerce.sdktest.models;
 
-import com.logicommerce.sdk.models.UserAddress;
+import com.logicommerce.sdk.builders.UserAddressBuilder;
+import com.logicommerce.sdk.models.implementations.UserAddressImpl;
 
-public class UserAddressFakeBuilder extends AddressBuilder<UserFakeBuilder, UserAddressFake> {
+public class UserAddressFakeBuilder<T> extends UserAddressBuilder<T, UserAddressImpl> {
 
-	private boolean defaultAddress;
+	public UserAddressFakeBuilder() {
+		super();
+		setDefaultvalues();
+	}
 
-	public UserAddressFakeBuilder(UserFakeBuilder userFakeBuilder) {
+	public UserAddressFakeBuilder(T userFakeBuilder) {
 		super(userFakeBuilder);
+		setDefaultvalues();
 	}
 
-	public UserAddressFakeBuilder defaultAddress(boolean defaultAddress) {
-		this.defaultAddress = defaultAddress;
-		return this;
+	private void setDefaultvalues() {
+		defaultAddress(false);
+		alias("alias DEFAULT");
+		firstName("firstName DEFAULT");
+		lastName("lastName DEFAULT");
+		company("company DEFAULT");
+		addressAdditionalInformation("addressAdditionalInformation DEFAULT");
+		number("number DEFAULT");
+		nif("nif DEFAULT");
+		vat("vat DEFAULT");
+		tax(false);
+		re(false);
 	}
 
 	@Override
-	public UserAddress build() {
-		UserAddressFake userAddress = new UserAddressFake();
-		setElements(userAddress);
-		userAddress.setDefaultAddress(defaultAddress);
-		return userAddress;
-	}
-
-	@Override
-	public UserAddressFakeBuilder returnThis() {
+	public UserAddressFakeBuilder<T> returnThis() {
 		return this;
 	}
 
