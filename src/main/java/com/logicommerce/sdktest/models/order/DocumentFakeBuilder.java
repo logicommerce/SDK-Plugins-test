@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.logicommerce.sdk.enums.ExportStatusType;
 import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
-import com.logicommerce.sdktest.models.HeadquarterFakeBuilder;
 
 public abstract class DocumentFakeBuilder<T extends DocumentFakeBuilder<T>> {
 
 	private String comment;
-
-	private HeadquarterFakeBuilder<T> headquarter;
 
 	private List<CustomTagFakeBuilder<T>> customTags;
 
@@ -63,7 +60,6 @@ public abstract class DocumentFakeBuilder<T extends DocumentFakeBuilder<T>> {
 	public DocumentFakeBuilder() {
 		comment = "comment DEFAULT";
 		languageId = 1;
-		headquarter = new HeadquarterFakeBuilder<>(returnThis());
 		user = new OrderUserFakeBuilder<>(returnThis());
 		totals = new OrderTotalFakeBuilder<>(returnThis());
 		delivery = new OrderDeliveryFakeBuilder<>(returnThis());
@@ -86,10 +82,6 @@ public abstract class DocumentFakeBuilder<T extends DocumentFakeBuilder<T>> {
 		discounts = new ArrayList<>();
 		statuses = new ArrayList<>();
 		taxes = new ArrayList<>();
-	}
-
-	public HeadquarterFakeBuilder<T> headquarter() {
-		return headquarter;
 	}
 
 	public T comment(String comment) {
@@ -217,7 +209,6 @@ public abstract class DocumentFakeBuilder<T extends DocumentFakeBuilder<T>> {
 	}
 
 	public void setFields(DocumentFake document) {
-		document.setHeadquarter(headquarter.build());
 		document.setComment(comment);
 		document.setCustomTags(customTags.stream().map(CustomTagFakeBuilder::build).collect(Collectors.toList()));
 		document.setLanguageId(languageId);

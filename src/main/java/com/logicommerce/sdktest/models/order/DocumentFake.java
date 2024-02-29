@@ -6,7 +6,6 @@ import java.util.List;
 import com.logicommerce.sdk.enums.ExportStatusType;
 import com.logicommerce.sdk.models.CustomTag;
 import com.logicommerce.sdk.models.ElementProperty;
-import com.logicommerce.sdk.models.implementations.HeadquarterImpl;
 import com.logicommerce.sdk.models.order.Document;
 import com.logicommerce.sdk.models.order.OrderAdditionalInformation;
 import com.logicommerce.sdk.models.order.OrderCurrency;
@@ -25,7 +24,6 @@ import com.logicommerce.sdktest.models.ElementPropertyFake;
 public class DocumentFake implements Document {
 
 	private String comment;
-	private HeadquarterImpl headquarter;
 	private List<CustomTag> customTags;
 	private OrderUser user;
 	private OrderTotal totals;
@@ -51,11 +49,6 @@ public class DocumentFake implements Document {
 	private OrderDelivery orderDelivery;
 	private Integer languageId;
 	private Integer documentId;
-
-	@Override
-	public HeadquarterImpl getHeadquarter() {
-		return headquarter;
-	}
 
 	@Override
 	public List<OrderAdditionalInformation> getAdditionalInformation() {
@@ -165,10 +158,6 @@ public class DocumentFake implements Document {
 	@Override
 	public boolean isReverseChargeVat() {
 		return reverseChargeVat;
-	}
-
-	public void setHeadquarter(HeadquarterImpl headquarter) {
-		this.headquarter = headquarter;
 	}
 
 	public void setComment(String comment) {
