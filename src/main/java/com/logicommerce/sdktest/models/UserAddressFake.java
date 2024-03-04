@@ -1,6 +1,9 @@
 package com.logicommerce.sdktest.models;
 
-public class UserAddressFake extends AddressFake {
+import com.logicommerce.sdk.models.implementations.UserAddressImpl;
+
+@Deprecated
+public class UserAddressFake extends UserAddressImpl {
 
 	private boolean defaultAddress;
 

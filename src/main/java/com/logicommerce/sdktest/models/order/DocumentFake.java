@@ -50,7 +50,6 @@ public class DocumentFake implements Document {
 	private Integer languageId;
 	private Integer documentId;
 
-
 	@Override
 	public List<OrderAdditionalInformation> getAdditionalInformation() {
 		return additionalInformation;

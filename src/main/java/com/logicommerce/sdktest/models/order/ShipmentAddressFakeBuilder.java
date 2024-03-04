@@ -1,8 +1,8 @@
 package com.logicommerce.sdktest.models.order;
 
-import com.logicommerce.sdk.builders.LocationBuilder;
 import com.logicommerce.sdk.builders.ShipmentAddressBuilder;
 import com.logicommerce.sdk.models.order.ShipmentAddress;
+import com.logicommerce.sdk.models.order.implementations.ShipmentAddressImpl;
 import com.logicommerce.sdktest.models.LocationFakeBuilder;
 
 public class ShipmentAddressFakeBuilder<T> extends ShipmentAddressBuilder<T> {
@@ -11,12 +11,12 @@ public class ShipmentAddressFakeBuilder<T> extends ShipmentAddressBuilder<T> {
 		super();
 		defaultValues();
 	}
-	
+
 	public ShipmentAddressFakeBuilder(T parentBuilder) {
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.name = "test";
 		super.address = "test address";
@@ -29,27 +29,19 @@ public class ShipmentAddressFakeBuilder<T> extends ShipmentAddressBuilder<T> {
 		super.location = new LocationFakeBuilder<>(this);
 	}
 
-	
-	public LocationBuilder<ShipmentAddressBuilder<T>> location() {
-		LocationBuilder<ShipmentAddressBuilder<T>> location = new LocationFakeBuilder<ShipmentAddressBuilder<T>>(this);
-		super.location = location;
-		return location;
-	}
-
 	public ShipmentAddress build() {
 		ShipmentAddress shipmentAddress = super.build();
-		ShipmentAddressFake shipmentAddressFake = new ShipmentAddressFake();		
-		shipmentAddressFake.setAddress(shipmentAddress.getAddress());
-		shipmentAddressFake.setCity(shipmentAddress.getCity());
-		shipmentAddressFake.setEmail(shipmentAddress.getEmail());
-		shipmentAddressFake.setLocation(shipmentAddress.getLocation());
-		shipmentAddressFake.setMobile(shipmentAddress.getMobile());
-		shipmentAddressFake.setName(shipmentAddress.getName());
-		shipmentAddressFake.setMobile(shipmentAddress.getMobile());
-		shipmentAddressFake.setPhone(shipmentAddress.getPhone());
-		shipmentAddressFake.setPostalCode(shipmentAddress.getPostalCode());
-		shipmentAddressFake.setState(shipmentAddress.getState());
-		
-		return shipmentAddressFake;
+		ShipmentAddressImpl shipmentAddressImpl = new ShipmentAddressImpl();
+		shipmentAddressImpl.setAddress(shipmentAddress.getAddress());
+		shipmentAddressImpl.setCity(shipmentAddress.getCity());
+		shipmentAddressImpl.setEmail(shipmentAddress.getEmail());
+		shipmentAddressImpl.setLocation(shipmentAddress.getLocation());
+		shipmentAddressImpl.setMobile(shipmentAddress.getMobile());
+		shipmentAddressImpl.setName(shipmentAddress.getName());
+		shipmentAddressImpl.setMobile(shipmentAddress.getMobile());
+		shipmentAddressImpl.setPhone(shipmentAddress.getPhone());
+		shipmentAddressImpl.setPostalCode(shipmentAddress.getPostalCode());
+		shipmentAddressImpl.setState(shipmentAddress.getState());
+		return shipmentAddressImpl;
 	}
 }

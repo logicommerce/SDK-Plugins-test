@@ -1,8 +1,10 @@
 package com.logicommerce.sdktest.models;
 
 import com.logicommerce.sdk.models.CartWarehouse;
+import com.logicommerce.sdk.models.Location;
+import com.logicommerce.sdk.models.implementations.AddressImpl;
 
-public class CartWarehouseFake implements CartWarehouse {
+public class CartWarehouseFake extends AddressImpl implements CartWarehouse {
 
 	private String address;
 
@@ -21,6 +23,10 @@ public class CartWarehouseFake implements CartWarehouse {
 	private int offsetDays;
 
 	private boolean needsShipping;
+
+	private String phone;
+
+	private String mobile;
 
 	@Override
 	public String getAddress() {
@@ -53,6 +59,16 @@ public class CartWarehouseFake implements CartWarehouse {
 	}
 
 	@Override
+	public String getPhone() {
+		return phone;
+	}
+
+	@Override
+	public String getMobile() {
+		return mobile;
+	}
+
+	@Override
 	public Integer getPhysicalLocationId() {
 		return physicalLocationId;
 	}
@@ -65,6 +81,11 @@ public class CartWarehouseFake implements CartWarehouse {
 	@Override
 	public boolean needsShipping() {
 		return needsShipping;
+	}
+
+	@Override
+	public Location getLocation() {
+		return new LocationFake();
 	}
 
 	public void setAddress(String address) {

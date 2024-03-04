@@ -8,9 +8,13 @@ import com.logicommerce.sdk.models.CartDiscount;
 import com.logicommerce.sdk.models.CartItem;
 import com.logicommerce.sdk.models.CartPaymentSystem;
 import com.logicommerce.sdk.models.CartTotals;
+import com.logicommerce.sdk.models.Headquarter;
 import com.logicommerce.sdk.models.User;
+import com.logicommerce.sdk.models.implementations.HeadquarterImpl;
 
 public class CartFake implements Cart {
+
+	private HeadquarterImpl headquarter;
 
 	private String token;
 
@@ -31,6 +35,11 @@ public class CartFake implements Cart {
 	private CartPaymentSystem paymentSystem;
 
 	private List<CartDiscount> discounts;
+
+	@Override
+	public Headquarter getHeadquarter() {
+		return headquarter;
+	}
 
 	@Override
 	public LocalDateTime getCreatedAt() {
@@ -80,6 +89,10 @@ public class CartFake implements Cart {
 	@Override
 	public List<CartDiscount> getDiscounts() {
 		return discounts;
+	}
+
+	public void setHeadquarter(HeadquarterImpl headquarter) {
+		this.headquarter = headquarter;
 	}
 
 	public void setCreatedAt(LocalDateTime createdAt) {
