@@ -3,11 +3,22 @@ package com.logicommerce.sdktest.models.order;
 import com.logicommerce.sdk.models.Location;
 import com.logicommerce.sdk.models.order.ShipmentAddress;
 
+/**
+ * Fake implementation of ShipmentAddress
+ * 
+ * @deprecated since 1.3.3 use {@link com.logicommerce.sdk.models.order.implementations.ShipmentAddressImpl} instead
+ * @see com.logicommerce.sdk.models.order.ShipmentAddress
+ */
+@Deprecated(forRemoval = true, since = "1.3.3")
 public class ShipmentAddressFake implements ShipmentAddress {
 
 	private String name;
 
 	private String address;
+
+	private String number;
+
+	private String addressAdditionalInformation;
 
 	private String city;
 
@@ -26,6 +37,16 @@ public class ShipmentAddressFake implements ShipmentAddress {
 	@Override
 	public String getAddress() {
 		return address;
+	}
+
+	@Override
+	public String getNumber() {
+		return number;
+	}
+
+	@Override
+	public String getAddressAdditionalInformation() {
+		return addressAdditionalInformation;
 	}
 
 	@Override

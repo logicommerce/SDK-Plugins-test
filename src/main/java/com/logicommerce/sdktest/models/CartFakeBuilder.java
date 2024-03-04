@@ -10,10 +10,11 @@ import com.logicommerce.sdk.models.User;
 public class CartFakeBuilder {
 
 	private String token;
+	private HeadquarterFakeBuilder<CartFakeBuilder> headquarter;
 	private LocalDateTime createdAt;
 	private List<CartItemFakeBuilder> items;
 	private CartTotalsFakeBuilder totals;
-	private CartDeliVeryFakeBuilder delivery;
+	private CartDeliveryFakeBuilder delivery;
 	private UserFakeBuilder userBuilder;
 	private User user;
 	private String currencyCode;
@@ -21,13 +22,18 @@ public class CartFakeBuilder {
 	private List<CartDiscountFakeBuilder<CartFakeBuilder>> discounts;
 
 	public CartFakeBuilder() {
+		headquarter = new HeadquarterFakeBuilder<>(this);
 		items = new ArrayList<>();
 		totals = new CartTotalsFakeBuilder(this);
-		delivery = new CartDeliVeryFakeBuilder(this);
+		delivery = new CartDeliveryFakeBuilder(this);
 		userBuilder = new UserFakeBuilder(this);
 		paymentSystem = new CartPaymentSystemFakeBuilder(this);
 		discounts = new ArrayList<>();
 		currencyCode = "EUR";
+	}
+
+	public HeadquarterFakeBuilder<CartFakeBuilder> headquarter() {
+		return headquarter;
 	}
 
 	public CartItemFakeBuilder item() {
@@ -59,12 +65,12 @@ public class CartFakeBuilder {
 		return this;
 	}
 
-	public CartFakeBuilder delivery(CartDeliVeryFakeBuilder delivery) {
+	public CartFakeBuilder delivery(CartDeliveryFakeBuilder delivery) {
 		this.delivery = delivery;
 		return this;
 	}
 
-	public CartDeliVeryFakeBuilder delivery() {
+	public CartDeliveryFakeBuilder delivery() {
 		return delivery;
 	}
 
@@ -85,6 +91,7 @@ public class CartFakeBuilder {
 
 	public Cart build() {
 		CartFake cart = new CartFake();
+		cart.setHeadquarter(headquarter.build());
 		cart.setToken(token);
 		cart.setCreatedAt(createdAt);
 		cart.setItems(items.stream()
