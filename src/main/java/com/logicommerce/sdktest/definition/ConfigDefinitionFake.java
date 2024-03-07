@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.definition.ConfigDefinition;
 import com.logicommerce.sdk.definition.MappedFieldDefinition;
+import com.logicommerce.sdk.definition.PluginActionDefinition;
 import com.logicommerce.sdk.definition.PropertyDefinition;
 
 public abstract class ConfigDefinitionFake implements ConfigDefinition {
@@ -15,6 +16,8 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 	private List<PropertyDefinition> additionalProperties;
 
 	private List<MappedFieldDefinition> mappedFields;
+
+	private List<PluginActionDefinition> pluginActions;
 
 	@Override
 	public List<PropertyDefinition> getProperties() {
@@ -74,5 +77,19 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 
 	public void setMappedFields(List<MappedFieldDefinition> mappedFields) {
 		this.mappedFields = mappedFields;
+	}
+
+
+	@Override
+	public List<PluginActionDefinition> getPluginActions() {
+		if (pluginActions == null) {
+			pluginActions = new ArrayList<>();
+		}
+		return pluginActions;
+	}
+
+	@Override
+	public void addPluginAction(PluginActionDefinition pluginActions) {
+		getPluginActions().add(pluginActions);
 	}
 }

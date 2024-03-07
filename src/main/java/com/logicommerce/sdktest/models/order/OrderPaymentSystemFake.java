@@ -1,9 +1,12 @@
 package com.logicommerce.sdktest.models.order;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.enums.AmountType;
+import com.logicommerce.sdk.models.ElementProperty;
 import com.logicommerce.sdk.models.order.OrderPaymentSystem;
 import com.logicommerce.sdk.models.order.OrderTax;
+import com.logicommerce.sdktest.models.ElementPropertyFake;
 
 public class OrderPaymentSystemFake implements OrderPaymentSystem {
 
@@ -26,6 +29,8 @@ public class OrderPaymentSystemFake implements OrderPaymentSystem {
 	private boolean cashOnDelivery;
 
 	private String property;
+	
+	List<ElementProperty> properties;
 
 	@Override
 	public Integer getId() {
@@ -115,6 +120,24 @@ public class OrderPaymentSystemFake implements OrderPaymentSystem {
 
 	public void setProperty(String property) {
 		this.property = property;
+	}
+
+	@Override
+	public List<ElementProperty> getProperties() {
+		return properties;
+	}
+
+	@Override
+	public void addProperty(ElementProperty property) {
+		if (properties == null) {
+			properties = new ArrayList<>();
+		}
+		properties.add(property);
+	}
+
+	@Override
+	public void addProperty(String name, String value) {
+		addProperty(new ElementPropertyFake(name, value));
 	}
 
 }
