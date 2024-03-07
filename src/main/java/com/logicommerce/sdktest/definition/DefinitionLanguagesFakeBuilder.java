@@ -8,10 +8,10 @@ public class DefinitionLanguagesFakeBuilder<T> {
 
 	private T parentBuilder;
 
-	private Map<String, String> names;
+	private Map<String, String> values;
 
 	public DefinitionLanguagesFakeBuilder() {
-		names = new LinkedHashMap<>();
+		values = new LinkedHashMap<>();
 	}
 
 	public DefinitionLanguagesFakeBuilder(T parentBuilder) {
@@ -19,14 +19,14 @@ public class DefinitionLanguagesFakeBuilder<T> {
 		this.parentBuilder = parentBuilder;
 	}
 
-	public DefinitionLanguagesFakeBuilder<T> name(String language, String name) {
-		names.put(language, name);
+	public DefinitionLanguagesFakeBuilder<T> name(String language, String value) {
+		values.put(language, value);
 		return this;
 	}
 
 	public DefinitionLanguages build() {
 		DefinitionLanguagesFake languages = new DefinitionLanguagesFake();
-		languages.setNames(names);
+		languages.setValues(values);
 		return languages;
 	}
 

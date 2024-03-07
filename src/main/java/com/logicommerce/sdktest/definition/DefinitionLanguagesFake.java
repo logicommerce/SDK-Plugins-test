@@ -8,32 +8,48 @@ public class DefinitionLanguagesFake implements DefinitionLanguages {
 
 	private static final String LANGUAGE_DEFAULT = "en";
 
-	private Map<String, String> names;
+	private Map<String, String> values;
 
 	public DefinitionLanguagesFake() {
-		names = new LinkedHashMap<>();
+		values = new LinkedHashMap<>();
 	}
 
 	@Override
+	@Deprecated(since = "1.3.4", forRemoval = true)
 	public Map<String, String> getNames() {
-		return names;
+		return values;
 	}
 
 	@Override
+	public Map<String, String> getValues() {
+		return values;
+	}
+
+	@Override
+	@Deprecated(since = "1.3.4", forRemoval = true)
 	public String getName(String language) {
-		if (names.containsKey(language))
-			return names.get(language);
-		if (names.containsKey(LANGUAGE_DEFAULT))
-			return names.get(LANGUAGE_DEFAULT);
+		if (values.containsKey(language))
+			return values.get(language);
+		if (values.containsKey(LANGUAGE_DEFAULT))
+			return values.get(LANGUAGE_DEFAULT);
 		return null;
 	}
 
-	public void setName(String language, String name) {
-		names.put(language, name);
+	@Override
+	public String getValue(String language) {
+		if (values.containsKey(language))
+			return values.get(language);
+		if (values.containsKey(LANGUAGE_DEFAULT))
+			return values.get(LANGUAGE_DEFAULT);
+		return null;
 	}
 
-	public void setNames(Map<String, String> names) {
-		this.names = names;
+	public void setValue(String language, String name) {
+		values.put(language, name);
+	}
+
+	public void setValues(Map<String, String> names) {
+		this.values = names;
 	}
 
 }
