@@ -2,7 +2,6 @@ package com.logicommerce.sdktest.resources;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.logicommerce.sdk.models.Location;
 import com.logicommerce.sdk.resources.LocationResource;
 
@@ -57,5 +56,10 @@ public class LocationFake implements LocationResource {
 	@Override
 	public String getStateName(Integer languageId, Integer countryId, Integer locationId) {
 		return STATE_NAME;
+	}
+
+	@Override
+	public Location getLocation(String languageCode, String countryCode, String postalCode) {
+		return locationsPath.get(0);
 	}
 }
