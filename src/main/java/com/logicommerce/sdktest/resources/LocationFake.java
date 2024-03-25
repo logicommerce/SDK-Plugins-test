@@ -13,7 +13,7 @@ public class LocationFake implements LocationResource {
 
 	private static final String LANGUAGE_CODE = "ES";
 	private static final String COUNTRY_CODE = "ES";
-	private static final String COUNTRY_NAME = "Espa�a";
+	private static final String COUNTRY_NAME = "España";
 	private static final Integer COUNTRY_ID = 724;
 	private static final String STATE_NAME = "Barcelona";
 	private static final String STATE_CODE = "ES.56.B";
@@ -59,7 +59,7 @@ public class LocationFake implements LocationResource {
 	}
 
 	@Override
-	public Location getLocation(String languageCode, String countryCode, String postalCode) {
-		return locationsPath.get(0);
+	public List<Location> getLocations(String languageCode, String countryCode, String postalCode) {
+		return List.of(locationsPath.get(0));
 	}
 }

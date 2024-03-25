@@ -36,6 +36,17 @@ public class RequestParamsFakeBuilder {
 	}
 
 	/**
+	 * Sets the parameters of the builder.
+	 *
+	 * @param params the parameters value
+	 * @return the RequestParamsFakeBuilder instance
+	 */
+	public RequestParamsFakeBuilder params(Map<String, String> params) {
+		this.params = params;
+		return this;
+	}
+
+	/**
 	 * Sets the body of the builder.
 	 *
 	 * @param body the body value
