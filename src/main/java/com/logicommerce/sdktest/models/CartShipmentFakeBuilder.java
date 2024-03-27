@@ -15,7 +15,7 @@ public class CartShipmentFakeBuilder {
 	private CartWarehouseFakeBuilder warehouse;
 	private CartShippingFakeBuilder shipping;
 	private String hash;
-	private AddressBuilder<CartShipmentFakeBuilder> logisticsCenterAddress;
+	private AddressBuilder<CartShipmentFakeBuilder, ?> logisticsCenterAddress;
 
 	public CartShipmentFakeBuilder() {
 		items = new ArrayList<>();
@@ -59,7 +59,7 @@ public class CartShipmentFakeBuilder {
 		return shipping;
 	}
 
-	public AddressBuilder<CartShipmentFakeBuilder> logisticsCenterAddress() {
+	public AddressBuilder<CartShipmentFakeBuilder, ?> logisticsCenterAddress() {
 		return logisticsCenterAddress;
 	}
 

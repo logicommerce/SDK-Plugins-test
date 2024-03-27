@@ -3,7 +3,7 @@ package com.logicommerce.sdktest.models;
 import com.logicommerce.sdk.builders.AddressBuilder;
 import com.logicommerce.sdk.models.implementations.AddressImpl;
 
-public class AddressFakeBuilder<T> extends AddressBuilder<T> {
+public class AddressFakeBuilder<T> extends AddressBuilder<T, AddressFakeBuilder<T>> {
 
 	public AddressFakeBuilder() {
 		super();
