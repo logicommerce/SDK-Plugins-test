@@ -14,6 +14,8 @@ public class LocationFake implements Location {
 
 	private String stateCode;
 
+	private String name;
+
 	@Override
 	public String getCountry() {
 		return country;
@@ -39,6 +41,11 @@ public class LocationFake implements Location {
 		return stateCode;
 	}
 
+	@Override
+	public String getName() {
+		return name;
+	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -53,5 +60,13 @@ public class LocationFake implements Location {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+
+	public void setStateCode(String stateCode) {
+		this.stateCode = stateCode;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

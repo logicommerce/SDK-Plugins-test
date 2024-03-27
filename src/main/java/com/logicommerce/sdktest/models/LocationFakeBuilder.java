@@ -20,5 +20,6 @@ public class LocationFakeBuilder<T> extends LocationBuilder<T> {
 		super.latitude = 0d;
 		super.longitude = 0d;
 		super.stateCode = "stateCode DEFAULT";
+		super.name = "name DEFAULT";
 	}
 }
