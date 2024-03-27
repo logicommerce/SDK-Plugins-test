@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>1.3.4</version>
+	<version>1.3.5</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Logicommerce SDK Testing tools for Logicommerce plugins.</description>
@@ -50,11 +50,18 @@
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<logicommerce-sdk.version>1.3.4</logicommerce-sdk.version>
+
+		<logicommerce-sdk.version>1.3.5</logicommerce-sdk.version>
 		<logicommerce-utilities.version>1.0.3</logicommerce-utilities.version>
+
 		<apache-httpclient5-version>5.1.3</apache-httpclient5-version>
 		<asynchttpclient.version>2.12.3</asynchttpclient.version>
 		<jackson.version>2.14.2</jackson.version>
+
+		<junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
+		<junit-jupiter-api.version>5.9.2</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
+		<junit-platform-launcher.version>1.9.2</junit-platform-launcher.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -84,6 +91,25 @@
 			<groupId>org.asynchttpclient</groupId>
 			<artifactId>async-http-client</artifactId>
 			<version>${asynchttpclient.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter-api.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>${junit-platform-launcher.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter-engine.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
