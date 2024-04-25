@@ -85,6 +85,11 @@ public class OrderShipmentFakeBuilder<T> {
 		this.documentNumber = documentNumber;
 		return this;
 	}
+	
+	public OrderShipmentFakeBuilder<T> status(String status) {
+		this.status = status;
+		return this;
+	}
 
 	public OrderShipmentFakeBuilder<T> substatus(Integer substatus) {
 		this.substatus = substatus;
@@ -119,7 +124,7 @@ public class OrderShipmentFakeBuilder<T> {
 		return item;
 	}
 
-	public OrderShipmentStatusFakeBuilder<OrderShipmentFakeBuilder<T>> status() {
+	public OrderShipmentStatusFakeBuilder<OrderShipmentFakeBuilder<T>> statuses() {
 		var statusItem = new OrderShipmentStatusFakeBuilder<OrderShipmentFakeBuilder<T>>(this);
 		statusList.add(statusItem);
 		return statusItem;
