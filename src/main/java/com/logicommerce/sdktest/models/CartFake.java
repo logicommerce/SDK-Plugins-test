@@ -27,6 +27,8 @@ public class CartFake implements Cart {
 	private CartDelivery delivery;
 
 	private String abandonedBasketLink;
+	
+	private String basketLink;
 
 	private User user;
 
@@ -133,6 +135,15 @@ public class CartFake implements Cart {
 
 	public void setDiscounts(List<CartDiscount> discounts) {
 		this.discounts = discounts;
+	}
+
+	@Override
+	public String getBasketLink() {
+		return basketLink;
+	}
+
+	public void setBasketLink(String basketLink) {
+		this.basketLink = basketLink;
 	}
 
 }

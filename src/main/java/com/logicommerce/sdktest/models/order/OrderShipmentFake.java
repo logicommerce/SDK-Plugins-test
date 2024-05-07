@@ -3,6 +3,7 @@ package com.logicommerce.sdktest.models.order;
 import java.time.LocalDate;
 import java.util.List;
 import com.logicommerce.sdk.enums.ExportStatusType;
+import com.logicommerce.sdk.models.order.DocumentProviderPickupPoint;
 import com.logicommerce.sdk.models.order.OrderShipment;
 import com.logicommerce.sdk.models.order.OrderShipmentItem;
 import com.logicommerce.sdk.models.order.OrderShipmentStatus;
@@ -26,7 +27,8 @@ public class OrderShipmentFake implements OrderShipment {
 	private ShipmentAddress destinationAddress;
 	private List<OrderShipmentItem> items;
 	private List<OrderShipmentStatus> statuses;
-
+	private DocumentProviderPickupPoint providerPickupPoint;
+	
 	@Override
 	public Integer getId() {
 		return id;
@@ -175,6 +177,16 @@ public class OrderShipmentFake implements OrderShipment {
 	@Override
 	public void setTrackingUrl(String trackingUrl) {
 		this.trackingUrl = trackingUrl;
+	}
+
+	@Override
+	public DocumentProviderPickupPoint getProviderPickupPoint() {
+		return providerPickupPoint;
+	}
+
+	@Override
+	public void setProviderPickupPoint(DocumentProviderPickupPoint providerPickupPoint) {
+		this.providerPickupPoint = providerPickupPoint;		
 	}
 
 }

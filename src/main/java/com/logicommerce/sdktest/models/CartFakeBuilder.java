@@ -20,6 +20,7 @@ public class CartFakeBuilder {
 	private String currencyCode;
 	private CartPaymentSystemFakeBuilder paymentSystem;
 	private List<CartDiscountFakeBuilder<CartFakeBuilder>> discounts;
+	private String basketLink;
 
 	public CartFakeBuilder() {
 		headquarter = new HeadquarterFakeBuilder<>(this);
@@ -53,6 +54,11 @@ public class CartFakeBuilder {
 
 	public CartFakeBuilder token(String token) {
 		this.token = token;
+		return this;
+	}
+
+	public CartFakeBuilder basketLink(String basketLink) {
+		this.basketLink = basketLink;
 		return this;
 	}
 
@@ -108,6 +114,7 @@ public class CartFakeBuilder {
 		cart.setDiscounts(discounts.stream()
 			.map(CartDiscountFakeBuilder::build)
 			.collect(Collectors.toList()));
+		cart.setBasketLink(basketLink);
 		return cart;
 	}
 
