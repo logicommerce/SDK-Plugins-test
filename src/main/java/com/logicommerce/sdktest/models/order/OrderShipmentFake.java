@@ -25,6 +25,7 @@ public class OrderShipmentFake implements OrderShipment {
 	private OrderShipping shipping;
 	private ShipmentAddress originAddress;
 	private ShipmentAddress destinationAddress;
+	private ShipmentAddress destinationUserAddress;
 	private List<OrderShipmentItem> items;
 	private List<OrderShipmentStatus> statuses;
 	private DocumentProviderPickupPoint providerPickupPoint;
@@ -187,6 +188,15 @@ public class OrderShipmentFake implements OrderShipment {
 	@Override
 	public void setProviderPickupPoint(DocumentProviderPickupPoint providerPickupPoint) {
 		this.providerPickupPoint = providerPickupPoint;		
+	}
+
+	@Override
+	public ShipmentAddress getDestinationUserAddress() {
+		return destinationUserAddress;
+	}
+	
+	public void setDestinationUserAddress(ShipmentAddress destinationUserAddress) {
+		this.destinationUserAddress = destinationUserAddress;
 	}
 
 }

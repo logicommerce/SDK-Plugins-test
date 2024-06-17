@@ -1,5 +1,6 @@
 package com.logicommerce.sdktest.resources;
 
+import java.nio.charset.Charset;
 import com.logicommerce.sdk.resources.Connection;
 import com.logicommerce.sdk.resources.PluginResourceException;
 import com.logicommerce.sdk.resources.Response;
@@ -123,6 +124,12 @@ public class ConnectionHelper implements Connection {
 		response.setStatusCode(clientResponse.getStatusCode());
 		response.setResponse(clientResponse.getResponse());
 		return response;
+	}
+
+	@Override
+	public Connection charset(Charset charset) {
+		this.clientConnection.charset(charset);
+		return this;
 	}
 
 }
