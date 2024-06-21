@@ -1,5 +1,7 @@
 package com.logicommerce.sdktest.resources.connection;
 
+import java.nio.charset.Charset;
+
 public class ClientConnection {
 
 	private ClientAttributes attributes;
@@ -62,6 +64,13 @@ public class ClientConnection {
 		attributes.setTimeout(timeout);
 		return this;
 	}
+	
+	public ClientConnection charset(Charset charset) {
+		validateArgs(charset);
+		attributes.setCharset(charset);
+		return this;
+	}
+
 
 	public ClientResponse get() throws ConnectionException {
 		return send(new ClientGet(attributes));

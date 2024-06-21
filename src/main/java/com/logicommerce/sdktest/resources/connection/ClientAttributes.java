@@ -2,6 +2,8 @@ package com.logicommerce.sdktest.resources.connection;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,6 +21,8 @@ public class ClientAttributes {
 
 	private String contentType = "application/json";
 	private String acceptType = "application/json";
+	
+	private Charset charset = StandardCharsets.UTF_8;
 
 	private Map<String, String> headers = new HashMap<>();
 	private Map<String, String> cookies = new HashMap<>();
@@ -170,4 +174,13 @@ public class ClientAttributes {
 	public boolean hasTimeout() {
 		return timeout != null && timeout > 0;
 	}
+
+	public Charset getCharset() {
+		return charset;
+	}
+
+	public void setCharset(Charset charset) {
+		this.charset = charset;
+	}
+	
 }
