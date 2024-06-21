@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -79,7 +78,7 @@ public abstract class Client {
 			}
 		}
 		InputStream content = entity.getContent();
-		InputStreamReader in = new InputStreamReader(content, StandardCharsets.UTF_8);
+		InputStreamReader in = new InputStreamReader(content, this.attributes.getCharset());
 		try (BufferedReader reader = new BufferedReader(in)) {
 			return reader.lines().collect(Collectors.joining(""));
 		} catch (IOException e) {
