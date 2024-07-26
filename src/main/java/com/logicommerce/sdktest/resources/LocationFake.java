@@ -17,6 +17,7 @@ public class LocationFake implements LocationResource {
 	private static final Integer COUNTRY_ID = 724;
 	private static final String STATE_NAME = "Barcelona";
 	private static final String STATE_CODE = "ES.56.B";
+	private static final double NEW_AMOUNT = 12.34;
 
 	@Override
 	public Integer getCountryId(String countryCode) {
@@ -62,4 +63,15 @@ public class LocationFake implements LocationResource {
 	public List<Location> getLocations(String languageCode, String countryCode, String postalCode) {
 		return List.of(locationsPath.get(0));
 	}
+
+	@Override
+	public double convertCurrency(String sourceCurrencyCode, String targetCurrencyCode, double amount) {
+		if (sourceCurrencyCode == null || sourceCurrencyCode.isBlank()
+			|| targetCurrencyCode == null || targetCurrencyCode.isBlank()
+			|| amount <= 0) {
+			return 0;
+		}
+		return NEW_AMOUNT;
+	}
+
 }
