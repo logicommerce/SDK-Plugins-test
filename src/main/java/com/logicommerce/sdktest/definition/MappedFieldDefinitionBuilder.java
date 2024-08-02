@@ -13,24 +13,15 @@ public class MappedFieldDefinitionBuilder<T> {
 
 	private MappedItemType type;
 
-	private List<String> fields;
-
 	private List<PropertyDefinitionValue> values;
 
 	public MappedFieldDefinitionBuilder(T parentBuilder) {
 		this.parentBuilder = parentBuilder;
-		this.fields = new ArrayList<>();
 		this.values = new ArrayList<>();
 	}
 
 	public MappedFieldDefinitionBuilder<T> type(MappedItemType type) {
 		this.type = type;
-		return this;
-	}
-
-	@Deprecated(since = "1.3.3", forRemoval = true)
-	public MappedFieldDefinitionBuilder<T> addField(String field) {
-		this.fields.add(field);
 		return this;
 	}
 
@@ -42,7 +33,6 @@ public class MappedFieldDefinitionBuilder<T> {
 	public MappedFieldDefinition build() {
 		MappedFieldDefinitionImpl mappedFieldDefinition = new MappedFieldDefinitionImpl();
 		mappedFieldDefinition.setType(type);
-		mappedFieldDefinition.setFields(fields);
 		mappedFieldDefinition.setValues(values);
 		return mappedFieldDefinition;
 	}

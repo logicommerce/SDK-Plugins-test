@@ -26,8 +26,6 @@ public class CartFake implements Cart {
 
 	private CartDelivery delivery;
 
-	private String abandonedBasketLink;
-	
 	private String basketLink;
 
 	private User user;
@@ -61,11 +59,6 @@ public class CartFake implements Cart {
 	@Override
 	public CartDelivery getDelivery() {
 		return delivery;
-	}
-
-	@Override
-	public String getAbandonedBasketLink() {
-		return abandonedBasketLink;
 	}
 
 	@Override
@@ -115,10 +108,6 @@ public class CartFake implements Cart {
 
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	public void setAbandonedBasketLink(String abandonedBasketLink) {
-		this.abandonedBasketLink = abandonedBasketLink;
 	}
 
 	public void setUser(User user) {
