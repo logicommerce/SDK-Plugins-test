@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import io.netty.handler.codec.http.HttpHeaders;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.BoundRequestBuilder;
 import org.asynchttpclient.DefaultAsyncHttpClientConfig.Builder;
 import org.asynchttpclient.Dsl;
 import org.asynchttpclient.Response;
+import io.netty.handler.codec.http.HttpHeaders;
 
 public class AsyncClient {
 
@@ -61,9 +61,9 @@ public class AsyncClient {
 		setBody(request);
 		setHeaders(request);
 		return request.execute()
-				.toCompletableFuture()
-				.exceptionally(this::arrangeThrow)
-				.thenApply(this::arrangeResponse);
+			.toCompletableFuture()
+			.exceptionally(this::arrangeThrow)
+			.thenApply(this::arrangeResponse);
 	}
 
 	private void setAuthorization(BoundRequestBuilder request) {
