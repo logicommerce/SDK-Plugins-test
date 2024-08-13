@@ -33,6 +33,8 @@ public class ShipmentAddressFake implements ShipmentAddress {
 	private String phone;
 
 	private String email;
+	
+	private String company;
 
 	@Override
 	public String getAddress() {
@@ -123,5 +125,14 @@ public class ShipmentAddressFake implements ShipmentAddress {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String getCompany() {
+		return company;
+	}
+	
+	public void setCompany(String company) {
+		this.company = company;
 	}
 }
