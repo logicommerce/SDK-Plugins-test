@@ -15,32 +15,18 @@ public class DefinitionLanguagesFake implements DefinitionLanguages {
 	}
 
 	@Override
-	@Deprecated(since = "1.3.4", forRemoval = true)
-	public Map<String, String> getNames() {
-		return values;
-	}
-
-	@Override
 	public Map<String, String> getValues() {
 		return values;
 	}
 
 	@Override
-	@Deprecated(since = "1.3.4", forRemoval = true)
-	public String getName(String language) {
-		if (values.containsKey(language))
-			return values.get(language);
-		if (values.containsKey(LANGUAGE_DEFAULT))
-			return values.get(LANGUAGE_DEFAULT);
-		return null;
-	}
-
-	@Override
 	public String getValue(String language) {
-		if (values.containsKey(language))
+		if (values.containsKey(language)) {
 			return values.get(language);
-		if (values.containsKey(LANGUAGE_DEFAULT))
+		}
+		if (values.containsKey(LANGUAGE_DEFAULT)) {
 			return values.get(LANGUAGE_DEFAULT);
+		}
 		return null;
 	}
 

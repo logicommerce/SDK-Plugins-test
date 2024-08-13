@@ -3,16 +3,17 @@ package com.logicommerce.sdktest.definition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.logicommerce.sdk.definition.implementations.MappedFieldDefinitionImpl;
 
 public abstract class ConfigDefinitionFakeBuilder<T extends ConfigDefinitionFakeBuilder<T>> {
 
 	private List<PropertyDefinitionFakeBuilder<T>> properties;
-	
+
 	private boolean hasAdditionalProperties;
-	
+
 	private List<PropertyDefinitionFakeBuilder<T>> additionalProperties;
 
-	private List<MappedFieldDefinitionBuilder<T>> mappedFields;
+	private List<MappedFieldDefinitionImpl.Builder<T>> mappedFields;
 
 
 	protected ConfigDefinitionFakeBuilder() {
@@ -31,26 +32,29 @@ public abstract class ConfigDefinitionFakeBuilder<T extends ConfigDefinitionFake
 		this.hasAdditionalProperties = hasAdditionalProperties;
 		return returnThis();
 	}
-	
+
 	public PropertyDefinitionFakeBuilder<T> additionalProperty() {
 		PropertyDefinitionFakeBuilder<T> additionalProperty = new PropertyDefinitionFakeBuilder<>(returnThis());
 		properties.add(additionalProperty);
 		return additionalProperty;
 	}
 
-	public MappedFieldDefinitionBuilder<T> mappedField() {
-		MappedFieldDefinitionBuilder<T> mappedField = new MappedFieldDefinitionBuilder<>(returnThis());
+	public MappedFieldDefinitionImpl.Builder<T> mappedField() {
+		MappedFieldDefinitionImpl.Builder<T> mappedField = new MappedFieldDefinitionImpl.Builder<>(returnThis());
 		mappedFields.add(mappedField);
 		return mappedField;
 	}
-	
+
 	public void setAttributes(ConfigDefinitionFake configDefinition) {
-		configDefinition.setProperties(properties.stream().map(PropertyDefinitionFakeBuilder::build).collect(Collectors.toList()));
+		configDefinition
+			.setProperties(properties.stream().map(PropertyDefinitionFakeBuilder::build).collect(Collectors.toList()));
 		configDefinition.setHasAdditionalProperties(hasAdditionalProperties);
-		configDefinition.setAdditionalProperties(additionalProperties.stream().map(PropertyDefinitionFakeBuilder::build).collect(Collectors.toList()));
-		configDefinition.setMappedFields(mappedFields.stream().map(MappedFieldDefinitionBuilder::build).collect(Collectors.toList()));
+		configDefinition.setAdditionalProperties(
+			additionalProperties.stream().map(PropertyDefinitionFakeBuilder::build).collect(Collectors.toList()));
+		configDefinition.setMappedFields(
+			mappedFields.stream().map(MappedFieldDefinitionImpl.Builder::build).collect(Collectors.toList()));
 	}
-	
+
 	protected abstract T returnThis();
 
 }
