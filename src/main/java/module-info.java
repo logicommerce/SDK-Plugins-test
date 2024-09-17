@@ -1,7 +1,7 @@
 module com.logicommerce.sdktest {
 	requires transitive com.logicommerce.sdk;
 	requires transitive java.logging;
-	requires transitive com.logicommerce.utilities;
+	requires com.logicommerce.utilities;
 	requires org.apache.httpcomponents.client5.httpclient5;
 	requires org.apache.httpcomponents.core5.httpcore5;
 
