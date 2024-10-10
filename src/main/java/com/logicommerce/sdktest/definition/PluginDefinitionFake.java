@@ -2,7 +2,6 @@ package com.logicommerce.sdktest.definition;
 
 import java.util.List;
 import com.logicommerce.sdk.definition.ConnectorDefinition;
-import com.logicommerce.sdk.definition.DefinitionLanguages;
 import com.logicommerce.sdk.definition.PluginDefinition;
 import com.logicommerce.sdk.definition.PluginDefinitionException;
 import com.logicommerce.sdk.enums.ConnectorType;
@@ -11,7 +10,6 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 
 	private String name;
 	private String description;
-	private DefinitionLanguages pluginDescription;
 	private String author;
 	private String version;
 	private List<ConnectorDefinition> connectors;
@@ -32,11 +30,6 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 	@Override
 	public String getDescription() {
 		return description;
-	}
-
-	@Override
-	public DefinitionLanguages getPluginDescription() {
-		return pluginDescription;
 	}
 
 	@Override
