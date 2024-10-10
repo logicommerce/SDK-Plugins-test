@@ -18,6 +18,8 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 
 	private DefinitionLanguages languages;
 
+	private DefinitionLanguages hint;
+
 	private List<PropertyDefinitionValue> values;
 
 	private boolean languageValue;
@@ -53,6 +55,12 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 	@Override
 	public DefinitionLanguages getLanguages() {
 		return languages;
+	}
+
+
+	@Override
+	public DefinitionLanguages getHint() {
+		return hint;
 	}
 
 	@Override
@@ -103,6 +111,10 @@ public class PropertyDefinitionFake implements PropertyDefinition {
 
 	public void setLanguages(DefinitionLanguages languages) {
 		this.languages = languages;
+	}
+
+	public void setHint(DefinitionLanguages hint) {
+		this.hint = hint;
 	}
 
 	public void setValues(List<PropertyDefinitionValue> values) {
