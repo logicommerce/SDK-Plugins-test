@@ -3,11 +3,14 @@ package com.logicommerce.sdktest.definition;
 import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.definition.ConfigDefinition;
+import com.logicommerce.sdk.definition.DefinitionLanguages;
 import com.logicommerce.sdk.definition.MappedFieldDefinition;
 import com.logicommerce.sdk.definition.PluginActionDefinition;
 import com.logicommerce.sdk.definition.PropertyDefinition;
 
 public abstract class ConfigDefinitionFake implements ConfigDefinition {
+
+	private DefinitionLanguages summary;
 
 	private List<PropertyDefinition> properties;
 
@@ -18,6 +21,11 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 	private List<MappedFieldDefinition> mappedFields;
 
 	private List<PluginActionDefinition> pluginActions;
+
+	@Override
+	public DefinitionLanguages getSummary() {
+		return summary;
+	}
 
 	@Override
 	public List<PropertyDefinition> getProperties() {
@@ -54,13 +62,17 @@ public abstract class ConfigDefinitionFake implements ConfigDefinition {
 	public List<MappedFieldDefinition> getMappedFields() {
 		return mappedFields;
 	}
-	
+
 	@Override
 	public void addMappedField(MappedFieldDefinition mappedField) {
 		if (mappedFields == null) {
 			mappedFields = new ArrayList<>();
 		}
 		mappedFields.add(mappedField);
+	}
+
+	public void setSummary(DefinitionLanguages summary) {
+		this.summary = summary;
 	}
 
 	public void setProperties(List<PropertyDefinition> properties) {
