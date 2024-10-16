@@ -19,8 +19,10 @@ public class PropertyDefinitionFakeBuilder<T> {
 
 	private DefinitionLanguagesFakeBuilder<PropertyDefinitionFakeBuilder<T>> languages;
 
+	private DefinitionLanguagesFakeBuilder<PropertyDefinitionFakeBuilder<T>> hint;
+
 	private List<PropertyDefinitionValueBuilder<PropertyDefinitionFakeBuilder<T>>> values;
-	
+
 	private String reference;
 
 	public PropertyDefinitionFakeBuilder() {
@@ -57,12 +59,18 @@ public class PropertyDefinitionFakeBuilder<T> {
 		return languages;
 	}
 
+	public DefinitionLanguagesFakeBuilder<PropertyDefinitionFakeBuilder<T>> hint() {
+		hint = new DefinitionLanguagesFakeBuilder<>(this);
+		return hint;
+	}
+
 	public PropertyDefinitionValueBuilder<PropertyDefinitionFakeBuilder<T>> addValue() {
-		PropertyDefinitionValueBuilder<PropertyDefinitionFakeBuilder<T>> value = new PropertyDefinitionValueBuilder<>(this);
+		PropertyDefinitionValueBuilder<PropertyDefinitionFakeBuilder<T>> value =
+			new PropertyDefinitionValueBuilder<>(this);
 		values.add(value);
 		return value;
 	}
-	
+
 	public PropertyDefinitionFakeBuilder<T> reference(String reference) {
 		this.reference = reference;
 		return this;
@@ -72,6 +80,7 @@ public class PropertyDefinitionFakeBuilder<T> {
 		PropertyDefinitionFake propertyDefinition = new PropertyDefinitionFake();
 		propertyDefinition.setDefaultValue(defaultValue);
 		propertyDefinition.setLanguages(languages.build());
+		propertyDefinition.setHint(hint.build());
 		propertyDefinition.setIdentifier(identifier);
 		propertyDefinition.setRequired(required);
 		propertyDefinition.setType(type);
@@ -82,8 +91,8 @@ public class PropertyDefinitionFakeBuilder<T> {
 
 	private List<PropertyDefinitionValue> getValues() {
 		return values.stream()
-				.map(PropertyDefinitionValueBuilder::build)
-				.collect(Collectors.toList());
+			.map(PropertyDefinitionValueBuilder::build)
+			.collect(Collectors.toList());
 	}
 
 	public T done() {
