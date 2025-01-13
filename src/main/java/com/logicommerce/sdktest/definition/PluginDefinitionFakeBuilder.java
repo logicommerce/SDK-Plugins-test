@@ -14,6 +14,7 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 	private List<ConnectorDefinitionFakeBuilder> connectorDefinitions;
 	private boolean multipleAccount;
 	private boolean userGroupsFilter;
+	private boolean accountGroupsFilter;
 	private boolean countryZonesFilter;
 
 
@@ -52,8 +53,14 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 		return returnThis();
 	}
 
+	@Deprecated(since = "2.2.0", forRemoval = true)
 	public PluginDefinitionFakeBuilder userGroupsFilter(boolean userGroupsFilter) {
 		this.userGroupsFilter = userGroupsFilter;
+		return returnThis();
+	}
+
+	public PluginDefinitionFakeBuilder accountGroupsFilter(boolean accountGroupsFilter) {
+		this.accountGroupsFilter = accountGroupsFilter;
 		return returnThis();
 	}
 
@@ -72,6 +79,7 @@ public class PluginDefinitionFakeBuilder extends ConfigDefinitionFakeBuilder<Plu
 		pluginDefinition.setConnectorDefinitions(getConnectorDefinitions());
 		pluginDefinition.setMultipleAccount(multipleAccount);
 		pluginDefinition.setUserGroupsFilter(userGroupsFilter);
+		pluginDefinition.setAccountGroupsFilter(accountGroupsFilter);
 		pluginDefinition.setCountryZonesFilter(countryZonesFilter);
 		setAttributes(pluginDefinition);
 		return pluginDefinition;
