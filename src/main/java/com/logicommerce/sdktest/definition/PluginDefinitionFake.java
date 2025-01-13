@@ -15,6 +15,7 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 	private List<ConnectorDefinition> connectors;
 	private boolean multipleAccount;
 	private boolean userGroupsFilter;
+	private boolean accountGroupsFilter;
 	private boolean countryZonesFilter;
 
 	@Override
@@ -64,6 +65,7 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		getConnectorDefinitions().add(connectorDefinition);
 	}
 
+	@Deprecated(since = "2.2.0", forRemoval = true)
 	@Override
 	public boolean getUserGroupsFilter() {
 		return userGroupsFilter;
@@ -72,6 +74,11 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 	@Override
 	public boolean getCountryZonesFilter() {
 		return countryZonesFilter;
+	}
+
+	@Override
+	public boolean getAccountGroupsFilter() {
+		return accountGroupsFilter;
 	}
 
 	public void setName(String name) {
@@ -106,4 +113,7 @@ public class PluginDefinitionFake extends ConfigDefinitionFake implements Plugin
 		this.countryZonesFilter = countryZonesFilter;
 	}
 
+	public void setAccountGroupsFilter(boolean accountGroupsFilter) {
+		this.accountGroupsFilter = accountGroupsFilter;
+	}
 }
