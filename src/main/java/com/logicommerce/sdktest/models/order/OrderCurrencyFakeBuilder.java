@@ -18,7 +18,7 @@ public class OrderCurrencyFakeBuilder<T> extends OrderCurrencyBuilder<T>{
 	
 	private void defaultValues() {
 		super.id = 0;
-		super.mode = CurrencyMode.ECOMMERCE;
+		super.mode = CurrencyMode.PURCHASE;
 		super.currencyId = 0;
 		super.name = "name DEFAULT";
 		super.code = "code DEFAULT";
