@@ -3,7 +3,9 @@ package com.logicommerce.sdktest.models.order;
 import java.util.ArrayList;
 import java.util.List;
 import com.logicommerce.sdk.enums.AmountType;
+import com.logicommerce.sdk.enums.ConversionMode;
 import com.logicommerce.sdk.models.ElementProperty;
+import com.logicommerce.sdk.models.order.DocumentConversionCurrency;
 import com.logicommerce.sdk.models.order.OrderPaymentSystem;
 import com.logicommerce.sdk.models.order.OrderTax;
 import com.logicommerce.sdktest.models.ElementPropertyFake;
@@ -31,6 +33,10 @@ public class OrderPaymentSystemFake implements OrderPaymentSystem {
 	private String property;
 	
 	List<ElementProperty> properties;
+
+	private ConversionMode conversionMode;
+
+	private List<DocumentConversionCurrency> conversionCurrencies;
 
 	@Override
 	public Integer getId() {
@@ -138,6 +144,24 @@ public class OrderPaymentSystemFake implements OrderPaymentSystem {
 	@Override
 	public void addProperty(String name, String value) {
 		addProperty(new ElementPropertyFake(name, value));
+	}
+
+	@Override
+	public ConversionMode getConversionMode() {
+		return conversionMode;
+	}
+
+	public void setConversionMode(ConversionMode conversionMode) {
+		this.conversionMode = conversionMode;
+	}
+
+	@Override
+	public List<DocumentConversionCurrency> getConversionCurrencies() {
+		return conversionCurrencies;
+	}
+
+	public void setConversionCurrencies(List<DocumentConversionCurrency> conversionCurrencies) {
+		this.conversionCurrencies = conversionCurrencies;
 	}
 
 }
