@@ -3,6 +3,7 @@ package com.logicommerce.sdktest.models.order;
 import com.logicommerce.sdk.builders.order.OrderPaymentSystemBuilder;
 import com.logicommerce.sdk.builders.order.OrderTaxBuilder;
 import com.logicommerce.sdk.enums.AmountType;
+import com.logicommerce.sdk.enums.ConversionMode;
 import com.logicommerce.sdk.models.order.OrderPaymentSystem;
 
 public class OrderPaymentSystemFakeBuilder<T> extends OrderPaymentSystemBuilder<T> {
@@ -26,7 +27,8 @@ public class OrderPaymentSystemFakeBuilder<T> extends OrderPaymentSystemBuilder<
 		super.price = 0d;
 		super.increaseMin = 0d;
 		super.cashOnDelivery = false;
-		super.property = "";		
+		super.property = "";
+        super.conversionMode = ConversionMode.NONE;
 	}
 
 	@Override
@@ -49,6 +51,7 @@ public class OrderPaymentSystemFakeBuilder<T> extends OrderPaymentSystemBuilder<
 		paymentSystem.setIncreaseMin(paymentSystemSdk.getIncreaseMin());
 		paymentSystem.setCashOnDelivery(paymentSystemSdk.isCashOnDelivery());
 		paymentSystem.setProperty(paymentSystemSdk.getProperty());
+		paymentSystem.setConversionMode(paymentSystemSdk.getConversionMode());
 
 		return paymentSystem;
 	}
