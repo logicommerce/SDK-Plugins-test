@@ -7,11 +7,13 @@ public class OrderFakeBuilder extends DocumentFakeBuilder<OrderFakeBuilder> {
 
 	private OrderStatusType status;
 	private int substatusId;
+	private OrderTotalCurrencyFakeBuilder<OrderFakeBuilder> totalCurrency;
 
 	public OrderFakeBuilder() {
 		super();
 		status = OrderStatusType.INCOMING;
 		substatusId = 0;
+		totalCurrency = new OrderTotalCurrencyFakeBuilder<>(this);
 	}
 
 	public OrderFakeBuilder status(OrderStatusType status) {
@@ -24,10 +26,15 @@ public class OrderFakeBuilder extends DocumentFakeBuilder<OrderFakeBuilder> {
 		return this;
 	}
 
+	public OrderTotalCurrencyFakeBuilder<OrderFakeBuilder> totalCurrency() {
+		return totalCurrency;
+	}
+
 	public Order build() {
 		OrderFake orderFake = new OrderFake();
 		orderFake.setStatus(status);
 		orderFake.setSubstatusId(substatusId);
+		orderFake.setTotalCurrency(totalCurrency.build());
 		setFields(orderFake);
 		return orderFake;
 	}

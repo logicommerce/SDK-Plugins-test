@@ -15,7 +15,7 @@ public class OrderCurrencyFakeBuilder<T> extends OrderCurrencyBuilder<T>{
 		super(parentBuilder);
 		defaultValues();
 	}
-	
+
 	private void defaultValues() {
 		super.id = 0;
 		super.mode = CurrencyMode.PURCHASE;
