@@ -15,6 +15,7 @@ public class OrderTotalFake implements OrderTotal {
 	private double totalShippings;
 	private double totalTaxes;
 	private double totalVouchers;
+	private double subtotalDiscounts;
 
 	@Override
 	public double getSubtotal() {
@@ -113,6 +114,15 @@ public class OrderTotalFake implements OrderTotal {
 
 	public void setTotalVouchers(double totalVouchers) {
 		this.totalVouchers = totalVouchers;
+	}
+
+	@Override
+	public double getSubtotalDiscounts() {
+		return subtotalDiscounts;
+	}
+
+	public void setSubtotalDiscounts(double subtotalDiscounts) {
+		this.subtotalDiscounts = subtotalDiscounts;
 	}
 	
 }

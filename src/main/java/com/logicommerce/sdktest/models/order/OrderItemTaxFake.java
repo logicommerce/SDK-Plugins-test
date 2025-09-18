@@ -2,6 +2,7 @@ package com.logicommerce.sdktest.models.order;
 
 import com.logicommerce.sdk.enums.TaxType;
 import com.logicommerce.sdk.models.order.OrderItemTax;
+import com.logicommerce.sdk.models.order.OrderItemTaxDefinition;
 
 public class OrderItemTaxFake implements OrderItemTax {
 
@@ -10,6 +11,7 @@ public class OrderItemTaxFake implements OrderItemTax {
 	private double taxRate;
 	private TaxType type;
 	private String code;
+	private OrderItemTaxDefinition taxDefinition;
 
 	@Override
 	public double getBase() {
@@ -54,6 +56,15 @@ public class OrderItemTaxFake implements OrderItemTax {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	@Override
+	public OrderItemTaxDefinition getTaxDefinition() {
+		return taxDefinition;
+	}
+
+	public void setTaxDefinition(OrderItemTaxDefinition taxDefinition) {
+		this.taxDefinition = taxDefinition;
 	}
 
 }
