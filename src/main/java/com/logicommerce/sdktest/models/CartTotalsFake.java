@@ -26,6 +26,8 @@ public class CartTotalsFake implements CartTotals {
 
 	private double totalVouchers;
 
+	private double subtotalDiscounts;
+
 	@Override
 	public double getSubtotal() {
 		return subtotal;
@@ -123,6 +125,15 @@ public class CartTotalsFake implements CartTotals {
 
 	public void setTotalVouchers(double totalVouchers) {
 		this.totalVouchers = totalVouchers;
+	}
+
+	@Override
+	public double getSubtotalDiscounts() {
+		return subtotalDiscounts;
+	}
+
+	public void setSubtotalDiscounts(double subtotalDiscounts) {
+		this.subtotalDiscounts = subtotalDiscounts;
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import com.logicommerce.sdk.enums.ExportStatusType;
 import com.logicommerce.sdk.models.CustomTag;
 import com.logicommerce.sdk.models.ElementProperty;
+import com.logicommerce.sdk.models.Headquarter;
 import com.logicommerce.sdk.models.order.Document;
 import com.logicommerce.sdk.models.order.OrderAdditionalInformation;
 import com.logicommerce.sdk.models.order.OrderCurrency;
@@ -49,6 +50,7 @@ public class DocumentFake implements Document {
 	private OrderDelivery orderDelivery;
 	private Integer languageId;
 	private Integer documentId;
+	private Headquarter headquarter;
 
 	@Override
 	public List<OrderAdditionalInformation> getAdditionalInformation() {
@@ -295,6 +297,15 @@ public class DocumentFake implements Document {
 
 	public void setDocumentId(Integer documentId) {
 		this.documentId = documentId;
+	}
+
+	@Override
+	public Headquarter getHeadquarter() {
+		return headquarter;
+	}
+
+	public void setHeadquarter(Headquarter headquarter) {
+		this.headquarter = headquarter;
 	}
 
 }
