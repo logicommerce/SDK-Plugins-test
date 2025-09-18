@@ -22,6 +22,10 @@ public class OrderTaxFake implements OrderTax {
 
 	private String code;
 
+	private String name;
+
+	private Integer taxId;
+
 	@Override
 	public double getTaxRate() {
 		return taxRate;
@@ -101,6 +105,24 @@ public class OrderTaxFake implements OrderTax {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public Integer getTaxId() {
+		return taxId;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setTaxId(Integer taxId) {
+		this.taxId = taxId;
 	}
 
 }
