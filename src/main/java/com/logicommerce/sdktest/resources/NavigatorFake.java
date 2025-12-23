@@ -16,6 +16,8 @@ public class NavigatorFake implements Navigator {
 
 	private String language;
 
+	private Integer languageId;
+
 	private String country;
 
 	private String currency;
@@ -192,6 +194,15 @@ public class NavigatorFake implements Navigator {
 	public void setCookie(String name, String value, int ttl) {
 		Cookie cookie = new CookieFake(name, value, ttl);
 		cookies.put(name, cookie);
+	}
+
+	@Override
+	public Integer getLanguageId() {
+		return languageId;
+	}
+
+	public void setLanguageId(Integer languageId) {
+		this.languageId = languageId;
 	}
 
 }

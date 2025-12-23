@@ -1,6 +1,8 @@
 package com.logicommerce.sdktest.resources;
 
 import java.nio.charset.Charset;
+import java.security.KeyStore;
+import com.logicommerce.sdk.enums.SslProtocol;
 import com.logicommerce.sdk.resources.Connection;
 import com.logicommerce.sdk.resources.PluginResourceException;
 import com.logicommerce.sdk.resources.Response;
@@ -84,6 +86,16 @@ public class ConnectionFake implements Connection {
 
 	@Override
 	public Connection charset(Charset charset) {
+		return this;
+	}
+
+	@Override
+	public Connection keyStore(KeyStore keyStore) {
+		return this;
+	}
+
+	@Override
+	public Connection sslProtocol(SslProtocol sslProtocol) {
 		return this;
 	}
 

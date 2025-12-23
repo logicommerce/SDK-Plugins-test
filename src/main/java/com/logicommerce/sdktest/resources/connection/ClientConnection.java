@@ -1,6 +1,7 @@
 package com.logicommerce.sdktest.resources.connection;
 
 import java.nio.charset.Charset;
+import java.security.KeyStore;
 
 public class ClientConnection {
 
@@ -112,4 +113,16 @@ public class ClientConnection {
 			}
 		}
 	}
+
+	public ClientConnection sslProtocol(String sslProtocol) {
+		validateArgs(sslProtocol);
+		attributes.setSslProtocol(sslProtocol);
+		return this;
+	}
+
+	public ClientConnection keyStore(KeyStore keyStore) {
+		attributes.setKeyStore(keyStore);
+		return this;
+	}
+
 }
