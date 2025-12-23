@@ -1,6 +1,8 @@
 package com.logicommerce.sdktest.resources;
 
 import java.nio.charset.Charset;
+import java.security.KeyStore;
+import com.logicommerce.sdk.enums.SslProtocol;
 import com.logicommerce.sdk.resources.Connection;
 import com.logicommerce.sdk.resources.PluginResourceException;
 import com.logicommerce.sdk.resources.Response;
@@ -11,7 +13,6 @@ import com.logicommerce.sdktest.resources.connection.ConnectionException;
 public class ConnectionHelper implements Connection {
 
 	private ClientConnection clientConnection;
-
 
 	@Override
 	public Connection init(String endPoint) {
@@ -129,6 +130,18 @@ public class ConnectionHelper implements Connection {
 	@Override
 	public Connection charset(Charset charset) {
 		this.clientConnection.charset(charset);
+		return this;
+	}
+
+	@Override
+	public Connection keyStore(KeyStore keyStore) {
+		this.clientConnection.keyStore(keyStore);
+		return this;
+	}
+
+	@Override
+	public Connection sslProtocol(SslProtocol sslProtocol) {
+		this.clientConnection.sslProtocol(sslProtocol.get());
 		return this;
 	}
 

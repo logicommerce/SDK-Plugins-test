@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyStore;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -29,6 +30,10 @@ public class ClientAttributes {
 	private Map<String, String> queryParams = new HashMap<>();
 
 	private Integer timeout = 3000;
+
+	private KeyStore keyStore;
+
+	private String sslProtocol = "TLS";
 
 	protected boolean hasAuthorization() {
 		return getAuthorization() != null && !getAuthorization().trim().isEmpty();
@@ -182,5 +187,24 @@ public class ClientAttributes {
 	public void setCharset(Charset charset) {
 		this.charset = charset;
 	}
-	
+
+	public boolean hasCertificate() {
+		return keyStore != null;
+	}
+
+	public KeyStore getKeyStore() {
+		return keyStore;
+	}
+
+	public void setKeyStore(KeyStore keyStore) {
+		this.keyStore = keyStore;
+	}
+
+	public String getSslProtocol() {
+		return sslProtocol;
+	}
+
+	public void setSslProtocol(String sslProtocol) {
+		this.sslProtocol = sslProtocol;
+	}
 }

@@ -16,6 +16,8 @@ public class NavigatorFakeBuilder {
 
 	protected String language;
 
+	protected Integer languageId;
+
 	protected String country;
 
 	protected String currency;
@@ -42,6 +44,7 @@ public class NavigatorFakeBuilder {
 		userAgent = "Fake User Agent;java";
 		referer = "http://www.google.com";
 		language = "en";
+		languageId = 1;
 		country = "de";
 		currency = "EUR";
 		defaultCurrency = "EUR";
@@ -130,6 +133,11 @@ public class NavigatorFakeBuilder {
 		return this;
 	}
 
+	public NavigatorFakeBuilder languageId(Integer languageId) {
+        this.languageId = languageId;
+        return this;
+    }
+
 	public Navigator build() {
 		NavigatorFake navigator = new NavigatorFake();
 		navigator.setUserAgent(userAgent);
@@ -146,6 +154,7 @@ public class NavigatorFakeBuilder {
 		navigator.setBaseUrl(baseUrl);
 		navigator.setCdnAssets(cdnAssets);
 		navigator.setCdnImages(cdnImages);
+		navigator.setLanguageId(languageId);
 		return navigator;
 	}
 

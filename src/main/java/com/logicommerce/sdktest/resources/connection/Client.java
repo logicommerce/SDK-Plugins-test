@@ -4,11 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
+import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -33,7 +45,7 @@ public abstract class Client {
 	protected abstract HttpUriRequestBase getHttpBase(String url);
 
 	public ClientResponse send() throws ConnectionException {
-		try (CloseableHttpClient client = HttpClients.createDefault()) {
+		try (CloseableHttpClient client = createClient()) {
 			setAuthorization();
 			setBody();
 			setHeaders();
@@ -83,6 +95,47 @@ public abstract class Client {
 			return reader.lines().collect(Collectors.joining(""));
 		} catch (IOException e) {
 			return null;
+		}
+	}
+
+	private CloseableHttpClient createClient() throws ConnectionException {
+		HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+		if (this.attributes.hasTimeout()) {
+			RequestConfig config = RequestConfig.custom()
+					.setConnectTimeout(this.attributes.getTimeout(), TimeUnit.MILLISECONDS)
+					.setConnectionRequestTimeout(this.attributes.getTimeout(), TimeUnit.MILLISECONDS)
+					.build();
+			httpClientBuilder.setDefaultRequestConfig(config);
+		}
+		if (this.attributes.hasCertificate()) {
+			PoolingHttpClientConnectionManager connectionManager = getConnectionManager();
+			httpClientBuilder.setConnectionManager(connectionManager);
+		}
+		return httpClientBuilder.build();
+	}
+
+	private PoolingHttpClientConnectionManager getConnectionManager() throws ConnectionException {
+		return PoolingHttpClientConnectionManagerBuilder.create()
+			.setSSLSocketFactory(SSLConnectionSocketFactoryBuilder.create()
+				.setSslContext(createSSLContext(this.attributes.getKeyStore()))
+				.build())
+			.build();
+	}
+
+	private SSLContext createSSLContext(KeyStore keyStore) throws ConnectionException {
+		KeyManagerFactory kmf = null;
+		try {
+			kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+			kmf.init(keyStore, "".toCharArray());
+		} catch (NoSuchAlgorithmException | UnrecoverableKeyException | KeyStoreException e) {
+			throw new ConnectionException(this.getClass(), e);
+		}
+		try {
+			SSLContext sslContext = SSLContext.getInstance(this.attributes.getSslProtocol());
+			sslContext.init(kmf.getKeyManagers(), null, null);
+			return sslContext;
+		} catch (NoSuchAlgorithmException | KeyManagementException e) {
+			throw new ConnectionException(this.getClass(), e);
 		}
 	}
 }
