@@ -7,7 +7,6 @@ module com.logicommerce.sdktest {
 	requires org.apache.httpcomponents.core5.httpcore5;
 
 	requires transitive async.http.client;
-	requires transitive org.reactivestreams;
 	requires transitive io.netty.codec.http;
 	requires transitive io.netty.buffer;
 
