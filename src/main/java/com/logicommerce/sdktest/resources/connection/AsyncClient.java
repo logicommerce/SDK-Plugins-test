@@ -1,5 +1,6 @@
 package com.logicommerce.sdktest.resources.connection;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +52,8 @@ public class AsyncClient {
 	private AsyncHttpClient getClient() {
 		Builder config = Dsl.config();
 		if (attributes.hasTimeout()) {
-			config.setRequestTimeout(attributes.getTimeout());
+			Duration duration = Duration.ofSeconds(attributes.getTimeout());
+			config.setRequestTimeout(duration);
 		}
 		return Dsl.asyncHttpClient(config);
 	}

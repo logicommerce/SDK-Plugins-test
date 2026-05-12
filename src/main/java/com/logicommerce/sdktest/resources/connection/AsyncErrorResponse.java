@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.asynchttpclient.Response;
 import org.asynchttpclient.uri.Uri;
+import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.cookie.Cookie;
 
@@ -37,6 +38,11 @@ public class AsyncErrorResponse implements Response {
 
 	@Override
 	public ByteBuffer getResponseBodyAsByteBuffer() {
+		return null;
+	}
+
+	@Override
+	public ByteBuf getResponseBodyAsByteBuf() {
 		return null;
 	}
 
