@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>2.7.3</version>
+	<version>2.7.4</version>
 	<packaging>jar</packaging>
 	<name>SDK Test for LogiCommerce Plugins</name>
 	<description>LogiCommerce SDK Testing tools for LogiCommerce plugins.</description>
