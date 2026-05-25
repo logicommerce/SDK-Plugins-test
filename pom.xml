@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.logicommerce</groupId>
 	<artifactId>sdktest</artifactId>
-	<version>2.7.4</version>
+	<version>2.7.5</version>
 	<packaging>jar</packaging>
 	<name>SDK Test for LogiCommerce Plugins</name>
 	<description>LogiCommerce SDK Testing tools for LogiCommerce plugins.</description>
@@ -48,7 +48,7 @@
 		<nexus-staging-maven-plugin.version>1.6.14</nexus-staging-maven-plugin.version>
 		<central-publishing-maven-plugin>0.8.0</central-publishing-maven-plugin>
 
-		<logicommerce-sdk.version>2.7.3</logicommerce-sdk.version>
+		<logicommerce-sdk.version>2.7.5</logicommerce-sdk.version>
 		<logicommerce-utilities.version>1.2.1</logicommerce-utilities.version>
 
 		<apache-httpclient5-version>5.3.1</apache-httpclient5-version>
