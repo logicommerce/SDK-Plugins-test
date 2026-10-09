@@ -20,6 +20,11 @@ public class SettingsResourceFake implements SettingsResource {
 	}
 
 	@Override
+	public String getApiPluginsUrl() {
+		return "https://test.com/pluginsUrl";
+	}
+
+	@Override
 	public Integer getEnvironmentId() {
 		return 2;
 	}
