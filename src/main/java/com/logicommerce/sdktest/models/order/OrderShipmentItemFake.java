@@ -12,6 +12,8 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 
 	private double weight;
 
+	private String name;
+
 	@Override
 	public Integer getId() {
 		return id;
@@ -30,6 +32,11 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 	@Override
 	public double getWeight() {
 		return weight;
+	}
+
+	@Override
+	public String getName() {
+		return name;
 	}
 
 	public void setId(Integer id) {
