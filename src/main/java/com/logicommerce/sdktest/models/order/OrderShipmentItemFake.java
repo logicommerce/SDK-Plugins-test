@@ -54,4 +54,9 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }
