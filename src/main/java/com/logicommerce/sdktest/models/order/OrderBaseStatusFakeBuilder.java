@@ -7,7 +7,9 @@ import com.logicommerce.sdk.builders.order.OrderStatusActionBuilder;
 import com.logicommerce.sdk.models.order.OrderBaseStatus;
 
 public abstract class OrderBaseStatusFakeBuilder<T, P> extends OrderBaseStatusBuilder<T, P>{
-		
+
+	protected T fromStatus;
+
 	public OrderBaseStatusFakeBuilder() {
 		super();
 		defaultValues();
@@ -29,6 +31,11 @@ public abstract class OrderBaseStatusFakeBuilder<T, P> extends OrderBaseStatusBu
 		return this;
 	}
 
+	public OrderBaseStatusFakeBuilder<T, P> fromStatus(T fromStatus) {
+		this.fromStatus = fromStatus;
+		return this;
+	}
+
 	public OrderStatusActionBuilder<OrderBaseStatusBuilder<T, P>> actions() {
 		OrderStatusActionBuilder<OrderBaseStatusBuilder<T, P>> action = new OrderStatusActionFakeBuilder<>(this);
 		actions.add(action);
@@ -41,6 +48,7 @@ public abstract class OrderBaseStatusFakeBuilder<T, P> extends OrderBaseStatusBu
 		statusFake.setCurrentDateTime(currentDateTime);
 		statusFake.setStatus(status);
 		statusFake.setSubstatusId(substatusId);
+		statusFake.setFromStatus(fromStatus);
 	}
 	
 	public abstract  OrderBaseStatus<T> build();

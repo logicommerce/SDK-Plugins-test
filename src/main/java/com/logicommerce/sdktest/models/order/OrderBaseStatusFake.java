@@ -17,6 +17,8 @@ public class OrderBaseStatusFake<T> implements OrderBaseStatus<T> {
 
 	private int substatusId;
 
+	private T fromStatus;
+
 	@Override
 	public List<OrderStatusAction> getActions() {
 		return actions;
@@ -42,6 +44,11 @@ public class OrderBaseStatusFake<T> implements OrderBaseStatus<T> {
 		return substatusId;
 	}
 
+	@Override
+	public T getFromStatus() {
+		return fromStatus;
+	}
+
 	public void setActions(List<OrderStatusAction> actions) {
 		this.actions = actions;
 	}
@@ -60,6 +67,10 @@ public class OrderBaseStatusFake<T> implements OrderBaseStatus<T> {
 
 	public void setSubstatusId(int substatusId) {
 		this.substatusId = substatusId;
+	}
+
+	public void setFromStatus(T fromStatus) {
+		this.fromStatus = fromStatus;
 	}
 
 }

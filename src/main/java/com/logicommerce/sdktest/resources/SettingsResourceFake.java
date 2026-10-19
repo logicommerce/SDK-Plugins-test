@@ -28,4 +28,9 @@ public class SettingsResourceFake implements SettingsResource {
 	public Integer getEnvironmentId() {
 		return 2;
 	}
+
+	@Override
+	public String getDefaultStoreUrl() {
+		return "https://test.com/storeUrl";
+	}
 }

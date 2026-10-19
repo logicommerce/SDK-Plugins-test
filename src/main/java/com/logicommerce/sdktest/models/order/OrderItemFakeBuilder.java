@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.logicommerce.sdk.builders.CustomTagBuilder;
 import com.logicommerce.sdk.enums.BackorderMode;
+import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdktest.models.CustomTagFakeBuilder;
 import com.logicommerce.sdktest.models.RowCodesFakeBuilder;
 
@@ -37,6 +38,8 @@ public class OrderItemFakeBuilder<T> {
 	private List<OrderItemTaxFakeBuilder<OrderItemFakeBuilder<T>>> taxes;
 	private List<CustomTagFakeBuilder<OrderItemFakeBuilder<T>>> customTags;
 	private List<OrderDiscountFakeBuilder<OrderItemFakeBuilder<T>>> discounts;
+	private CartItemType type;
+	private List<OrderItemFakeBuilder<OrderItemFakeBuilder<T>>> bundleItems;
 
 	public OrderItemFakeBuilder() {
 		id = 0;
@@ -205,6 +208,20 @@ public class OrderItemFakeBuilder<T> {
 		return option;
 	}
 
+	public OrderItemFakeBuilder<T> type(CartItemType type) {
+		this.type = type;
+		return this;
+	}
+
+	public OrderItemFakeBuilder<OrderItemFakeBuilder<T>> bundleItem() {
+		if (bundleItems == null) {
+			bundleItems = new ArrayList<>();
+		}
+		OrderItemFakeBuilder<OrderItemFakeBuilder<T>> bundleItem = new OrderItemFakeBuilder<>(this);
+		bundleItems.add(bundleItem);
+		return bundleItem;
+	}
+
 	public OrderItemFake build() {
 		OrderItemFake item = new OrderItemFake();
 		item.setId(id);
@@ -234,6 +251,10 @@ public class OrderItemFakeBuilder<T> {
 		item.setStocks(stocks.stream().map(OrderItemStockFakeBuilder::build).collect(Collectors.toList()));
 		item.setCustomTags(customTags.stream().map(CustomTagFakeBuilder::build).collect(Collectors.toList()));
 		item.setDiscounts(discounts.stream().map(OrderDiscountFakeBuilder::build).collect(Collectors.toList()));
+		item.setType(type);
+		if (bundleItems != null) {
+			item.setBundleItems(bundleItems.stream().map(OrderItemFakeBuilder::build).collect(Collectors.toList()));
+		}
 		return item;
 	}
 

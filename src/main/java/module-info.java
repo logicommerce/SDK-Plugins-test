@@ -15,6 +15,8 @@ module com.logicommerce.sdktest {
 	exports com.logicommerce.sdktest;
 	exports com.logicommerce.sdktest.definition;
 	exports com.logicommerce.sdktest.models;
+	exports com.logicommerce.sdktest.models.basket;
+	exports com.logicommerce.sdktest.models.catalog;
 	exports com.logicommerce.sdktest.models.order;
 	exports com.logicommerce.sdktest.resources;
 	exports com.logicommerce.sdktest.resources.connection;

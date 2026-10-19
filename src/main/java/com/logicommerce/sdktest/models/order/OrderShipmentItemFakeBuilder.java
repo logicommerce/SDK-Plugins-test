@@ -9,12 +9,16 @@ public class OrderShipmentItemFakeBuilder<T> {
 	private int quantity;
 	private Integer orderItemId;
 	private double weight;
+	private String name;
+	private String hash;
 
 	public OrderShipmentItemFakeBuilder() {
 		id = 0;
 		quantity = 0;
 		orderItemId = 0;
 		weight = 1;
+		name = null;
+		hash = null;
 	}
 
 	public OrderShipmentItemFakeBuilder(T parentBuilder) {
@@ -42,12 +46,24 @@ public class OrderShipmentItemFakeBuilder<T> {
 		return this;
 	}
 
+	public OrderShipmentItemFakeBuilder<T> name(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public OrderShipmentItemFakeBuilder<T> hash(String hash) {
+		this.hash = hash;
+		return this;
+	}
+
 	public OrderShipmentItem build() {
 		OrderShipmentItemFake item = new OrderShipmentItemFake();
 		item.setId(id);
 		item.setQuantity(quantity);
 		item.setOrderItemId(orderItemId);
 		item.setWeight(weight);
+		item.setName(name);
+		item.setHash(hash);
 		return item;
 	}
 

@@ -14,6 +14,8 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 
 	private String name;
 
+	private String hash;
+
 	@Override
 	public Integer getId() {
 		return id;
@@ -39,6 +41,11 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 		return name;
 	}
 
+	@Override
+	public String getHash() {
+		return hash;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -57,6 +64,10 @@ public class OrderShipmentItemFake implements OrderShipmentItem {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
 }

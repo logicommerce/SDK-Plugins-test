@@ -2,6 +2,7 @@ package com.logicommerce.sdktest.models.order;
 
 import java.util.List;
 import com.logicommerce.sdk.enums.BackorderMode;
+import com.logicommerce.sdk.enums.CartItemType;
 import com.logicommerce.sdk.models.CustomTag;
 import com.logicommerce.sdk.models.RowCodes;
 import com.logicommerce.sdk.models.order.OrderDiscount;
@@ -39,6 +40,8 @@ public class OrderItemFake implements OrderItem {
 	private List<OrderItemTax> taxes;
 	private List<CustomTag> customTags;
 	private List<OrderDiscount> discounts;
+	private CartItemType type;
+	private List<OrderItem> bundleItems;
 
 	@Override
 	public Integer getId() {
@@ -272,6 +275,24 @@ public class OrderItemFake implements OrderItem {
 
 	public void setDiscounts(List<OrderDiscount> discounts) {
 		this.discounts = discounts;
+	}
+
+	@Override
+	public CartItemType getType() {
+		return type;
+	}
+
+	public void setType(CartItemType type) {
+		this.type = type;
+	}
+
+	@Override
+	public List<OrderItem> getBundleItems() {
+		return bundleItems;
+	}
+
+	public void setBundleItems(List<OrderItem> bundleItems) {
+		this.bundleItems = bundleItems;
 	}
 
 }
