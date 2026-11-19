@@ -24,7 +24,6 @@ import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.hc.core5.http.io.entity.StringEntity;
 
 public abstract class Client {
 
@@ -60,7 +59,9 @@ public abstract class Client {
 	private void setHeaders() {
 		this.attributes.getHeaders().forEach(this::setHeader);
 		this.setHeader(COOKIE, this.attributes.getCookies());
-		this.setHeader(CONTENT_TYPE, this.attributes.getContentType());
+		if (!this.attributes.hasMultipartBody()) {
+			this.setHeader(CONTENT_TYPE, this.attributes.getContentType());
+		}
 		this.setHeader(ACCEPT, this.attributes.getAcceptType());
 	}
 
@@ -75,8 +76,8 @@ public abstract class Client {
 	}
 
 	private void setBody() {
-		if (this.attributes.hasBody()) {
-			StringEntity entity = new StringEntity(this.attributes.getBody());
+		HttpEntity entity = ClientEntityFactory.create(this.attributes);
+		if (entity != null) {
 			this.http.setEntity(entity);
 		}
 	}

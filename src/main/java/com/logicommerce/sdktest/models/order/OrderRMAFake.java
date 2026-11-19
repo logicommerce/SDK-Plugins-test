@@ -10,6 +10,8 @@ public class OrderRMAFake implements OrderRMA {
 
 	private int id;
 
+	private String documentNumber;
+
 	private RMAStatusType status;
 
 	private LocalDateTime date;
@@ -19,6 +21,11 @@ public class OrderRMAFake implements OrderRMA {
 	@Override
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String getDocumentNumber() {
+		return documentNumber;
 	}
 
 	@Override
@@ -38,6 +45,10 @@ public class OrderRMAFake implements OrderRMA {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
 	}
 
 	public void setStatus(RMAStatusType status) {

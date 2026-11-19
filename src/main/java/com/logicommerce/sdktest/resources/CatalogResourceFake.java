@@ -94,7 +94,7 @@ public class CatalogResourceFake implements CatalogResource {
 		List<List<String>> categoryPaths = query.getCategoryNamePaths() == null ? List.of()
 			: query.getCategoryNamePaths().stream().map(CatalogResourceFake::segments).collect(Collectors.toList());
 		List<ProductView> found = products.stream()
-			.filter(product -> matchesText(product, query.getText()))
+			.filter(product -> matchesText(product, query.getSearch()))
 			.filter(product -> query.getCategoryNamePaths() == null || query.getCategoryNamePaths().isEmpty()
 				|| matchesCategory(product, categoryPaths))
 			.filter(priceFilter::matches)

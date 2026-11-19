@@ -35,9 +35,9 @@ class CatalogResourceFakeTest {
 		catalogResource.addProduct(product(2, "Blue shirt", "SKU-2"));
 		catalogResource.addProduct(product(3, "Shoes", "SKU-3"));
 
-		ProductPage first = catalogResource.search(new CatalogQueryBuilder().text("shirt").perPage(1).build(), context);
-		ProductPage second = catalogResource.search(new CatalogQueryBuilder().text("shirt").page(2).perPage(1).build(), context);
-		ProductPage byBarcode = catalogResource.search(new CatalogQueryBuilder().text("EAN-SKU-3").build(), context);
+		ProductPage first = catalogResource.search(new CatalogQueryBuilder().search("shirt").perPage(1).build(), context);
+		ProductPage second = catalogResource.search(new CatalogQueryBuilder().search("shirt").page(2).perPage(1).build(), context);
+		ProductPage byBarcode = catalogResource.search(new CatalogQueryBuilder().search("EAN-SKU-3").build(), context);
 
 		assertEquals(List.of(1), ids(first.getProducts()));
 		assertTrue(first.hasNextPage());

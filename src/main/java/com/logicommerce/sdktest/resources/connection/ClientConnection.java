@@ -2,8 +2,11 @@ package com.logicommerce.sdktest.resources.connection;
 
 import java.nio.charset.Charset;
 import java.security.KeyStore;
+import com.logicommerce.sdk.resources.MultipartBody;
 
 public class ClientConnection {
+
+	private static final String MULTIPART_TOO_LARGE = "Multipart body size %d exceeds the maximum of %d bytes";
 
 	private ClientAttributes attributes;
 
@@ -83,9 +86,19 @@ public class ClientConnection {
 		return send(new ClientPost(attributes));
 	}
 
+	public ClientResponse post(MultipartBody body) throws ConnectionException {
+		setMultipartBody(body);
+		return send(new ClientPost(attributes));
+	}
+
 	public ClientResponse put(String body) throws ConnectionException {
 		validateArgs(body);
 		attributes.setBody(body);
+		return send(new ClientPut(attributes));
+	}
+
+	public ClientResponse put(MultipartBody body) throws ConnectionException {
+		setMultipartBody(body);
 		return send(new ClientPut(attributes));
 	}
 
@@ -97,6 +110,20 @@ public class ClientConnection {
 
 	public ClientResponse delete() throws ConnectionException {
 		return send(new ClientDelete(attributes));
+	}
+
+	public ClientConnection multipartMaxSize(int multipartMaxSize) {
+		attributes.setMultipartMaxSize(multipartMaxSize);
+		return this;
+	}
+
+	private void setMultipartBody(MultipartBody body) throws ConnectionException {
+		validateArgs(body);
+		attributes.setMultipartBody(body);
+		if (body.getSize() > attributes.getMultipartMaxSize()) {
+			throw new ConnectionException(getClass(), new IllegalArgumentException(
+				String.format(MULTIPART_TOO_LARGE, body.getSize(), attributes.getMultipartMaxSize())));
+		}
 	}
 
 	private ClientResponse send(Client client) throws ConnectionException {

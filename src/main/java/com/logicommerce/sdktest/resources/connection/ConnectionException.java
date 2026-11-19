@@ -9,6 +9,7 @@ public final class ConnectionException extends Exception {
 	protected final Exception exception;
 
 	public ConnectionException(Class<?> clazz, Exception exception) {
+		super(exception);
 		this.clazz = clazz;
 		this.exception = exception;
 	}
