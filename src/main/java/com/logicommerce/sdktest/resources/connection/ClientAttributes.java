@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import com.logicommerce.sdk.resources.MultipartBody;
 
 public class ClientAttributes {
 
@@ -19,6 +20,8 @@ public class ClientAttributes {
 	private String method = "";
 	private String params = "";
 	private String body = "";
+	private MultipartBody multipartBody;
+	private int multipartMaxSize = MultipartBody.MAX_SIZE;
 
 	private String contentType = "application/json";
 	private String acceptType = "application/json";
@@ -166,6 +169,29 @@ public class ClientAttributes {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public MultipartBody getMultipartBody() {
+		return multipartBody;
+	}
+
+	public void setMultipartBody(MultipartBody multipartBody) {
+		this.multipartBody = multipartBody;
+	}
+
+	public boolean hasMultipartBody() {
+		return multipartBody != null && !multipartBody.isEmpty();
+	}
+
+	public int getMultipartMaxSize() {
+		return multipartMaxSize;
+	}
+
+	public void setMultipartMaxSize(int multipartMaxSize) {
+		if (multipartMaxSize < 1) {
+			throw new IllegalArgumentException();
+		}
+		this.multipartMaxSize = Math.min(multipartMaxSize, MultipartBody.MAX_SIZE);
 	}
 
 	public Integer getTimeout() {

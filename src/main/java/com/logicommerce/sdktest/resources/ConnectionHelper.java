@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.security.KeyStore;
 import com.logicommerce.sdk.enums.SslProtocol;
 import com.logicommerce.sdk.resources.Connection;
+import com.logicommerce.sdk.resources.MultipartBody;
 import com.logicommerce.sdk.resources.PluginResourceException;
 import com.logicommerce.sdk.resources.Response;
 import com.logicommerce.sdktest.resources.connection.ClientConnection;
@@ -93,7 +94,25 @@ public class ConnectionHelper implements Connection {
 	}
 
 	@Override
+	public Response post(MultipartBody body) throws PluginResourceException {
+		try {
+			return arrangeResponse(this.clientConnection.post(body));
+		} catch (ConnectionException e) {
+			throw new PluginResourceException(this.getClass(), e);
+		}
+	}
+
+	@Override
 	public Response put(String body) throws PluginResourceException {
+		try {
+			return arrangeResponse(this.clientConnection.put(body));
+		} catch (ConnectionException e) {
+			throw new PluginResourceException(this.getClass(), e);
+		}
+	}
+
+	@Override
+	public Response put(MultipartBody body) throws PluginResourceException {
 		try {
 			return arrangeResponse(this.clientConnection.put(body));
 		} catch (ConnectionException e) {
@@ -142,6 +161,14 @@ public class ConnectionHelper implements Connection {
 	@Override
 	public Connection sslProtocol(SslProtocol sslProtocol) {
 		this.clientConnection.sslProtocol(sslProtocol.get());
+		return this;
+	}
+
+	@Override
+	public Connection multipartMaxSize(int maxSize) {
+		if (maxSize > 0) {
+			this.clientConnection.multipartMaxSize(maxSize);
+		}
 		return this;
 	}
 

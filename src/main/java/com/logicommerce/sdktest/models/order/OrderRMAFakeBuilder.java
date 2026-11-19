@@ -11,6 +11,7 @@ public class OrderRMAFakeBuilder<T> {
 
 	private T parentBuilder;
 	private int id;
+	private String documentNumber;
 	private RMAStatusType status;
 	private LocalDateTime date;
 	private List<OrderRMAItemFakeBuilder<OrderRMAFakeBuilder<T>>> items;
@@ -29,6 +30,11 @@ public class OrderRMAFakeBuilder<T> {
 
 	public OrderRMAFakeBuilder<T> id(int id) {
 		this.id = id;
+		return this;
+	}
+
+	public OrderRMAFakeBuilder<T> documentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
 		return this;
 	}
 
@@ -51,6 +57,7 @@ public class OrderRMAFakeBuilder<T> {
 	public OrderRMA build() {
 		OrderRMAFake orderRMA = new OrderRMAFake();
 		orderRMA.setId(id);
+		orderRMA.setDocumentNumber(documentNumber);
 		orderRMA.setStatus(status);
 		orderRMA.setDate(date);
 		orderRMA.setItems(items.stream().map(OrderRMAItemFakeBuilder::build).collect(Collectors.toList()));
